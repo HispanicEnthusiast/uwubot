@@ -21,11 +21,7 @@ Promise.all(promises)
     );
     console.log(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
 
-    /*status = [
-      `+h for help | Tairitsu | ${totalGuilds} servers | ${totalMembers} members`,
-      `+help for help | Tairitsu | ${totalGuilds} servers | ${totalMembers} members`
-    ];*/ 
-  if(args[0].toLowerCase==='stream'||args[0].toLowerCase==='streamin'||args[0].toLowerCase==='streaming'){
+      if(args[0].toLowerCase()==='stream'||args[0].toLowerCase()==='streamin'||args[0].toLowerCase()==='streaming'){
         client.user
     .setActivity(args.slice(2).join(" ").replace("$MEMBER$".toLowerCase(), totalMembers).replace("$GUILD$".toLowerCase(), totalGuilds), {
       type: "STREAMING",
@@ -33,7 +29,8 @@ Promise.all(promises)
     })
     
  message.channel.send(`<:hikariok:801419553841741904> | I set my stream Status to :\n\`\`\`${args.slice(2).join(" ").replace("$MEMBER$".toLowerCase(), totalMembers).replace("$GUILD$".toLowerCase(), totalGuilds)}\`\`\``)
-}else{
+return
+  }else{
   var stat;
   
  if(args[0].toLowerCase()==="play"||args[0].toLowerCase()==="playin"||args[0].toLowerCase()==="playing") stat='PLAYING';

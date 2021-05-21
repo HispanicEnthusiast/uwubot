@@ -25,7 +25,7 @@ bot.on("message", message => {
   if (message.author.bot) return;
   if (message.guild) {
     bot.config = {
-      owners: "user ids here(just for owners, devs, else the others can use it)",
+      owners: "770304260919001159",
       prefix: bot.db.get(`${message.guild.id}_prefix`) || "+"
     };
     bot.music = {
