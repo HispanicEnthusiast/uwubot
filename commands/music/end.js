@@ -22,6 +22,6 @@ module.exports = {
     sendSuccess("<:hikariok:801419553841741904> | Disconnected Successfully!", message.channel);
     const serverQueue = message.client.queue.get(message.guild.id);
 
-    if(serverQueue.songs)serverQueue.songs = null;
+    if(serverQueue){serverQueue.songs = null;console.log("disconnected")}
   },
 };
