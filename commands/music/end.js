@@ -16,7 +16,7 @@ module.exports = {
 //checked
   run: async function (client, message, args) {
     const channel = message.member.voice.channel
-    if (!channel)return sendError("I'm sorry but you need to be in a voice channel to use this command!", message.channel);
+    if (!channel||message.member.voice.channel.id!==client.user.voice.channel.id)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message.channel);
     await channel.leave();
     message.react("801419553841741904")
     sendSuccess("<:hikariok:801419553841741904> | Disconnected Successfully!", message.channel);

@@ -14,7 +14,7 @@ module.exports = {
   },
 //checked
   run: async function (client, message, args) {
-  if(message.member.voice.channel.id!==client.user.voice.channel.id)return sendError("I'm sorry but you need to be in my voice channel to pause music!", message.channel);
+  if(message.member.voice.channel.id!==client.user.voice.channel.id)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message.channel);
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && serverQueue.playing) {
       serverQueue.playing = false;

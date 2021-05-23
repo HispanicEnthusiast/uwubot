@@ -14,6 +14,7 @@ module.exports = {
   },
 //checked
   run: async function (bot, message, args) {
+    
     const client = bot
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && !serverQueue.playing) {

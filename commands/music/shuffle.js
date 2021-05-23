@@ -12,9 +12,13 @@ module.exports = {
   dm: "no"
   },
   run: async (client, message, args) => {
+    const channel = message.member.voice.channel
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join the voice channel where I currently am to use this command!', message.channel);
+    if (!channel||message.member.voice.channel.id!==client.user.voice.channel.id)return sendError('<:tairitsuno:801419553933492245> | You need to join the voice channel where I currently am to use this command!', message.channel);
+    
     const Channel = message.member.voice.channel;
 
-    if (!Channel) return message.channel.send("JOIN TO A VOICE CHANNEL");
+    if (!Channel) return sendError('There are no songs on playing right now, pls add a song to play!!!', message.channel);
 
     const Queue = message.client.queue.get(message.guild.id);
 
@@ -25,7 +29,7 @@ module.exports = {
     
     Queue.Songs = Queue.songs.sort(() => Math.random() - 0.5);
     await Queue.songs.unshift(Current);
-    
+    message.react("801419553841741904")
     sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message.channel)
     
   }
