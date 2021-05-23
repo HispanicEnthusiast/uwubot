@@ -28,8 +28,9 @@ module.exports = {
     }
 
     try {
-      serverQueue.songs.splice(0, args[0]+1);
-      serverQueue.connection.dispatcher.end();
+      serverQueue.songs.splice(1, args[0]);
+      serverQueue.connection.dispatcher.end("Skiped the music");
+
       return;
     } catch {
       serverQueue.connection.dispatcher.end();
