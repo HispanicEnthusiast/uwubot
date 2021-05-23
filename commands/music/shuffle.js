@@ -13,8 +13,8 @@ module.exports = {
   },
   run: async (client, message, args) => {
     const channel = message.member.voice.channel
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel where to use this command!', message.channel);
-    
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message.channel);
+    if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message.channel);    
     const Channel = message.member.voice.channel;
 
     if (!Channel) return sendError('There are no songs on playing right now, pls add a song to play!!!', message.channel);
