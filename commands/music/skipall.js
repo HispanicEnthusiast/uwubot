@@ -20,11 +20,10 @@ module.exports = {
     if (!serverQueue) {
       message.channel.send("Nothing playing in this server");
     }
-    serverQueue.songs.length
      
 
     try {
-      serverQueue.songs.splice(0, serverQueue.songs.length-1);
+      serverQueue.songs.splice(0, serverQueue.songs.length-2);
       serverQueue.connection.dispatcher.end("Skiped the music");
 
       return;
