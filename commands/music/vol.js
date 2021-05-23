@@ -15,8 +15,7 @@ module.exports = {
 //checked
   run: async function (client, message, args) {
     const channel = message.member.voice.channel
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join the voice channel where I currently am to use this command!', message.channel);
-    if (!channel||message.member.voice.channel.id!==client.user.voice.channel.id)return sendError('<:tairitsuno:801419553933492245> | You need to join the voice channel where I currently am to use this command!', message.channel);
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel where to use this command!', message.channel);
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) return sendError("There is nothing playing in this server.", message.channel);
     if (!args[0])return message.channel.send(`The current volume is: **${serverQueue.volume}**`);
