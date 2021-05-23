@@ -6,8 +6,8 @@ module.exports = {
   },
   info: {
     name: "skipall",
-    description: "To skip to the specified song",
-    usage: "<number>",
+    description: "To skip all the songs in the queue and play the last song",
+    usage: "",
     aliases: ["skip-all"],
   },
 
@@ -25,12 +25,11 @@ module.exports = {
     try {
       serverQueue.songs.splice(0, serverQueue.songs.length-2);
       serverQueue.connection.dispatcher.end("Skiped the music");
-
+message.react("801419553841741904")
       return;
     } catch {
       serverQueue.connection.dispatcher.end();
       await channel.leave();
-      return message.channel.send("PLEASE TRY AGAIN");
     }
   }
 };
