@@ -1,10 +1,15 @@
 const Discord = require("discord.js");
-
+let sendSuccess= require("../../util/success"),sendError= require("../../util/error")
 module.exports = {
   info:{
   name: "shuffle",
   description:"Shuffle the Queue",
+  usage:"",
   aliases: ["sf", "shufflequeue"],
+  },
+  conf:{
+    cooldown: 0,
+  dm: "no"
   },
   run: async (client, message, args) => {
     const Channel = message.member.voice.channel;
@@ -14,21 +19,14 @@ module.exports = {
     const Queue = message.client.queue.get(message.guild.id);
 
     if (!Queue)
-      return message.channel.send(
-        "Nothing Is Playing In This Server"
-      );
+      return sendError("There is nothing playing in this server.", message.channel);
     
-    const Current = await Queue.Songs.shift();
+    const Current = await Queue.songs.shift();
     
-    Queue.Songs = Queue.Songs.sort(() => Math.random() - 0.5);
-    await Queue.Songs.unshift(Current);
+    Queue.Songs = Queue.songs.sort(() => Math.random() - 0.5);
+    await Queue.songs.unshift(Current);
     
-    const Embed = new Discord.MessageEmbed()
-    .setColor("RANDOM")
-    .setTitle("Success")
-    .setDescription("🎶 Queue Has Been Shuffled")
-    .setTimestamp();
+    sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message.channel)
     
-    return message.channel.send(Embed).catch(() => message.channel.send("🎶 Queue Has Been Shuffled"));
   }
 };
