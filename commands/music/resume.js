@@ -14,7 +14,8 @@ module.exports = {
   },
 //checked
   run: async function (bot, message, args) {
-    
+    const channel = message.member.voice.channel
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel where to use this command!', message.channel);
     const client = bot
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && !serverQueue.playing) {
