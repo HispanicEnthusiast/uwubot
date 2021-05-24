@@ -6,7 +6,7 @@ exports.run = async(bot, message, args) => {
   if(!permissions.has("MANAGE_ROLES")) return
   if(!message.member.hasPermission("MANAGE_ROLES")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("MANAGE_MEMBERS")&&!message.member.hasPermission("ADMINISTRATOR"))return
    if (!args[0]) {
-        return message.channel.send(
+        return message.mentionReply(
           "⚠ |Please mention or give the id of the person who you want to mute"
         );
       }
@@ -14,14 +14,14 @@ exports.run = async(bot, message, args) => {
     
         let target = bot.users.cache.get(args[0].replace("<@!", "").replace("<@", "").replace(">", ""));
   if (target === !args[0]) {
-        return message.channel.send(
+        return message.mentionReply(
           "⚠ |Please mention the person who you want to mute"
         );
       }
   
 const targe =  message.guild.member(target)
 if (targe.hasPermission("ADMINISTRATOR")){
-        return message.channel.send("<:tairitsuno:801419553933492245> | The user you want to mute is a moderator/administrator I can't do that,try to ban him/her/them yourself..");
+        return message.mentionReply("<:tairitsuno:801419553933492245> | The user you want to mute is a moderator/administrator I can't do that,try to ban him/her/them yourself..");
   }
 
   let reason = args.slice(2).join(" ");
@@ -60,7 +60,7 @@ let muterole= bot.db.get(`${message.guild.id}_muterole`)
                 })
               }
               catch(err) {
-                message.channel.send(`Error : ${err}`)
+                message.mentionReply(`Error : ${err}`)
               }
   }
     muterole = bot.db.set(`${message.guild.id}_muterole`,message.guild.roles.cache.find(r => r.name === 'Muted').id.toString());
@@ -69,7 +69,7 @@ let muterole= bot.db.get(`${message.guild.id}_muterole`)
     const time = args[1]
    
     if(!time||ms(time)===undefined){
-      return message.channel.send("⚠ | Please add a correct time to mute this member!")
+      return message.mentionReply("⚠ | Please add a correct time to mute this member!")
     }
    
   let muteroles=bot.db.set(`${message.guild.id}_${userm.user.id}muteroles`, userm._roles)
