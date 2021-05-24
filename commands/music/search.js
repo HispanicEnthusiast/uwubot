@@ -1,8 +1,9 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const sendSuccess = require("../../util/success");
-const sendError = require("../../util/error");
+const sendSuccess = require("../../util/success"),sendError = require("../../util/error");
+const sendSucces = require("../../util/succes");
+const sendEror = require("../../util/eror");
 
 module.exports = {
   conf: {
@@ -32,12 +33,12 @@ module.exports = {
     if (!permissions.has("CONNECT"))
       return sendError(
         "I cannot connect to your voice channel, make sure I have the proper permissions!",
-        message.channel
+        message
       );
     if (!permissions.has("SPEAK"))
       return sendError(
         "I cannot speak in this voice channel, make sure I have the proper permissions!",
-        message.channel
+        message
       );
 
     var searchString = args.join(" ");

@@ -1,9 +1,9 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const sendSuccess = require("../../util/success");
-const sendError = require("../../util/error");
-
+const sendSuccess = require("../../util/success"),sendError = require("../../util/error");
+const sendSucces = require("../../util/succes");
+const sendEror = require("../../util/eror");
 module.exports = {
   conf: {
     cooldown: 0,
@@ -21,19 +21,19 @@ module.exports = {
     if (!channel)
       return sendError(
         "I'm sorry but you need to be in a voice channel to play music!",
-        message.channel
+        message
       );
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
       return sendError(
         "I cannot connect to your voice channel, make sure I have the proper permissions!",
-        message.channel
+        message
       );
     if (!permissions.has("SPEAK"))
       return sendError(
         "I cannot speak in this voice channel, make sure I have the proper permissions!",
-        message.channel
+        message
       );
 
     var searchString = args.join(" ");
@@ -100,7 +100,7 @@ module.exports = {
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendSuccess("Disconnected sucessfully!", message.channel);
+        sendSucces("Disconnected sucessfully!", message.channel);
         queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
@@ -155,9 +155,9 @@ module.exports = {
       console.error(`I could not join the voice channel: ${error}`);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return sendError(
+      return sendEror(
         `I could not join the voice channel: ${error}`,
-        message
+        message.channel
       );
     }
   }
