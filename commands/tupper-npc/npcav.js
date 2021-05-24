@@ -12,7 +12,7 @@ let avatar=args[1]
     
   if (!tupper){
       tupper = bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`);
-   if (!tupper)return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, This Tupper/npc is not existing in this server!");
+   if (!tupper)return message.mentionReply("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, This Tupper/npc is not existing in this server!");
     }
     
     function attachIsImage(msgAttac) {

@@ -19,7 +19,7 @@ module.exports = {
     if (message.guild.me.voice.channel.id !== channel.id)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) return sendError("There is nothing playing in this server.", message);
-    if (!args[0])return message.channel.send(`The current volume is: **${serverQueue.volume}**`);
+    if (!args[0])return message.noMentionReply(`The current volume is: **${serverQueue.volume}**`);
     serverQueue.volume = args[0]; 
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);;
     if(isNaN(args[0]))return sendError("Please use Numerical Values only", message)
@@ -27,6 +27,6 @@ module.exports = {
     .setDescription(`<:hikariok:801419553841741904> | I set the volume to: **${args[0]}/100**`)
     .setTitle("Server Volume Manager")
     .setColor("BLUE")
-    return message.channel.send(xd);
+    return message.noMentionReply(xd);
   },
 };

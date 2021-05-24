@@ -38,7 +38,7 @@ module.exports = {
        }
        
        if(vote.voters.includes(message.author.id)) {
-         return message.channel.send("You already voted for this song")
+         return message.mentionReply("<:tairitsuno:801419553933492245> | You already voted for this song")
        }
        
        if(vcvote === 2) {
