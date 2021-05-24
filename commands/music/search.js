@@ -44,7 +44,7 @@ module.exports = {
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
-        "You didn't provide what you want to play",
+        "<:tairitsuno:801419553933492245> | You didn't provide what you want to play",
         message
       );
     var songEmbed = await message.noMentionReply(
@@ -57,7 +57,7 @@ module.exports = {
     if (searched.videos.length === 0){
 message.channel.stopTyping()
       return sendError(
-        "Looks like i was unable to find the song on YouTube",
+        "<:tairitsuno:801419553933492245> | Looks like i was unable to find the song on YouTube",
         message
       );}
     const vidNameArr = [];
@@ -120,7 +120,7 @@ message.channel.stopTyping()
           songEmbed.delete();
         }
         return sendError(
-          "Please try again and enter a number between 1 and 10 or exit",
+          "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
           message
         );
       }
@@ -132,7 +132,7 @@ message.channel.stopTyping()
         songEmbed.delete();
       }
       return sendError(
-        "Please try again and enter a number between 1 and 10 or exit",
+        "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
         message
       );
     }
@@ -256,7 +256,7 @@ message.channel.stopTyping()
       message.client.queue.delete(message.guild.id);
       await channel.leave();
       return sendEror(
-        `I could not join the voice channel: ${error}`,
+        `<:tairitsuno:801419553933492245> | I could not join the voice channel: ${error}`,
         message.channel
       );
     }

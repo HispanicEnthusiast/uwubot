@@ -157,7 +157,7 @@ message.channel.stopTyping()
       message.client.queue.delete(message.guild.id);
       await channel.leave();
       return sendEror(
-        `I could not join the voice channel: ${error}`,
+        `<:tairitsuno:801419553933492245> | I could not join the voice channel: ${error}`,
         message.channel
       );
     }

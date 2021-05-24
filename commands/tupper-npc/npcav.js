@@ -23,14 +23,14 @@ if(args[1]&&!args[2]){
 //bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, args[0]+" "+args[1]);
   bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, avatar);
-    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message.channel, a); 
+    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message, a); 
     }
       else if(args[0]&&!args[1]){
       console.log(args[0])
     //bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()}`, args[0]);
 bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()}`);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()}`, url);
-    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`,message.channel, a);
+    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message, a);
     }
       return
   }
@@ -48,7 +48,7 @@ bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()}`);
       //bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, args[0]+" "+args[1]);
 bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, avatar);
-    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message.channel, a);
+    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message, a);
       
       return
     }
@@ -57,7 +57,7 @@ bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLo
      if(regex.test(avatar)===false) return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, The link you sent me is not an image, try again!");
      bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()}`);
      let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()}`, avatar);
-    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`,message.channel, a);
+    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message, a);
       return
     }
     
@@ -66,7 +66,7 @@ bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLo
       //bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, args[0]+" "+args[1]);
       bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, avatar);
-    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message.channel, a);
+    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message, a);
       return
     }
     else if(args[0]&&!args[1]&&message.attachments.size<1){
@@ -74,7 +74,7 @@ bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLo
       //bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()}`, args[0]);
       bot.db.delete(`${message.guild.id}npcav_${args[0].toLowerCase()}`);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()}`, avatar);
-    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message.channel, a);
+    success(`**${bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)}**'s new avatar is:\n[Click Here]`+`(${a})`, message, a);
       return
     } else
       if(args[3]||args[2]&&!message.content.toLowerCase().includes("/".toLowerCase())){
