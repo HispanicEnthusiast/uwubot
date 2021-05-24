@@ -28,7 +28,7 @@ module.exports = {
   //checked, only the error on ${song.ago} because or topic-user's song, collection and the others are ok
   run: async function(client, message, args) {
     const channel = message.member.voice.channel;
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message.channel);
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
       return sendError(
@@ -44,21 +44,22 @@ module.exports = {
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
-        "You didn't poivide want i want to play",
-        message.channel
+        "You didn't provide what you want to play",
+        message
       );
-    var songEmbed = await message.channel.send(
+    var songEmbed = await message.noMentionReply(
       `🔎 | Searching for \`${args.slice().join(" ")}\`...`
     );
     message.channel.startTyping();
     var serverQueue = message.client.queue.get(message.guild.id);
 
     var searched = await yts.search(searchString);
-    if (searched.videos.length === 0)
+    if (searched.videos.length === 0){
+message.channel.stopTyping()
       return sendError(
         "Looks like i was unable to find the song on YouTube",
-        message.channel
-      );
+        message
+      );}
     const vidNameArr = [];
     const vidUrlArr = [];
     const vidLengthArr = [];
@@ -120,7 +121,7 @@ module.exports = {
         }
         return sendError(
           "Please try again and enter a number between 1 and 10 or exit",
-          message.channel
+          message
         );
       }
       var videoIndex = parseInt(response.first().content);
@@ -132,7 +133,7 @@ module.exports = {
       }
       return sendError(
         "Please try again and enter a number between 1 and 10 or exit",
-        message.channel
+        message
       );
     }
     if (
@@ -180,7 +181,7 @@ module.exports = {
         .setFooter(`Views: ${song.views} | ${song.ago}`);
       message.channel.stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing);
-      return message.channel.send(thing);
+      return message.noMentionReply(thing);
     }
 
     const queueConstruct = {
@@ -198,7 +199,7 @@ module.exports = {
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendSuccess("Disconnected sucessfully!", message.channel);
+        sendSucces("Disconnected sucessfully!", message.channel);
         queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
@@ -254,7 +255,7 @@ module.exports = {
       console.error(`I could not join the voice channel: ${error}`);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return sendError(
+      return sendEror(
         `I could not join the voice channel: ${error}`,
         message.channel
       );

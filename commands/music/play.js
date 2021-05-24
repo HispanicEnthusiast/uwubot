@@ -20,7 +20,7 @@ module.exports = {
     const channel = message.member.voice.channel;
     if (!channel)
       return sendError(
-        "I'm sorry but you need to be in a voice channel to play music!",
+        '<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!',
         message
       );
 
@@ -39,7 +39,7 @@ module.exports = {
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
-        "You didn't provide want i want to play",
+        "You didn't provide what you want to play",
         message
       );
     var songEmbed = await message.noMentionReply(
@@ -49,11 +49,12 @@ module.exports = {
     var serverQueue = message.client.queue.get(message.guild.id);
 
     var searched = await yts.search(searchString);
-    if (searched.videos.length === 0)
+    if (searched.videos.length === 0){
+message.channel.stopTyping()
       return sendError(
         "Looks like I was unable to find the song on YouTube",
         message
-      );
+      );}
     var songInfo = searched.videos[0];
 
     const song = {
