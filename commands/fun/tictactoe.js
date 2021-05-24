@@ -24,24 +24,24 @@ module.exports = {
     // All different failures
     if (!member) {
       // No user mentioned
-      return message.channel.send("Incorrect Syntax! Please mention a user!");
+      return message.mentionReply("<:tairitsuno:801419553933492245> | Incorrect Syntax! Please mention a user!");
     }
     if (member.id === author) {
       // Played tries to duel himself
-      return message.channel.send(
-        "Incorrext Syntax! You cannot duel yourself!"
+      return message.mentionReply(
+        "<:tairitsuno:801419553933492245> | Incorrext Syntax! You cannot duel yourself!"
       );
     }
     if (midDuel.has(author)) {
       // Player tries to create a new TicTacToe match mid-game
-      return message.channel.send(`You're currently in a duel!`);
+      return message.mentionReply(`<:tairitsuno:801419553933492245> | You're currently in a duel!`);
     } else if (midDuel.has(member.id)) {
       // Player tries to match a player who's mid-game
-      return message.channel.send(`<@${member.id}> is currently in a duel!`);
+      return message.mentionReply(`<:tairitsuno:801419553933492245> | <@${member.id}> is currently in a duel!`);
     }
     if (member.id === message.client.user.id) {
       // User tries to duel the bot
-      return message.channel.send("<:tairitsuno:801419553933492245> | You can't duel me!");
+      return message.mentionReply("<:tairitsuno:801419553933492245> | You can't duel me!");
     }
 
     // Adds both players to a set so all of the above failures take affect

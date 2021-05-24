@@ -19,7 +19,7 @@ if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
     }
   
   if(!userm||!args[0]) {
-return message.reply('<:tairitsuno:801419553933492245> | Remember to mention a valid user to cuddle!');
+return message.mentionReply('<:tairitsuno:801419553933492245> | Remember to mention a valid user to cuddle!');
 }
     
   let embed = new discord.MessageEmbed()
@@ -28,7 +28,7 @@ return message.reply('<:tairitsuno:801419553933492245> | Remember to mention a v
   .setColor('RANDOM')
   .setTimestamp()
   .setFooter("Aww!!!")
-  message.channel.send(embed)
+  message.noMentionReply(embed)
   
 }
 exports.info = {
