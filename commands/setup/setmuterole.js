@@ -9,7 +9,7 @@ exports.run = (bot, message, args) => {
       const setup = args.slice().join(" ");
     
       if (!setup||isNaN(setup.replace("<@&", "").replace("<@", "").replace(">", "")))
-        return message.noMentionReply(
+        return message.mentionReply(
           `<:tairitsuno:801419553933492245> | Please send a mute role id with this format ${bot.config.prefix}setmuterole [mute role id]`
         );
       bot.db.set(`${message.guild.id}_muterole`, setup.replace("<@&", "").replace("<@", "").replace(">", ""))

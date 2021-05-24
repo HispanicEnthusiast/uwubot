@@ -4,7 +4,7 @@ exports.run = (bot, message, args) => {
     if (message.member.hasPermission("MANAGE_GUILD")||message.member.hasPermission("MANAGE_CHANNELS")||message.member.hasPermission("ADMINISTRATOR")){
       const setup = args.slice().join(" ");
       if (!setup)
-        return message.channel.send(
+        return message.mentionReply(
           `<:tairitsuno:801419553933492245> | Please send a leave message with this format\`` +
             bot.config.prefix +
             `setleavemessage [goodbye message]` +

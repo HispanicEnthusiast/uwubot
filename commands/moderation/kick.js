@@ -28,7 +28,7 @@ exports.run = async (bot, message, args) => {
   }
       let reason = args.slice(1).join(" ");
       if (!reason) reason = "-";
-      message.channel.send("kicking...")
+      message.noMentionReply("kicking...")
   
       .then(msg => {
         let reasonb= args.slice(1).join(" ");

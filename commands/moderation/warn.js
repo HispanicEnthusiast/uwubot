@@ -4,13 +4,13 @@ const ms = require("ms");
 exports.run = async(bot, message, args) => {
     //   let warning = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
     const permissions = message.channel.permissionsFor(message.client.user);
-  if(!permissions.has("MANAGE_MEMBERS")) return message.channel.send("<:koucry:801419554311241728> | You don't have permission to ban!!!");
+  if(!permissions.has("MANAGE_MEMBERS")) return message.mentionReply("<:koucry:801419554311241728> | You don't have permission to ban!!!");
 
   if(!message.member.hasPermission("MANAGE_MEMBERS")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("ADMINISTRATOR")) return message.mentionReply("<:tairitsuno:801419553933492245> | You don't have permission to warn!!!");
   let wUser = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Remember to mention a valid user to warn!") })
   if(!wUser) return message.mentionReply("I couldn't find the user!");
-  if(wUser.user.id === message.author.id)return message.channel.send("<:tairitsuno:801419553933492245> | You can't warn yourself!")
-  if(wUser.hasPermission("ADMINISTRATOR")) return message.channel.send("<:tairitsuno:801419553933492245> | You don't have permission to warn an admin/mod!!!");
+  if(wUser.user.id === message.author.id)return message.mentionReply("<:tairitsuno:801419553933492245> | You can't warn yourself!")
+  if(wUser.hasPermission("ADMINISTRATOR")) return message.mentionReply("<:tairitsuno:801419553933492245> | You don't have permission to warn an admin/mod!!!");
   let reason = args.slice(1).join(" ");
       if (!reason) reason = "";
       let a=bot.db.get(`${wUser.user.id}_${message.guild.id}_warns`)||0
@@ -35,7 +35,7 @@ const targe =  message.guild.member(target)
         
         targe.ban({reason: `get too much warns`});
        
-       return message.channel.send(`<:hikariok:801419553841741904> | Banned sucessfully **|** get too much warns`)
+       return message.noMentionReply(`<:hikariok:801419553841741904> | Banned sucessfully **|** get too much warns`)
 }   
   else
   if(a > d-1){
@@ -46,7 +46,7 @@ const targe =  message.guild.member(target)
         
         targe.kick({reason: `get too much warns`});
        
-       return message.channel.send(`<:hikariok:801419553841741904> | Kicked sucessfully **|** get too much warns`)
+       return message.noMentionReply(`<:hikariok:801419553841741904> | Kicked sucessfully **|** get too much warns`)
 }  
   else
     if(a > c-1){
@@ -99,7 +99,7 @@ let muterole= bot.db.get(`${message.guild.id}_muterole`)
                 })
               }
               catch(err) {
-                message.channel.send(`Error : ${err}`)
+                message.mentionReply(`Error : ${err}`)
               }
   }
     muterole = bot.db.set(`${message.guild.id}_muterole`,message.guild.roles.cache.find(r => r.name === 'Muted').id.toString());
@@ -137,13 +137,13 @@ targe.roles.remove(targe.roles.cache);
   targe.roles.add(message.guild.roles.cache.find(r => r.id ===muterole).id)
  
   
-  message.channel.send("<:hikariok:801419553841741904> | Muted Sucessfully! **|** Get too much warns")
+  message.noMentionReply("<:hikariok:801419553841741904> | Muted Sucessfully! **|** Get too much warns")
  
    
 }
   
   else {
-  message.channel.send("warning...")
+  message.noMentionReply("warning...")
       .then(msg => {
         let reasonb= args.slice(1).join(" ");
         if(!reasonb){

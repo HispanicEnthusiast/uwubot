@@ -103,10 +103,10 @@ targe.roles.remove(targe.roles.cache);
   targe.roles.add(message.guild.roles.cache.find(r => r.id ===muterole).id)
  let reasonb = args.slice(2).join(" ");
   if(!reasonb){
-        message.channel.send(`<:hikariok:801419553841741904> | Muted sucessfully`)
+        message.noMentionReply(`<:hikariok:801419553841741904> | Muted sucessfully`)
         };
       if(reasonb) {
-        message.message.send(`<:hikariok:801419553841741904> | Muted sucessfully **|** ${reason}`);}
+        message.noMentionReply(`<:hikariok:801419553841741904> | Muted sucessfully **|** ${reason}`);}
 }
 
 exports.info = {

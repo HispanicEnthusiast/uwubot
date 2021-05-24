@@ -91,10 +91,10 @@ targe.roles.remove(message.guild.roles.cache.find(r => r.id ===muterole).id)
   bot.db.delete(`${message.guild.id}_${userm.user.id}muteroles`)
  let reasonb = args.slice(1).join(" ");
   if(!reasonb) {
-  message.channel.send("<:hikariok:801419553841741904> | Unmuted Sucessfully!")
+  message.noMentionReply("<:hikariok:801419553841741904> | Unmuted Sucessfully!")
   }
   if(reasonb) {
-  message.channel.send("<:hikariok:801419553841741904> | Unmuted Sucessfully! **|** " + reason)
+  message.noMentionReply("<:hikariok:801419553841741904> | Unmuted Sucessfully! **|** " + reason)
   }
   
 }

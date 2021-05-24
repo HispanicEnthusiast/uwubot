@@ -6,12 +6,12 @@ exports.run = (bot, message, args) => {
 if (!setup)
     
       if (!setup||isNaN(setup.replace("<@&", "").replace("<@", "").replace(">", "")))
-        return message.channel.send(
+        return message.mentionReply(
           `<:tairitsuno:801419553933492245> | Please send a verify role id with this format ${bot.config.prefix}setverifyrole [verified role id]`
         );
       bot.db.set(`${message.guild.id}_verifyrole`, setup.replace("<@&", "").replace("<@", "").replace(">", ""))
       
-      message.channel.send(
+      message.noMentionReply(
         `<:hikariok:801419553841741904> | Successfully setup verified role`
       );
       return;

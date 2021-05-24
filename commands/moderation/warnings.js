@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
   
   let warnlevel = bot.db.get(`${wUser.user.id}_${message.guild.id}_warns`)||0;
 
-  message.channel.send(`<@${wUser.id}> has ${warnlevel} warnings.`);
+  message.noMentionReply(`<@${wUser.id}> has ${warnlevel} warnings.`);
 
 }
 

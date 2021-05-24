@@ -10,14 +10,14 @@ exports.run = (bot, message, args) => {
     const type = args[0];
     if (type === "on" || type === "enable") {
       bot.db.set(`${message.guild.id}_welcomeembed`, "yes")
-      message.channel.send(
+      message.noMentionReply(
         `<:hikariok:801419553841741904> | Welcome embed is successfully enabled!`
       );
       return;
     }
     if (type === "off" || type === "disable") {
       bot.db.set(`${message.guild.id}_welcomeembed`, "no")
-      message.channel.send(
+      message.noMentionReply(
         `<:hikariok:801419553841741904> | Welcome embed is successfully disabled!`
       );
       return;
