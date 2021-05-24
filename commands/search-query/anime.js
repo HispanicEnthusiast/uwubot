@@ -22,7 +22,7 @@ exports.run = async (bot, message, args, prefix) => {
       .query({ "filter[text]": query });
     const body = JSON.parse(text);
     if (!body.data.length)
-      return message.reply("<:tairitsuno:801419553933492245> | Can't find any results");
+      return message.mentionReply("<:tairitsuno:801419553933492245> | Can't find any results");
     const data = body.data[0].attributes;
     const embed = new Discord.MessageEmbed()
       .setColor(0xf75239)
@@ -45,7 +45,7 @@ exports.run = async (bot, message, args, prefix) => {
     return message.noMentionReply(embed);
   } catch (err) {
     console.log(err)
-     message.reply(
+     message.mentionReply(
       `Error, please report it to the arcaea bot devs`
     );
     return

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const sendError =require("../../util/success")
 exports.run = (bot, message, args) => {
     if (!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("MANAGE_CHANNELS")&&!message.member.hasPermission("ADMINISTRATOR"))
-      return message.reply(
+      return message.mentionReply(
         "<:tairitsuno:801419553933492245> | You can't use that command! you need at least manage channels, manage server or admin perm!"
       );
     const type = args[0];

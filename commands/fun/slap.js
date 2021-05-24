@@ -20,7 +20,7 @@ if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
     }
   
   if(!userm||!args[0]) {
-return message.reply('<:tairitsuno:801419553933492245> | Remember to mention a valid user to slap!');
+return message.mentionReply('<:tairitsuno:801419553933492245> | Remember to mention a valid user to slap!');
 }
     
          

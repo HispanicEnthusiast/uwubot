@@ -8,7 +8,7 @@ exports.run = async (bot, message, args) => {
         return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.author.id+">, You don't have permission to unban!!!");
   if(!args[0]){return}
   let bannedMember = args[0].replace("<@!", "").replace(">", "").replace("<@", "")
-  if(!bannedMember)return message.reply("⚠ |Please mention the person who you want to unban");
+  if(!bannedMember)return message.mentionReply("⚠ |Please mention the person who you want to unban");
   
   let reason = args.slice(1).join(" ");
       if (!reason) reason = "-";

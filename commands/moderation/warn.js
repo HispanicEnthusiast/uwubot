@@ -8,7 +8,7 @@ exports.run = async(bot, message, args) => {
 
   if(!message.member.hasPermission("MANAGE_MEMBERS")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("ADMINISTRATOR")) return message.mentionReply("<:tairitsuno:801419553933492245> | <@!"+message.author.id+">, You don't have permission to warn!!!");
   let wUser = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Remember to mention a valid user to warn!") })
-  if(!wUser) return message.reply("I couldn't find the user!");
+  if(!wUser) return message.mentionReply("I couldn't find the user!");
   if(wUser.user.id === message.author.id)return message.channel.send("<:tairitsuno:801419553933492245> | You can't warn yourself!")
   if(wUser.hasPermission("ADMINISTRATOR")) return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.author.id+">, You don't have permission to warn an admin/mod!!!");
   let reason = args.slice(1).join(" ");
@@ -137,7 +137,7 @@ targe.roles.remove(targe.roles.cache);
   targe.roles.add(message.guild.roles.cache.find(r => r.id ===muterole).id)
  
   
-  message.channel.send("<:botyes:766664525356204092> | Muted Sucessfully! **|** Get too much warns")
+  message.channel.send("<:hikariok:801419553841741904> | Muted Sucessfully! **|** Get too much warns")
  
    
 }
@@ -147,10 +147,10 @@ targe.roles.remove(targe.roles.cache);
       .then(msg => {
         let reasonb= args.slice(1).join(" ");
         if(!reasonb){
-        msg.edit(`<:botyes:766664525356204092> | ${wUser.user.tag} has been warned`)
+        msg.edit(`<:hikariok:801419553841741904> | ${wUser.user.tag} has been warned`)
         };
       if(reasonb) {
-        msg.edit(`<:botyes:766664525356204092> | ${wUser.user.tag} has been warned || ${reason}`);}
+        msg.edit(`<:hikariok:801419553841741904> | ${wUser.user.tag} has been warned || ${reason}`);}
     });
 }
 

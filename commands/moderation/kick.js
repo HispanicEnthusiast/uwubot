@@ -3,9 +3,9 @@ const Discord = require('discord.js')
 exports.run = async (bot, message, args) => {
   //console.log(message.member)
  const permissions = message.channel.permissionsFor(message.client.user);
-  if(!permissions.has("KICK_MEMBERS")) return message.channel.send("<:koucry:801419554311241728> | <@!"+message.author.id+">, I don't have permission to kick!!!");
+  if(!permissions.has("KICK_MEMBERS")) return message.mentionReply("<:koucry:801419554311241728> | <@!"+message.author.id+">, I don't have permission to kick!!!");
  if (!message.member.hasPermission("KICK_MEMBERS")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("MANAGE_MEMBERS")&&!message.member.hasPermission("ADMINISTRATOR"))
-        return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.author.id+">, You don't have permission to kick!!!");
+        return message.channel.send("<:tairitsuno:801419553933492245> | You don't have permission to kick!!!");
   if (!args[0]) {
         return message.channel.send(
           "⚠ |Please mention or give the id of the person who you want to kick"
