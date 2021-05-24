@@ -26,8 +26,8 @@ module.exports = {
       .setDescription("⏸ Paused the music for you!")
       .setColor("YELLOW")
       .setTitle("Music has been paused!")
-      return message.channel.send(xd);
+      return message.noMentionReply(xd);
     }
-    return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message.channel);
+    return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message);
   },
 };

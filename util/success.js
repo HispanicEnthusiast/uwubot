@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js")
 
 /**
  * @param {String} text - Message which is need to send
- * @param {vari} message - A Channel to send it
+ * @param {var} message - A Channel to send it
  * @param {image} img - Image
  */
 module.exports = async (text, message, img) => {

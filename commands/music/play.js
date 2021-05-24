@@ -40,9 +40,9 @@ module.exports = {
     if (!searchString)
       return sendError(
         "You didn't provide want i want to play",
-        message.channel
+        message
       );
-    var songEmbed = await message.channel.send(
+    var songEmbed = await message.noMentionReply(
       `🔎 | Searching for \`${args.slice().join(" ")}\`...`
     );
     message.channel.startTyping();
@@ -52,7 +52,7 @@ module.exports = {
     if (searched.videos.length === 0)
       return sendError(
         "Looks like I was unable to find the song on YouTube",
-        message.channel
+        message
       );
     var songInfo = searched.videos[0];
 
@@ -83,7 +83,7 @@ module.exports = {
         .setFooter(`Views: ${song.views} | ${song.ago}`);
       message.channel.stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)
-      return message.channel.send(thing);
+      return message.noMentionReply(thing);
     }
 
     const queueConstruct = {
@@ -157,7 +157,7 @@ module.exports = {
       await channel.leave();
       return sendError(
         `I could not join the voice channel: ${error}`,
-        message.channel
+        message
       );
     }
   }
