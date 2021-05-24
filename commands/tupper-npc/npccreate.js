@@ -19,14 +19,14 @@ if(args[1]&&!args[2]){
     return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, This Tupper/npc was already existed in this server, type "+bot.config.prefix+"npcavatar to change the avatar, or "+bot.config.prefix+"npcname to change the name of the npc!");
 bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, args[0]+" "+args[1]);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, avatar);
-    success(`**${args[0]+" "+args[1]}** is created with the avatar:\n[Click Here]`+`(${a})`,message.channel, a);
+    success(`**${args[0]+" "+args[1]}** is created with the avatar:\n[Click Here]`+`(${a})`,message, a);
     } else if(args[0]&&!args[1]){
       if(bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`))
     return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, This Tupper/npc was already existed in this server, type "+bot.config.prefix+"npcavatar to change the avatar, or "+bot.config.prefix+"npcname to change the name of the npc!");
       console.log(args[0])
     bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()}`, args[0]);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()}`, url);
-  success(`**${args[0]}** is created with the avatar:\n[Click Here]`+`(${a})`,message.channel, a);
+  success(`**${args[0]}** is created with the avatar:\n[Click Here]`+`(${a})`,message, a);
     }
       return
   }
@@ -44,7 +44,7 @@ bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLow
       
       bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, args[0]+" "+args[1]);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, avatar);
-    success(`**${args[0]+" "+args[1]}** is created with the avatar:\n[Click Here]`+`(${a})`,message.channel, a);
+    success(`**${args[0]+" "+args[1]}** is created with the avatar:\n[Click Here]`+`(${a})`,message, a);
       
       return
     }
@@ -54,7 +54,7 @@ bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLow
     if(regex.test(avatar)===false) return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, The link you sent me is not an image, try again!");
       bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()}`, args[0]);
      let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()}`, avatar);
-    success(`**${args[0]}** is created with the avatar:\n[Click Here]`+`(${a})`,message.channel, a);
+    success(`**${args[0]}** is created with the avatar:\n[Click Here]`+`(${a})`,message, a);
       return
     } 
     else if(args[1]&&!args[2]&&message.attachments.size<1){
@@ -63,7 +63,7 @@ bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLow
       avatar=bot.user.avatarURL({dynamic: true, size: 1024});
       bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, args[0]+" "+args[1]);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`, avatar);
-    success(`**${args[0]+" "+args[1]}** is created with the avatar:\n[Click Here]`+`(${a})`,message.channel, a);
+    success(`**${args[0]+" "+args[1]}** is created with the avatar:\n[Click Here]`+`(${a})`,message, a);
       return
     }
     else if(args[0]&&!args[1]&&message.attachments.size<1){
@@ -72,7 +72,7 @@ bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLow
       avatar=bot.user.avatarURL({dynamic: true, size: 1024});
       bot.db.set(`${message.guild.id}npcname_${args[0].toLowerCase()}`, args[0]);
     let a = bot.db.set(`${message.guild.id}npcav_${args[0].toLowerCase()}`, avatar);
-    success(`**${args[0]}** is created with the avatar:\n[Click Here]`+`(${a})`,message.channel, a);
+    success(`**${args[0]}** is created with the avatar:\n[Click Here]`+`(${a})`,message, a);
       return
     }else {
       return

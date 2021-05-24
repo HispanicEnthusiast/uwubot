@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
     .addField("Credits", `$${(balance).toLocaleString()}`)
     .setThumbnail(user.displayAvatarURL({size: 4096, dynamic: true}))
     .setTimestamp(new Date) 
-    return message.channel.send(embed);
+    return message.noMentionReply(embed);
 }
 
 exports.info = {

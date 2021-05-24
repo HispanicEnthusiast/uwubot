@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
       "<:hikarisorry:801419553892073483> | I'm not able to create webhooks or I can't manage messages in this channel, so that means I'm not able to send npcs/tuppers"
     );
   if (!args[0])
-    return channel.send(
+    return message.mentionReply(
       "<:tairitsuno:801419553933492245> | <@!" +
         message.member.id +
         ">, Tupper/npc is not specified."
@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
   let a = args.slice(1).join(" ");
   if (bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase() + " " + args[1].toLowerCase()}`)) {
     if (!args[2])
-    return channel.send(
+    return message.mentionReply(
       "<:tairitsuno:801419553933492245> | <@!" +
         message.member.id +
         ">, Message not specified."
@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
             .catch(error => {
               // We also want to make sure if an error is found, to report it in chat.
               console.log(error);
-              return channel.send(
+              return message.mentionReply(
                 "<:tairitsuno:801419553933492245> | <@!" +
               message.member.id +
               ">, **Something went wrong when sending the npc. Please report it to the Developers in my support or core server.**"
@@ -76,7 +76,7 @@ module.exports.run = async (bot, message, args) => {
         .catch(error => {
           // We also want to make sure if an error is found, to report it in chat.
           console.log(error);
-          return channel.send(
+          return message.mentionReply(
             "<:tairitsuno:801419553933492245> | <@!" +
               message.member.id +
               ">, **Something went wrong when sending the npc. Please report it to the Developers in my support or core server.**"
@@ -86,7 +86,7 @@ module.exports.run = async (bot, message, args) => {
   }
   if (bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)) {
     if (!args[1])
-    return channel.send(
+    return message.mentionReply(
       "<:botno:766649381411618837> | <@!" +
         message.member.id +
         ">, Message not specified."
@@ -108,7 +108,7 @@ module.exports.run = async (bot, message, args) => {
             .catch(error => {
               // We also want to make sure if an error is found, to report it in chat.
               console.log(error);
-              return channel.send(
+              return message.mentionReply(
                 "<:tairitsuno:801419553933492245> | <@!" +
               message.member.id +
               ">, **Something went wrong when sending the npc. Please report it to the Developers in my support or core server.**"
@@ -126,7 +126,7 @@ module.exports.run = async (bot, message, args) => {
         .catch(error => {
           // We also want to make sure if an error is found, to report it in chat.
           console.log(error);
-          return channel.send(
+          return message.mentionReply(
             "<:tairitsuno:801419553933492245> | <@!" +
               message.member.id +
               ">, **Something went wrong when sending the npc. Please report it to the Developers in my support or core server.**"
