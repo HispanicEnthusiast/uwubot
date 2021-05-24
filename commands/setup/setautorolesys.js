@@ -14,7 +14,7 @@ exports.run = (bot, message, args) => {
    }
      else
    {
-return sendError("please give enable, on, disable or off as command's argument",message.channel)
+return sendError("please give enable, on, disable or off as command's argument",message)
 }
       
       let a=bot.db.set(`${message.guild.id}_autorolesys`, setup)

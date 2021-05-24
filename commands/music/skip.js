@@ -56,7 +56,7 @@ module.exports = {
        
 vote.vote++
        vote.voters.push(message.author.id)
-       return message.channel.send(`Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} votes more to skip`)
+       return message.noMentionReply(`Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} votes more to skip`)
     
      
      

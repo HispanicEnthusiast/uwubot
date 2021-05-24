@@ -22,7 +22,7 @@ exports.run = async (bot, message, args, prefix) => {
       .query({ "filter[text]": query });
     const body = JSON.parse(text);
     if (!body.data.length)
-      return message.reply("Can't find any results");
+      return message.reply("<:tairitsuno:801419553933492245> | Can't find any results");
     const data = body.data[0].attributes;
     const embed = new Discord.MessageEmbed()
       .setColor(0xf75239)
@@ -42,7 +42,7 @@ exports.run = async (bot, message, args, prefix) => {
         data.endDate ? new Date(data.endDate).toDateString() : "???",
         true
       );
-    return message.channel.send(embed);
+    return message.noMentionReply(embed);
   } catch (err) {
     console.log(err)
      message.reply(
