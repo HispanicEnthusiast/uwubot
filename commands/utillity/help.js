@@ -237,7 +237,7 @@ about the brackets:
 <>:Means that if something with a space which must be used in the command
 () or (<>):This can be left empty, or you can give argument after a space in
 "":Means that if something with a space is used, this will combine it to one`)
-          return message.channel.send(commandinfo)
+          return message.noMentionReply(commandinfo)
 
 }
   let command = new discord.MessageEmbed()
@@ -246,7 +246,7 @@ about the brackets:
   list.forEach(i=>{
     command.addField(i.Category, i.commands)
   })
-  return message.channel.send(command)
+  return message.noMentionReply(command)
 }else{
   if(args[0]){
   let cmd = args[0]
@@ -298,7 +298,7 @@ about the brackets:
 <>:Means that if something with a space which must be used in the command
 () or (<>):This can be left empty, or you can give argument after a space in
 "":Means that if something with a space is used, this will combine it to one`)
-          return message.channel.send(commandinfo)
+          return message.noMentionReply(commandinfo)
             }
 
 }
@@ -310,7 +310,7 @@ about the brackets:
 
 React <:botarright:766649411014361159>to go to page ${page+1}`)
      
-        message.channel.send(embed).then(msg => {
+        message.noMentionReply(embed).then(msg => {
       msg.react("766649447413055498")
       msg.react("766649411014361159").then(r => {
         msg.react("🗑");
