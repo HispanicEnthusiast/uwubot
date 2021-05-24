@@ -35,7 +35,7 @@ const targe =  message.guild.member(target)
         
         targe.ban({reason: `get too much warns`});
        
-       return message.channel.send(`<:botyes:766664525356204092> | Banned sucessfully **|** get too much warns`)
+       return message.channel.send(`<:hikariok:801419553841741904> | Banned sucessfully **|** get too much warns`)
 }   
   else
   if(a > d-1){
@@ -46,7 +46,7 @@ const targe =  message.guild.member(target)
         
         targe.kick({reason: `get too much warns`});
        
-       return message.channel.send(`<:botyes:766664525356204092> | Kicked sucessfully **|** get too much warns`)
+       return message.channel.send(`<:hikariok:801419553841741904> | Kicked sucessfully **|** get too much warns`)
 }  
   else
     if(a > c-1){
