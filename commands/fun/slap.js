@@ -13,7 +13,7 @@ if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
       author = bot.user
     } else if(args[0]){
       if(!message.guild) return;
-      userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.channel.send("<:botno:766649381411618837> | Remember to mention a valid user to hug!") })
+      userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | | Remember to mention a valid user to hug!") })
       usern =userm.user
       //userm =use.user
       author = message.author

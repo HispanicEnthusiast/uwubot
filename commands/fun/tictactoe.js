@@ -17,7 +17,7 @@ module.exports = {
   run: async(bot, message, args) => {
     let msg = message;
     const author = message.author.id; 
-    let member = await message.guild.members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.channel.send("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
+    let member = await message.guild.members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
     const authorName = message.author.username; 
     const memberName = member.user.tag; 
 

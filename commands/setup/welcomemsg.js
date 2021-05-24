@@ -8,14 +8,14 @@ exports.run = (bot, message, args) => {
     const type = args[0];
     if (type === "on" || type === "enable") {
       bot.db.set(`${message.guild.id}_welcomemessagesys`, "yes")
-      message.channel.send(
+      message.noMentionReply(
         `<:hikariok:801419553841741904> | Welcome message is successfully enabled!`
       );
       return;
     }
     if (type === "off" || type === "disable") {
       bot.db.set(`${message.guild.id}_welcomemessagesys`, "no")
-      message.channel.send(
+      message.noMentionReply(
         `<:hikariok:801419553841741904> | Welcome message is successfully disabled!`
       );
       return;

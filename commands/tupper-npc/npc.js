@@ -87,9 +87,7 @@ module.exports.run = async (bot, message, args) => {
   if (bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)) {
     if (!args[1])
     return message.mentionReply(
-      "<:botno:766649381411618837> | <@!" +
-        message.member.id +
-        ">, Message not specified."
+      "<:tairitsuno:801419553933492245> | Message not specified."
     );
     if (!foundHook) {
       channel

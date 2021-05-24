@@ -6,8 +6,8 @@ exports.run = async(bot, message, args) => {
     const permissions = message.channel.permissionsFor(message.client.user);
   if(!permissions.has("MANAGE_MEMBERS")) return message.channel.send("<:koucry:801419554311241728> | <@!"+message.author.id+">, You don't have permission to ban!!!");
 
-  if(!message.member.hasPermission("MANAGE_MEMBERS")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("<:botno:766649381411618837> | <@!"+message.author.id+">, You don't have permission to warn!!!");
-  let wUser = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.channel.send("<:botno:766649381411618837> | Remember to mention a valid user to warn!") })
+  if(!message.member.hasPermission("MANAGE_MEMBERS")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("ADMINISTRATOR")) return message.mentionReply("<:tairitsuno:801419553933492245> | <@!"+message.author.id+">, You don't have permission to warn!!!");
+  let wUser = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Remember to mention a valid user to warn!") })
   if(!wUser) return message.reply("I couldn't find the user!");
   if(wUser.user.id === message.author.id)return message.channel.send("<:tairitsuno:801419553933492245> | You can't warn yourself!")
   if(wUser.hasPermission("ADMINISTRATOR")) return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.author.id+">, You don't have permission to warn an admin/mod!!!");
@@ -52,7 +52,7 @@ const targe =  message.guild.member(target)
     if(a > c-1){
    
   
-    let userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@", "").replace(">", "")).catch(err => { console.error(err);return message.channel.send("<:botno:766649381411618837> | Unable to find this Person") })
+    let userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@", "").replace(">", "")).catch(err => { console.error(err);return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this Person") })
     
         let target = bot.users.cache.get(args[0].replace("<@!", "").replace("<@", "").replace(">", ""));
   

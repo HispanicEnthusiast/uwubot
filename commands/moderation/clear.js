@@ -3,7 +3,7 @@ exports.run = (bot, message, args) => {
   if(!permissions.has("MANAGE_MESSAGES")) return message.channel.send("<:koucry:801419554311241728> | <@!"+message.author.id+">, I don't have permission to purge messages!!!"); 
   //checked
     if(!message.member.hasPermission('MANAGE_MESSAGES')&&!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('<:tairitsuno:801419553933492245> | You dont have permission to purge the messages!')
-    if(!args[0]) return message.channel.send(`<:botno:766649381411618837> | Error while running the command. Please type \`${bot.config.prefix}purge [number of message]\` to purge message!`)
+    if(!args[0]) return message.mentionReply(`<:tairitsuno:801419553933492245> | Error while running the command. Please type \`${bot.config.prefix}purge [number of message]\` to purge message!`)
     if(isNaN(args[0])) {
        message.channel.send(`<:tairitsuno:801419553933492245> | Error while running the command. Please type \`${bot.config.prefix}purge [number of message]\` to purge messages!`)
       return

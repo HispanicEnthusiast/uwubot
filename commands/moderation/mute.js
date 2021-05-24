@@ -10,7 +10,7 @@ exports.run = async(bot, message, args) => {
           "⚠ |Please mention or give the id of the person who you want to mute"
         );
       }
-    let userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@", "").replace(">", "")).catch(err => { console.error(err);return message.channel.send("<:botno:766649381411618837> | Unable to find this Person") })
+    let userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@", "").replace(">", "")).catch(err => { console.error(err);return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this Person") })
     
         let target = bot.users.cache.get(args[0].replace("<@!", "").replace("<@", "").replace(">", ""));
   if (target === !args[0]) {

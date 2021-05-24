@@ -28,7 +28,7 @@ return message.mentionReply('<:tairitsuno:801419553933492245> | Remember to ment
   .setColor('RANDOM')
   .setTimestamp()
   .setFooter("Aww!!!")
-  message.noMentionReply(embed)
+  message.channel.send(embed)
   
 }
 exports.info = {
