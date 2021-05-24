@@ -88,7 +88,7 @@ else embed.setAuthor(userm.user.tag, "https://cdn.glitch.com/0e253384-8c9d-4a84-
 
 
 console.log(userm._roles)
-//  message.channel.send(userm.user.tag)
+//  message.noMentionReply(userm.user.tag)
       return message.noMentionReply(embed).catch(err => {
         return message.mentionReply("Error : " + err)
       })

@@ -65,7 +65,7 @@ if(!message.guild){
                 if(args[0]==="9"||args[0].toLowerCase()==="leveling"){
                 page = 9
               }else
-              return message.channel.send("Unknown Command or Category")
+              return message.mentionReply("<:tairitsuno:801419553933492245> | Unknown Command or Category")
                         } else {
               let commandinfo = new discord.MessageEmbed()
             .setTitle("Command: "+command.info.name)
@@ -222,7 +222,7 @@ Or react with <:botarrowright:766649411014361159>to go to page ${page+1}`)
   let cmd = args[0]
             let command = bot.commands.get(cmd.toLowerCase())
             if(!command)command = bot.commands.find(x => x.info.aliases.includes(cmd.toLowerCase()))
-            if(!command)return message.channel.send("Unknown Command")        
+            if(!command)return message.mentionReply("<:tairitsuno:801419553933492245> | Unknown Command")        
             let commandinfo = new discord.MessageEmbed()
             .setTitle("Command: "+command.info.name)
             .setColor("#0affaf")
@@ -282,7 +282,7 @@ about the brackets:
                 if(args[0]==="9"||args[0].toLowerCase()==="leveling"){
                 page = 9
               }else
-              return message.channel.send("Unknown Command or Category")
+              return message.mentionReply("<:tairitsuno:801419553933492245> | Unknown Command or Category")
                         } else {
               let commandinfo = new discord.MessageEmbed()
             .setTitle("Command: "+command.info.name)

@@ -19,7 +19,7 @@ module.exports = {
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
     if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message.channel);
+    if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message);
     /*let{vote}=client
     const vcvote = Math.floor(message.guild.me.voice.channel.members.size / 2)
     const okie = Math.floor(message.guild.me.voice.channel.members.size / 2 - 1)

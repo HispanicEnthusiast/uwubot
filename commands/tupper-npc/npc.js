@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
   let channel = message.channel;
     const permissions = channel.permissionsFor(message.client.user);
   if (!permissions.has("MANAGE_WEBHOOKS", "MANAGE_MESSAGES"))
-    return message.channel.send(
+    return message.mentionReply(
       "<:hikarisorry:801419553892073483> | I'm not able to create webhooks or I can't manage messages in this channel, so that means I'm not able to send npcs/tuppers"
     );
   if (!args[0])
@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
     
   if (!tupper){ 
       tupper = bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()+" "+args[1].toLowerCase()}`);
-   if (!tupper)return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, This Tupper/npc is not existing in this server!");
+   if (!tupper)return message.mentionReply("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, This Tupper/npc is not existing in this server!");
     }
   message.delete();
   const webhooks = await channel.fetchWebhooks();

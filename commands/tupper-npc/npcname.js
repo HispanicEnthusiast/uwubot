@@ -5,7 +5,7 @@ exports.conf={
   dm: "no"
 }
 module.exports.run=async(bot,message,args)=>{
-  //message.channel.send("<:tairitsuno:801419553933492245> |"+message.member.id+", 
+  
     if (!args[0])
       return message.mentionReply("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, Please give a Name to find your character");
     

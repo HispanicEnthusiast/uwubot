@@ -7,7 +7,7 @@ exports.conf={
 }
 module.exports.run=async(bot,message,args)=>{
 let avatar=args[1]
-    if (!args[0])return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, Please give a Name for your character");
+    if (!args[0])return message.mentionReply("<:tairitsuno:801419553933492245> | <@!"+message.member.id+">, Please give a Name for your character");
       let tupper = bot.db.get(`${message.guild.id}npcname_${args[0].toLowerCase()}`)
     
   if (!tupper){
