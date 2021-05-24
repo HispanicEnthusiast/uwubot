@@ -32,12 +32,12 @@ module.exports = {
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
       return sendError(
-        "I cannot connect to your voice channel, make sure I have the proper permissions!",
+        "<:tairitsuno:801419553933492245> | I cannot connect to your voice channel, make sure I have the proper permissions!",
         message
       );
     if (!permissions.has("SPEAK"))
       return sendError(
-        "I cannot speak in this voice channel, make sure I have the proper permissions!",
+        "<:tairitsuno:801419553933492245> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         message
       );
 
@@ -199,7 +199,7 @@ message.channel.stopTyping()
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendSucces("Disconnected sucessfully!", message.channel);
+        sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);
         queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;

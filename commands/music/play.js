@@ -27,19 +27,19 @@ module.exports = {
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
       return sendError(
-        "I cannot connect to your voice channel, make sure I have the proper permissions!",
+        "<:tairitsuno:801419553933492245> | I cannot connect to your voice channel, make sure I have the proper permissions!",
         message
       );
     if (!permissions.has("SPEAK"))
       return sendError(
-        "I cannot speak in this voice channel, make sure I have the proper permissions!",
+        "<:tairitsuno:801419553933492245> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         message
       );
 
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
-        "You didn't provide what you want to play",
+        "<:tairitsuno:801419553933492245> | You didn't provide what you want to play",
         message
       );
     var songEmbed = await message.noMentionReply(
@@ -52,7 +52,7 @@ module.exports = {
     if (searched.videos.length === 0){
 message.channel.stopTyping()
       return sendError(
-        "Looks like I was unable to find the song on YouTube",
+        "<:tairitsuno:801419553933492245> | Looks like I was unable to find the song on YouTube",
         message
       );}
     var songInfo = searched.videos[0];
@@ -101,7 +101,7 @@ message.channel.stopTyping()
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendSucces("Disconnected sucessfully!", message.channel);
+        sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);
         queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
