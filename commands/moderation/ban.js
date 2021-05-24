@@ -4,7 +4,7 @@ const Discord = require('discord.js')
 exports.run = (bot, message, args) => {
   //console.log(message.member)
   const permissions = message.channel.permissionsFor(message.client.user);
-  if(!permissions.has("BAN_MEMBERS")) return message.channel.send("<:koucry:801419554311241728> | <@!"+message.author.id+">, I don't have permission to ban!!!");
+  if(!permissions.has("BAN_MEMBERS")) return message.nomention("<:koucry:801419554311241728> | <@!"+message.author.id+">, I don't have permission to ban!!!");
  if (!message.member.hasPermission("BAN_MEMBERS")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("MANAGE_MEMBERS")&&!message.member.hasPermission("ADMINISTRATOR"))
         return message.channel.send("<:tairitsuno:801419553933492245> | <@!"+message.author.id+">, You don't have permission to ban!!!");
 
