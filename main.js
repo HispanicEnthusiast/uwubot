@@ -480,8 +480,8 @@ Promise.all(promises)
     console.log(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
 
     status = [
-      `+h for help | Tairitsu | ${totalGuilds} servers | ${totalMembers} members`,
-      `+help for help | Tairitsu | ${totalGuilds} servers | ${totalMembers} members`
+      `+h for help | Tairitsu`,
+      `+help for help | Tairitsu`
     ];
   })
   .catch(console.error);
@@ -494,8 +494,7 @@ bot.on("ready", () => {
   //console.log(randstatus)
   bot.user
     .setActivity(randstatus, {
-      type: randt,
-      url: "https://www.twitch.tv/"
+      type: randt
     })
     .catch(console.error);
 });

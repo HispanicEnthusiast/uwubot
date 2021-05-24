@@ -21,9 +21,7 @@ exports.run = async(bot, message, args) => {
   
 const targe =  message.guild.member(target)
 if (targe.hasPermission("ADMINISTRATOR")){
-        return message.channel.send("<:tairitsuno:801419553933492245> |"+
-                                    " <@!"+message.author.id+">,"+
-                                    " The user you want to mute is a moderator/administrator I can't do that,try to ban him/her/them yourself..");
+        return message.channel.send("<:tairitsuno:801419553933492245> | The user you want to mute is a moderator/administrator I can't do that,try to ban him/her/them yourself..");
   }
 
   let reason = args.slice(2).join(" ");

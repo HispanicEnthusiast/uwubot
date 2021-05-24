@@ -10,7 +10,7 @@ exports.run = (bot, message, args) => {
     
       if (!setup||isNaN(setup.replace("<@&", "").replace("<@", "").replace(">", "")))
         return message.mentionReply(
-          `<:tairitsuno:801419553933492245> | <@!${message.author.id}>, Please send a auto role id with this format ${bot.config.prefix}setautorole [auto role id]`
+          `<:tairitsuno:801419553933492245> | Please send a auto role id with this format ${bot.config.prefix}setautorole [auto role id]`
         );
       bot.db.set(`${message.guild.id}_autorole`, setup.replace("<@&", "").replace("<@", "").replace(">", ""))
       

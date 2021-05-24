@@ -9,7 +9,7 @@ exports.run = (bot, message, args) => {
       const setup = args.slice().join(" ");
     
       if(isNaN(args[0].replace("m", "").replace("d", "").replace("ms", "").replace("h", "").replace("s", ""))){
-        return message.channel.send(`<:tairitsuno:801419553933492245> | <@!${message.author.id}>, please give nummerical numbers or <number>ms/<number>s/<number>m/<number>h/<number>d`)
+        return message.channel.send(`<:tairitsuno:801419553933492245> | please give nummerical numbers or <number>ms/<number>s/<number>m/<number>h/<number>d`)
       }
       bot.db.set(`${message.guild.id}_mutetime`, require("ms")(args[0]))
       

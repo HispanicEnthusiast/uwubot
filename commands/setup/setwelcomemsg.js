@@ -5,7 +5,7 @@ exports.run = (bot, message, args) => {
       const setup = args.slice().join(" ");
       if (!setup)
         return message.channel.send(
-          `<:tairitsuno:801419553933492245> | <@!${message.author.id}>, Please send a welcome message with this format\`` +
+          `<:tairitsuno:801419553933492245> | Please send a welcome message with this format\`` +
             bot.config.prefix +
             `setwelcomemessage [welcome message] ` +
           'To mention the new member\'s name, use $MEMBER$\nTo mention the new member, use $MENTION$\nTo mention the server name, use $SERVER$'+  

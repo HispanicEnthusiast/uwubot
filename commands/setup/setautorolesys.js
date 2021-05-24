@@ -19,7 +19,7 @@ return sendError("please give enable, on, disable or off as command's argument",
       
       let a=bot.db.set(`${message.guild.id}_autorolesys`, setup)
       
-      message.channel.send(
+      message.nomentionReply(
         `<:hikariok:801419553841741904> | Auto role system is ${a}`
       );
       return;

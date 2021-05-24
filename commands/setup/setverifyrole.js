@@ -7,7 +7,7 @@ if (!setup)
     
       if (!setup||isNaN(setup.replace("<@&", "").replace("<@", "").replace(">", "")))
         return message.channel.send(
-          `<:tairitsuno:801419553933492245> | <@!${message.author.id}>, Please send a verify role id with this format ${bot.config.prefix}setverifyrole [verified role id]`
+          `<:tairitsuno:801419553933492245> | Please send a verify role id with this format ${bot.config.prefix}setverifyrole [verified role id]`
         );
       bot.db.set(`${message.guild.id}_verifyrole`, setup.replace("<@&", "").replace("<@", "").replace(">", ""))
       
