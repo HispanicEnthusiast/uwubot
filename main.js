@@ -1,4 +1,5 @@
 const discord = require("discord.js");
+require('discord-inline-replys')
 const { promisify } = require("util");
 const ms = require("ms");
 const sleep = promisify(setTimeout);
@@ -433,7 +434,7 @@ bot.on("message", async message => {
 
       if (now < expirationTime) {
         const timeLeft = (expirationTime - now) / 1000;
-        return message.channel.send(
+        return message.mentionReply(
           `<:tairitsuno:801419553933492245> | <@!${
             message.member.id
           }>, please wait **${timeLeft.toFixed(
