@@ -74,7 +74,7 @@ message.channel.stopTyping()
         .setFooter(`Views: ${song.views} | ${song.ago}`);
       message.channel.stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)
-      return message.noMentionReply(thing);
+      //return message.noMentionReply(thing);
     }
 
     const queueConstruct = {
@@ -98,40 +98,18 @@ message.channel.stopTyping()
       }
       const dispatcher = queue.connection
         .play(ytdl("https://youtube.com/watch?v=VH7LJwD-Nvs"))
-        .on("finish", () => {
-          if (queue.loop === true) {
-            queue.songs.push(queue.songs.shift());
-          }
-          if (queue.skip !== true) {
-            queue.songs.shift();
-            play("https://youtube.com/watch?v=VH7LJwD-Nvs");
-            console.log(
-              queue.skip === true ? "enabled" : "disabled" + ": !true"
-            );
-          } else {
-            console.log(
-              queue.skip === true ? "enabled" : "disabled" + ": true"
-            );
-            queue.skip = false;
-            play("https://youtube.com/watch?v=VH7LJwD-Nvs");
-            //
-          }
-
-          //const command = args.shift().toLowerCase();
-          
-        }) //thynk
-        .on("error", error => console.error(error));
+        .on("error", error => console.error(error)); //thynk
       dispatcher.setVolumeLogarithmic(queueConstruct.volume / 100);
       let thing = new MessageEmbed()
-        .setAuthor("Now Playing", song.req.displayAvatarURL({ dynamic: true }))
+        .setAuthor("Now Playing", client.user.displayAvatarURL({ dynamic: true }))
         .setThumbnail(song.img)
         .setColor("BLUE")
         .addField("Name", `[${song.title}]` + `(${song.url})`)
         .addField("Duration", song.duration, true)
-        .addField("Requested by", song.req.tag, true)
+        //.addField("Requested by", song.req.tag, true)
         .setFooter(`Views: ${song.views} | Ago: ${song.ago}`);
-      queue.textChannel.send(thing);
-      message.channel.stopTyping();
+      //queue.textChannel.send(thing);
+     message.channel.stopTyping();
 
       //songEmbed.edit("",thing);
     };
