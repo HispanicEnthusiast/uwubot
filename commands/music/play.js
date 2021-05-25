@@ -106,7 +106,7 @@ message.channel.stopTyping()
         message.client.queue.delete(message.guild.id);
         return;
       }
-
+console.log(song.url)
       const dispatcher = queue.connection
         .play(ytdl(song.url))
         .on("finish", () => {
