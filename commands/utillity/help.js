@@ -276,7 +276,7 @@ about the brackets:
                 if(args[0]==="7"||args[0].toLowerCase()==="npc"||args[0].toLowerCase()==="tupper"||args[0].toLowerCase()==="npcs"||args[0].toLowerCase()==="tuppers"||args[0].toLowerCase()==="npc/tupper"||args[0].toLowerCase()==="tupper/npc"||args[0].toLowerCase()==="npctupper"||args[0].toLowerCase()==="tuppernpc"||args[0].toLowerCase()==="npcs/tuppers"||args[0].toLowerCase()==="tuppers/npcs"){
                 page = 7
               }else
-                if(args[0]==="8"||args[0].toLowerCase()==="roleplay"){
+                if(args[0]==="8"||args[0].toLowerCase()==="fun"||args[0].toLowerCase()==="fun"){
                 page = 8
               }else
                 if(args[0]==="9"||args[0].toLowerCase()==="leveling"){
