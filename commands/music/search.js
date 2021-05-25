@@ -206,7 +206,7 @@ message.channel.stopTyping()
       }
 
       const dispatcher = queue.connection
-        .play(ytdl(song.url))
+        .play(ytdl(song.url.toString()))
         .on("finish", () => {
           if (queue.loop === true) {
             queue.songs.push(queue.songs.shift());
