@@ -206,7 +206,7 @@ message.channel.stopTyping()
       }
 
       const dispatcher = queue.connection
-        .play(ytdl(song.url.toString()))
+        .play(ytdl(song.url))
         .on("finish", () => {
           if (queue.loop === true) {
             queue.songs.push(queue.songs.shift());
@@ -227,7 +227,7 @@ message.channel.stopTyping()
             queue.skip = false;
           }
 
-          const command = args.shift().toLowerCase();
+          //const command = args.shift().toLowerCase();
         }) //thynk
         .on("error", error => console.error(error));
       dispatcher.setVolumeLogarithmic(queueConstruct.volume / 100);
