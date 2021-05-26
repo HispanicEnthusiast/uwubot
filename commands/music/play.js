@@ -81,7 +81,7 @@ message.channel.stopTyping()
         .addField("Name", `[${song.title}]` + `(${song.url})`)
         .addField("Duration", song.duration)
         .addField("Requested by", song.req.tag)
-        .setFooter(`Views: ${song.views} | ${song.ago}`);
+        .setFooter(`Views: ${song.views} | ${song.ago||'Unknown'}`);
       message.channel.stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)
       return message.noMentionReply(thing);
@@ -108,7 +108,7 @@ message.channel.stopTyping()
       }
 console.log(song.url)
       const dispatcher = queue.connection
-        .play(ytdl(song.url.toString()))
+        .play(ytdl(song.url))
         .on("finish", () => {
           if (queue.loop === true) {
             queue.songs.push(queue.songs.shift());
@@ -140,7 +140,7 @@ console.log(song.url)
         .addField("Name", `[${song.title}]` + `(${song.url})`)
         .addField("Duration", song.duration, true)
         .addField("Requested by", song.req.tag, true)
-        .setFooter(`Views: ${song.views} | Ago: ${song.ago}`);
+        .setFooter(`Views: ${song.views} | Ago: ${song.ago||'Unknown'}`);
       queue.textChannel.send(thing);
       message.channel.stopTyping();
 
