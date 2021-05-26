@@ -108,7 +108,7 @@ message.channel.stopTyping()
       }
 console.log(song.url)
       const dispatcher = queue.connection
-        .play(ytdl(song.url))
+        .play(ytdl(song.url, {filter:"audioonly"}))
         .on("finish", () => {
           if (queue.loop === true) {
             queue.songs.push(queue.songs.shift());
@@ -131,7 +131,7 @@ console.log(song.url)
           //const command = args.shift().toLowerCase();
           
         }) //thynk
-        .on("error", error => console.error(error));
+        .on("error", error => console.error);
       dispatcher.setVolumeLogarithmic(queueConstruct.volume / 100);
       let thing = new MessageEmbed()
         .setAuthor("Now Playing", song.req.displayAvatarURL({ dynamic: true }))

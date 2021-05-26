@@ -23,6 +23,6 @@ module.exports = {
     sendSuccess("<:hikariok:801419553841741904> | Joined Successfully!", message);
     const serverQueue = message.client.queue.get(message.guild.id);
 
-    if(serverQueue){serverQueue.songs = null;console.log('Connected')}
+    if(serverQueue){message.client.queue.delete(message.guild.id);console.log('Connected')}
   },
 };
