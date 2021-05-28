@@ -25,12 +25,12 @@ module.exports = {
       );
 
     const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT"))
+    if (!permissions.has("CONNECT")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
         "<:tairitsuno:801419553933492245> | I cannot connect to your voice channel, make sure I have the proper permissions!",
         message
       );
-    if (!permissions.has("SPEAK"))
+    if (!permissions.has("SPEAK")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
         "<:tairitsuno:801419553933492245> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         message
