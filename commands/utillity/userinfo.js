@@ -95,7 +95,15 @@ console.log(userm._roles)
 
 
 }
-exports.interactions = async (bot, message, arg) => {
+exports.options=[
+  {
+    name: "user",
+    description: "who do you want to see the info?",
+    type: 6,
+    required: false
+  }
+]
+exports.interaction = async (bot, message, arg) => {
   let args;
 if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
   else {
@@ -183,12 +191,17 @@ else embed.setAuthor(userm.user.tag, "https://cdn.glitch.com/0e253384-8c9d-4a84-
        if(userm._roles) embed.addField("Roles",`<@&${userm._roles.join('> <@&')}>`.replace("<@&>", "No Roles"))
         embed.addField("Highest Role", userm.roles.highest)
         if(userm.roles.hoist)embed.addField("Rank/Hoist Role", userm.roles.hoist)
-        if(userm.user.flags.toArray())embed.addField("Flags", userm.user.flags.toArray().length ? userm.user.flags.toArray().map(flag => flags[flag]).join(', ') : 'None')
+        if(userm.user.flags)embed.addField("Flags", userm.user.flags.toArray().length ? userm.user.flags.toArray().map(flag => flags[flag]).join(', ') : 'None')
         embed.setFooter(userm.user.presence.status, stat[userm.user.presence.status])
 
 
 
-     
+      bot.api.interactions(message.id, message.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(message, embed)
+                }
+            });
 
 
 }

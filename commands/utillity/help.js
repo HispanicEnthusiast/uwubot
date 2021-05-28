@@ -599,8 +599,8 @@ Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
 };
 exports.options = [
   {
-    name: "command-page",
-    description: "which page or which Category?",
+    name: "command-category-page",
+    description: "Which page, which category or which command?",
     type: 3,
     required: false
   }

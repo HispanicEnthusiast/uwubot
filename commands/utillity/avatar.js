@@ -66,7 +66,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
 exports.options=[
   {
     name: "user",
-    description: "which page or which Category?",
+    description: "Which person do you want to see the avatar?",
     type: 6,
     required: false
   }
