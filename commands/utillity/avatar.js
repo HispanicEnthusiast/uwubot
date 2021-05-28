@@ -31,12 +31,12 @@ exports.run = async (bot, message, args) => {
   
 }
 exports.interaction = async (bot, message, arg) => {
-let args
+let args=[]
 if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
-  let m, use;
+  let use;
 
     if (!args[0]) {
-      m = message.member_id;
+      args = [message.member.user.id];
     } 
       if(!message.guild) return;
       use = await bot.guilds.cache.get(message.guild_id).members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
@@ -69,7 +69,14 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
             });
   
 }
-exports.options
+exports.options=[
+  {
+    name: "user",
+    description: "which page or which Category?",
+    type: 6,
+    required: false
+  }
+]
 exports.info = {
   name: 'avatar',
   aliases: ["av", "pfp"],
