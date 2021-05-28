@@ -346,7 +346,7 @@ bot.on('ready', () =>{
 bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
         const args = interaction.data.options;
-
+console.log(interaction.id)
         if(bot.commands.get(command.toLowerCase())){
           bot.commands.get(command).interaction(bot, interaction, args);
         }
