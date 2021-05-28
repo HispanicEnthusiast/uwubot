@@ -694,66 +694,62 @@ exports.interaction = async (bot, message, args) => {
           args[0] === "queries" ||
           args[0] === "search/query" ||
           args[0] === "query/search" ||
-          args[0] === "searchquery" ||
-          args[0] === "querysearch"
+          args[0].toLowerCase() === "searchquery" ||
+          args[0].toLowerCase() === "querysearch"
         ) {
           page = 2;
         } else if (
           args[0] === "3" ||
-          args[0] === "moderation" ||
-          args[0] === "moderator" ||
-          args[0] === "admin" ||
-          args[0] === "administrator" ||
-          args[0] === "mod" ||
-          args[0] === "moderations" ||
-          args[0] === "moderators" ||
-          args[0] === "mods" ||
-          args[0] === "admins" ||
-          args[0] === "administrators"
+          args[0].toLowerCase() === "moderation" ||
+          args[0].toLowerCase() === "moderator" ||
+          args[0].toLowerCase() === "admin" ||
+          args[0].toLowerCase() === "administrator" ||
+          args[0].toLowerCase() === "mod" ||
+          args[0].toLowerCase() === "moderations" ||
+          args[0].toLowerCase() === "moderators" ||
+          args[0].toLowerCase() === "mods" ||
+          args[0].toLowerCase() === "admins" ||
+          args[0].toLowerCase() === "administrators"
         ) {
           page = 3;
         } else if (args[0] === "4" || args[0].toLowerCase() === "setup") {
           page = 4;
         } else if (
           args[0] === "5" ||
-          args[0] === "economy" ||
-          args[0] === "economies" ||
-          args[0] === "eco" ||
-          args[0] === "ecos"
+          args[0].toLowerCase() === "economy" ||
+          args[0].toLowerCase() === "economies" ||
+          args[0].toLowerCase() === "eco" ||
+          args[0].toLowerCase() === "ecos"
         ) {
           page = 5;
-        } else if (args[0] === "6" || args[0] === "music") {
+        } else if (args[0] === "6" || args[0].toLowerCase() === "music") {
           page = 6;
         } else if (
           args[0] === "7" ||
-          args[0] === "npc" ||
-          args[0] === "tupper" ||
-          args[0] === "npcs" ||
-          args[0] === "tuppers" ||
-          args[0] === "npc/tupper" ||
-          args[0] === "tupper/npc" ||
-          args[0] === "npctupper" ||
-          args[0] === "tuppernpc" ||
-          args[0] === "npcs/tuppers" ||
-          args[0] === "tuppers/npcs"
+          args[0].toLowerCase() === "npc" ||
+          args[0].toLowerCase() === "tupper" ||
+          args[0].toLowerCase() === "npcs" ||
+          args[0].toLowerCase() === "tuppers" ||
+          args[0].toLowerCase() === "npc/tupper" ||
+          args[0].toLowerCase() === "tupper/npc" ||
+          args[0].toLowerCase() === "npctupper" ||
+          args[0].toLowerCase() === "tuppernpc" ||
+          args[0].toLowerCase() === "npcs/tuppers" ||
+          args[0].toLowerCase() === "tuppers/npcs"
         ) {
           page = 7;
         } else if (
           args[0] === "8" ||
-          args[0] === "fun" ||
-          args[0] === "roleplay"
+          args[0].toLowerCase() === "fun" ||
+          args[0].toLowerCase() === "roleplay"
         ) {
           page = 8;
-        } else if (args[0] === "9" || args[0] === "leveling") {
+        } else if (args[0] === "9" || args[0].toLowerCase() === "leveling") {
           page = 9;
         } else
-          return bot.api.interactions(message.id, message.token).callback.post({
-          data: {
-            type: 4,
-            data:
+          return message.mentionReply(
             "<:tairitsuno:801419553933492245> | Unknown Command or Category"
-          }
-        });
+          );
       } else {
         let commandinfo = new discord.MessageEmbed()
           .setTitle("Command: " + command.info.name)
