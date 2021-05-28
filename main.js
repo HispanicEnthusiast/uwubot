@@ -344,7 +344,7 @@ fs.readdir("./commands/", (err, categories) => {
 
 bot.on('ready', () =>{
   
-  bot.guilds.cache.forEach((guild, id)=>{
+  /*bot.guilds.cache.forEach((guild, id)=>{
   fs.readdir("./commands/", (err, categories) => {
 	if (err) console.log(err);
   categories.forEach(category => {
@@ -379,7 +379,7 @@ console.log('finished')
 })
 })
 })
-   })
+   })*/
   
 bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
