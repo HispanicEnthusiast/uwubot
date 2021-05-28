@@ -69,7 +69,9 @@ message.channel.stopTyping()
     };
 
     if (serverQueue&&serverQueue.songs!==null) {
+      
       message.channel.stopTyping();
+      if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
       serverQueue.songs.push(song);
       let thing = new MessageEmbed()
         .setAuthor(
