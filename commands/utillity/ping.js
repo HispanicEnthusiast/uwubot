@@ -7,7 +7,14 @@ exports.run = (bot, message, args) => {
       });   
   }
 exports.interaction= async (bot, interaction, args) =>{
-  
+  bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                        content: `<:hikariok:801419553841741904> | Pong! \`${Math.round(bot.ws.ping)}ms\``
+                    }
+                }
+            });
 }
   exports.info = {
     name: 'ping',
