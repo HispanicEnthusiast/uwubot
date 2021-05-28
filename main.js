@@ -343,6 +343,44 @@ fs.readdir("./commands/", (err, categories) => {
 });
 
 bot.on('ready', () =>{
+  
+  bot.guilds.cache.forEach((guild, id)=>{
+  fs.readdir("./commands/", (err, categories) => {
+	if (err) console.log(err);
+  categories.forEach(category => {
+    let moduleConf = require(`./commands/${category}/module.json`);
+    moduleConf.path = `./commands/${category}`;
+    moduleConf.cmds = [];
+    if (!moduleConf) return;
+    bot.helps.set(category, moduleConf);
+
+    fs.readdir(`./commands/${category}`, (err, files) => {
+      if (err) console.log(err);
+
+      files.forEach(file => {
+        if (!file.endsWith(".js")) return;
+        let prop = require(`./command/${category}/${file}`);
+        let cmdName = file.split(".")[0];
+        if(!prop.options||!prop.interaction)return
+        
+      
+
+        bot.helps.get(category).cmds.push(prop.info.name);
+
+bot.api.applications(bot.user.id).guilds(id).commands.post({
+        data: {
+            name: prop.info.name,
+            description: prop.info.description,
+	     options:prop.options
+        }
+    });//command for slash
+console.log('finished')
+ })
+})
+})
+})
+   })
+  
 bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
         const args = interaction.data.options;
