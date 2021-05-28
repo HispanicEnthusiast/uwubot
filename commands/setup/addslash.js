@@ -42,7 +42,7 @@ bot.api.applications(bot.user.id).guilds(message.guild.id.toString()).commands.p
 })
 })
    message.noMentionReply(
-        `<:hikariok:801419553841741904> | Welcome message is successfully disabled!`
+        `<:hikariok:801419553841741904> | Slash command succesfully exported!`
       );
 }
 exports.info = {
