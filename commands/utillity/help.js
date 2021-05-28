@@ -666,166 +666,6 @@ exports.interaction = async (bot, message, arg) => {
 
   let page = 1;
 
-  if (!message.guild) {
-    if (args[0]) {
-      let cmd = args[0];
-      let command = bot.commands.get(cmd.toLowerCase());
-      if (!command)
-        command = bot.commands.find(x =>
-          x.info.aliases.includes(cmd.toLowerCase())
-        );
-
-      if (!command) {
-        if (
-          args[0] === "1" ||
-          args[0].toLowerCase() === "utillity" ||
-          args[0].toLowerCase() === "utillities" ||
-          args[0].toLowerCase() === "util" ||
-          args[0].toLowerCase() === "utils" ||
-          args[0].toLowerCase() === "miscs" ||
-          args[0].toLowerCase() === "misc"
-        ) {
-          page = 1;
-        } else if (
-          args[0] === "2" ||
-          args[0].toLowerCase() === "search" ||
-          args[0].toLowerCase() === "query" ||
-          args[0].toLowerCase() === "searchs" ||
-          args[0].toLowerCase() === "queries" ||
-          args[0].toLowerCase() === "search/query" ||
-          args[0].toLowerCase() === "query/search" ||
-          args[0].toLowerCase() === "searchquery" ||
-          args[0].toLowerCase() === "querysearch"
-        ) {
-          page = 2;
-        } else if (
-          args[0] === "3" ||
-          args[0].toLowerCase() === "moderation" ||
-          args[0].toLowerCase() === "moderator" ||
-          args[0].toLowerCase() === "admin" ||
-          args[0].toLowerCase() === "administrator" ||
-          args[0].toLowerCase() === "mod" ||
-          args[0].toLowerCase() === "moderations" ||
-          args[0].toLowerCase() === "moderators" ||
-          args[0].toLowerCase() === "mods" ||
-          args[0].toLowerCase() === "admins" ||
-          args[0].toLowerCase() === "administrators"
-        ) {
-          page = 3;
-        } else if (args[0] === "4" || args[0].toLowerCase() === "setup") {
-          page = 4;
-        } else if (
-          args[0] === "5" ||
-          args[0].toLowerCase() === "economy" ||
-          args[0].toLowerCase() === "economies" ||
-          args[0].toLowerCase() === "eco" ||
-          args[0].toLowerCase() === "ecos"
-        ) {
-          page = 5;
-        } else if (args[0] === "6" || args[0].toLowerCase() === "music") {
-          page = 6;
-        } else if (
-          args[0] === "7" ||
-          args[0].toLowerCase() === "npc" ||
-          args[0].toLowerCase() === "tupper" ||
-          args[0].toLowerCase() === "npcs" ||
-          args[0].toLowerCase() === "tuppers" ||
-          args[0].toLowerCase() === "npc/tupper" ||
-          args[0].toLowerCase() === "tupper/npc" ||
-          args[0].toLowerCase() === "npctupper" ||
-          args[0].toLowerCase() === "tuppernpc" ||
-          args[0].toLowerCase() === "npcs/tuppers" ||
-          args[0].toLowerCase() === "tuppers/npcs"
-        ) {
-          page = 7;
-        } else if (
-          args[0] === "8" ||
-          args[0].toLowerCase() === "fun" ||
-          args[0].toLowerCase() === "roleplay"
-        ) {
-          page = 8;
-        } else if (args[0] === "9" || args[0].toLowerCase() === "leveling") {
-          page = 9;
-        } else
-          return message.mentionReply(
-            "<:tairitsuno:801419553933492245> | Unknown Command or Category"
-          );
-      } else {
-        let commandinfo = new discord.MessageEmbed()
-          .setTitle("Command: " + command.info.name)
-          .setColor("#0affaf").setDescription(`
-Name: ${command.info.name}
-Description: ${command.info.description}
-Usage: \`\`${bot.config.prefix}${command.info.name}${" " + command.info.usage ||
-          ""}\`\`
-Aliases: ${command.info.aliases.join(", ")}
-
-about the brackets:
-\`blank\` means that you can leave it blank
-<>:Means that if something with a space which must be used in the command
-() or (<>):This can be left empty, or you can give argument after a space in
-"":Means that if something with a space is used, this will combine it to one`);
-        bot.api.interactions(interaction.id, interaction.token).callback.post({
-                data: {
-                  type: 4,
-                  data: await bot.createAPIMessage(message, commandinfo)
-                  }
-            });
-        
-      }
-    }
-
-    let embed = new discord.MessageEmbed()
-      .setColor("#0affaf")
-      .setTitle(`Page ${page}/${pages.length}`).setDescription(`${
-      pages[page - 1]
-    }`);
-
-    bot.api.interactions(interaction.id, interaction.token).callback.post({
-                data: {
-                    type: 4,
-                    data: await bot.createAPIMessage(interaction, embed)
-                }
-            });
-  } else {
-    const permissions = message.channel.permissionsFor(message.client.user);
-
-    if (!permissions.has("ADD_REACTIONS")) {
-      if (args[0]) {
-        let cmd = args[0];
-        let command = bot.commands.get(cmd.toLowerCase());
-        if (!command)
-          command = bot.commands.find(x =>
-            x.info.aliases.includes(cmd.toLowerCase())
-          );
-        if (!command)
-          return message.mentionReply(
-            "<:tairitsuno:801419553933492245> | Unknown Command"
-          );
-        let commandinfo = new discord.MessageEmbed()
-          .setTitle("Command: " + command.info.name)
-          .setColor("#0affaf").setDescription(`
-Name: ${command.info.name}
-Description: ${command.info.description}
-Usage: \`\`${bot.config.prefix}${command.info.name}${" " + command.info.usage ||
-          ""}\`\`
-Aliases: ${command.info.aliases.join(", ")}
-
-about the brackets:
-\`blank\` means that you can leave it blank
-<>:Means that if something with a space which must be used in the command
-() or (<>):This can be left empty, or you can give argument after a space in
-"":Means that if something with a space is used, this will combine it to one`);
-        return message.noMentionReply(commandinfo);
-      }
-      let command = new discord.MessageEmbed()
-        .setTitle("Commands list")
-        .setColor("#0affaf");
-      list.forEach(i => {
-        command.addField(i.Category, i.commands);
-      });
-      return message.noMentionReply(command);
-    } else {
       if (args[0]) {
         let cmd = args[0];
         let command = bot.commands.get(cmd.toLowerCase());
@@ -906,9 +746,14 @@ about the brackets:
           } else if (args[0] === "9" || args[0].toLowerCase() === "leveling") {
             page = 9;
           } else
-            return message.mentionReply(
-              "<:tairitsuno:801419553933492245> | Unknown Command or Category"
-            );
+            return bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                        content: "<:tairitsuno:801419553933492245> | Unknown Command or Category"
+                    }
+                }
+            });
         } else {
           let commandinfo = new discord.MessageEmbed()
             .setTitle("Command: " + command.info.name)
@@ -924,7 +769,12 @@ about the brackets:
 <>:Means that if something with a space which must be used in the command
 () or (<>):This can be left empty, or you can give argument after a space in
 "":Means that if something with a space is used, this will combine it to one`);
-          return message.noMentionReply(commandinfo);
+          return bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                  type: 4,
+                  data: await bot.createAPIMessage(interaction, commandinfo)
+                }
+            });
         }
       }
 
@@ -934,9 +784,13 @@ about the brackets:
         pages[page - 1]
       }`);
 
-      message.noMentionReply(embed)
-    }
-  }
+      bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(interaction, embed)
+                }
+            });
+
 };
 exports.info = {
   name: "help",
