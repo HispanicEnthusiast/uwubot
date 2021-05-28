@@ -520,9 +520,9 @@ function seconds(seconds) {
 
 bot.on("message", async message => {
   if (message.author.bot || message.guild === null) return;
-  xp(message);
+  //xp(message);
 
-  serverxp(message);
+  //serverxp(message);
 
   const prefixMention = new RegExp(`^<@!?${bot.user.id}> `);
   const prefix = message.content.match(prefixMention)
