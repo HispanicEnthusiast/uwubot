@@ -3,11 +3,11 @@ const { MessageEmbed } = require("discord.js");
 const sendError =require("../../util/success"), fs=require('fs')
 exports.run = (bot, message, args) => {
   
-      if (!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("MANAGE_CHANNELS")&&!message.member.hasPermission("ADMINISTRATOR"))
+      if (!message.member.hasPermission("MANAGE_GUILD")&&!bot.config.owners.includes(message.author.id)&&!message.member.hasPermission("MANAGE_CHANNELS")&&!message.member.hasPermission("ADMINISTRATOR"))
       return message.mentionReply(
         "<:tairitsuno:801419553933492245> | You can't use that command! you need at least manage channels, manage server or admin perm!"
       );
-    fs.readdir("../", (err, categories) => {
+    fs.readdir("./commands/", (err, categories) => {
 	if (err) console.log(err);
   categories.forEach(category => {
     let moduleConf = require(`../${category}/module.json`);
@@ -16,14 +16,14 @@ exports.run = (bot, message, args) => {
     if (!moduleConf) return;
     bot.helps.set(category, moduleConf);
 
-    fs.readdir(`../${category}`, (err, files) => {
+    fs.readdir(`./commands/${category}`, (err, files) => {
       if (err) console.log(err);
 
       files.forEach(file => {
         if (!file.endsWith(".js")) return;
         let prop = require(`../${category}/${file}`);
         let cmdName = file.split(".")[0];
-        if(!props.options)
+        if(!prop.options||!prop.interaction)return
         
       
 
