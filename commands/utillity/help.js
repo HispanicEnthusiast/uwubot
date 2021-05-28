@@ -606,7 +606,7 @@ exports.options = [
   }
 ];
 exports.interaction = async (bot, message, arg) => {
-  const args = [arg.find(arg => arg.name.toLowerCase() == "command-page").value];
+  let interaction= message, args = [arg.find(arg => arg.name.toLowerCase() == "command-page").value];
   let module = bot.helps.array();
   let pages = [
     "**Utillity/misc Commands**\n> `help`, `invite`, `support`, `prefix`, `avatar`, `info`, `userinfo(whois)`",
@@ -765,7 +765,13 @@ about the brackets:
 <>:Means that if something with a space which must be used in the command
 () or (<>):This can be left empty, or you can give argument after a space in
 "":Means that if something with a space is used, this will combine it to one`);
-        return message.noMentionReply(commandinfo);
+        bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                  type: 4,
+                  data: await bot.createAPIMessage(message, commandinfo)
+                  }
+            });
+        
       }
     }
 
@@ -773,147 +779,14 @@ about the brackets:
       .setColor("#0affaf")
       .setTitle(`Page ${page}/${pages.length}`).setDescription(`${
       pages[page - 1]
-    }
+    }`);
 
-React <:botarright:766649411014361159>to go to page ${page + 1}`);
-
-    message.noMentionReply(embed).then(msg => {
-      msg.react("766649447413055498");
-      msg.react("766649411014361159").then(r => {
-        msg.react("🗑");
-        const BackwardFilter = (reaction, user) =>
-          reaction.emoji.id === "766649447413055498" &&
-          user.id === message.author.id;
-        const ForwardFilter = (reaction, user) =>
-          reaction.emoji.id === "766649411014361159" &&
-          user.id === message.author.id;
-        const CloseFilter = (reaction, user) =>
-          reaction.emoji.name === "🗑" && user.id === message.author.id;
-        const backward = msg.createReactionCollector(BackwardFilter, {
-          time: 60000,
-          dispose: true
-        });
-        const forward = msg.createReactionCollector(ForwardFilter, {
-          time: 60000,
-          dispose: true
-        });
-        const close = msg.createReactionCollector(CloseFilter, {
-          time: 60000
-        });
-        close.on("collect", r => {
-          msg.delete();
-          return;
-        });
-        backward.on("collect", async collect => {
-          const userReactions = msg.reactions.cache.filter(reaction =>
-            reaction.users.cache.has(message.author.id)
-          );
-          /*try {
-	for (const reaction of userReactions.values()) {
-		await reaction.users.remove(message.author.id);
-	}
-} catch (error) {
-	console.error('Failed to remove reactions.');
-}*/
-          if (page <= 1) return;
-          page--;
-          if (page == 1) {
-            embed.setDescription(`${pages[page - 1]}
-
-React <:botarrowright:766649411014361159>to go to page ${page + 1}`);
-            msg.edit(embed);
-            return;
-          }
-          embed.setDescription(
-            `${pages[page - 1]}` +
-              `
-
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}
-Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
-          );
-          embed.setTitle(`Page ${page}/${pages.length}`);
-          msg.edit(embed);
-        });
-        backward.on("remove", async collect => {
-          if (page <= 1) return;
-          page--;
-          if (page == 1) {
-            embed.setDescription(`${pages[page - 1]}
-
-React <:botarrowright:766649411014361159>to go to page ${page + 1}`);
-            msg.edit(embed);
-            return;
-          }
-          embed.setDescription(
-            `${pages[page - 1]}` +
-              `
-
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}
-Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
-          );
-          embed.setTitle(`Page ${page}/${pages.length}`);
-          msg.edit(embed);
-        });
-        forward.on("collect", async collect => {
-          const userReactions = msg.reactions.cache.filter(reaction =>
-            reaction.users.cache.has(message.author.id)
-          );
-          /*try {
-	for (const reaction of userReactions.values()) {
-		await reaction.users.remove(message.author.id);
-	}
-} catch (error) {
-	console.error('Failed to remove reactions.');
-}*/
-          if (page === pages.length) return;
-          page++;
-          if (page >= pages.length) {
-            embed.setDescription(
-              `${pages[page - 1]}` +
-                `
-
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}`
-            );
-            embed.setTitle(`Page ${page}/${pages.length}`);
-            msg.edit(embed);
-            return;
-          }
-          embed.setDescription(
-            pages[page - 1] +
-              `
-
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1} 
-Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
-          );
-          embed.setTitle(`Page ${page}/${pages.length}`);
-          msg.edit(embed);
-        });
-        forward.on("remove", async collect => {
-          if (page === pages.length) return;
-          page++;
-          if (page >= pages.length) {
-            embed.setDescription(
-              `${pages[page - 1]}` +
-                `
-
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}`
-            );
-            embed.setTitle(`Page ${page}/${pages.length}`);
-            msg.edit(embed);
-            return;
-          }
-          embed.setDescription(
-            pages[page - 1] +
-              `
-
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1} 
-Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
-          );
-          embed.setTitle(`Page ${page}/${pages.length}`);
-          msg.edit(embed);
-        });
-      });
-    });
+    bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(interaction, embed)
+                }
+            });
   } else {
     const permissions = message.channel.permissionsFor(message.client.user);
 
