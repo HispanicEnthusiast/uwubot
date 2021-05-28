@@ -342,7 +342,17 @@ fs.readdir("./commands/", (err, categories) => {
   });
 });
 
+bot.on('ready', () =>{
+bot.ws.on('INTERACTION_CREATE', async interaction => {
+        const command = interaction.data.name.toLowerCase();
+        const args = interaction.data.options;
 
+
+        if(bot.commands.get(command.toLowerCase())){
+          bot.comands.get(command).interaction(bot, interaction, args);
+        }
+    });
+});
 
 bot.on("message", async message => {
   if (message.author.bot || message.author === bot.user) return;
@@ -543,15 +553,7 @@ bot.on("message", async message => {
     .split(/ +/g);
   const command = args.shift().toLowerCase();
 });
-bot.on('ready', () =>{
-bot.ws.on('INTERACTION_CREATE', async interaction => {
-        const command = interaction.data.name.toLowerCase();
-        const args = interaction.data.options;
 
-
-        
-    });
-});
 function xp(message) {
   let xp = bot.db.add(
     `xp_${message.author.id}`,
