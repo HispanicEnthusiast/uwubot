@@ -34,6 +34,13 @@ bot.on("message", message => {
     };
   }
 });
+bot.createAPIMessage= async(interaction, content)=> {
+    const apiMessage = await discord.APIMessage.create(bot.channels.resolve(interaction.channel_id), content)
+        .resolveData()
+        .resolveFiles();
+    
+    return { ...apiMessage.data, files: apiMessage.files };
+}
 //let serversetting = JSON.parse(fs.readFileSync("./serversetting.json", "utf8"));
 console.defaultLog = console.log.bind(console);
 console.logs = [];
@@ -536,7 +543,15 @@ bot.on("message", async message => {
     .split(/ +/g);
   const command = args.shift().toLowerCase();
 });
+bot.on('ready', () =>{
+bot.ws.on('INTERACTION_CREATE', async interaction => {
+        const command = interaction.data.name.toLowerCase();
+        const args = interaction.data.options;
 
+
+        
+    });
+});
 function xp(message) {
   let xp = bot.db.add(
     `xp_${message.author.id}`,
