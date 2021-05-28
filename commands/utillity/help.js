@@ -472,13 +472,13 @@ let page = 1;
 
 
 if(!message.guild){
-  if(args.find(arg => arg.name.toLowerCase() == "page").value){
-  let cmd = args.find(arg => arg.name.toLowerCase() == "page").value;
+  if(args.find(arg => arg.name.toLowerCase() == "page")){
+  let cmd = args.find(arg => arg.name.toLowerCase() == "page");
     var command;
-    if(isNaN(cmd)){
+    //if(isNaN(cmd)){
             command = bot.commands.get(cmd.toLowerCase())
             if(!command)command = bot.commands.find(x => x.info.aliases.includes(cmd.toLowerCase()))
-    }
+    //}
               
                 if(!command){
                   if(cmd==="1"||cmd.toLowerCase()==="utillity"||cmd.toLowerCase()==="utillities"||cmd.toLowerCase()==="util"||cmd.toLowerCase()==="utils"||cmd.toLowerCase()==="miscs"||cmd.toLowerCase()==="misc"){
