@@ -31,17 +31,18 @@ exports.run = async (bot, message, args) => {
   
 }
 exports.interaction = async (bot, message, arg) => {
-let args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
-  let use;
+let args
+if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
+  let m, use;
 
     if (!args[0]) {
-      use = interaction.member_id;
-    } else {
+      m = message.member_id;
+    } 
       if(!message.guild) return;
       use = await bot.guilds.cache.get(message.guild_id).members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
     
     
-    }
+    
 
     if (!use) {
       return bot.api.interactions(message.id, message.token).callback.post({

@@ -602,11 +602,12 @@ exports.options = [
     name: "command-page",
     description: "which page or which Category?",
     type: 3,
-    required: true
+    required: false
   }
 ];
 exports.interaction = async (bot, message, arg) => {
-  let interaction= message, args = [arg.find(arg => arg.name.toLowerCase() == "command-page").value];
+  let interaction= message, args=[];
+  if(arg) args = [arg.find(arg => arg.name.toLowerCase() == "command-page").value];
   let module = bot.helps.array();
   let pages = [
     "**Utillity/misc Commands**\n> `help`, `invite`, `support`, `prefix`, `avatar`, `info`, `userinfo(whois)`",
@@ -776,7 +777,7 @@ about the brackets:
                 }
             });
         }
-      }
+      
 
       let embed = new discord.MessageEmbed()
         .setColor("#0affaf")
@@ -790,7 +791,21 @@ about the brackets:
                     data: await bot.createAPIMessage(interaction, embed)
                 }
             });
-
+      }
+  else {
+     let command = new discord.MessageEmbed()
+        .setTitle("Commands list")
+        .setColor("#0affaf");
+      list.forEach(i => {
+        command.addField(i.Category, i.commands);
+      });
+    bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(interaction, command)
+                }
+            });
+  }
 };
 exports.info = {
   name: "help",
