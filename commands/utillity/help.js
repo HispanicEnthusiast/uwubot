@@ -435,9 +435,9 @@ Or react with <:botarrowright:766649411014361159>to go to page ${page+1}`)
 }
 exports.options= [
                 {
-                    name: "page",
+                    name: "command-page",
                     description: "which page or which Category?",
-                    type: 4,
+                    type: 3,
                     required: true
                 }
             ]
@@ -474,9 +474,11 @@ let page = 1;
 if(!message.guild){
   if(args.find(arg => arg.name.toLowerCase() == "page").value){
   let cmd = args.find(arg => arg.name.toLowerCase() == "page").value;
-            let command = bot.commands.get(cmd.toLowerCase())
+    var command;
+    if(isNaN(cmd)){
+            command = bot.commands.get(cmd.toLowerCase())
             if(!command)command = bot.commands.find(x => x.info.aliases.includes(cmd.toLowerCase()))
-            
+    }
               
                 if(!command){
                   if(cmd==="1"||cmd.toLowerCase()==="utillity"||cmd.toLowerCase()==="utillities"||cmd.toLowerCase()==="util"||cmd.toLowerCase()==="utils"||cmd.toLowerCase()==="miscs"||cmd.toLowerCase()==="misc"){
