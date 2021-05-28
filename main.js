@@ -347,7 +347,17 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
         const args = interaction.data.options;
 
-
+if(command === 'ping'){
+  bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                        content: `<:hikariok:801419553841741904> | Pong! \`Latency: ${Date.now()- interaction.createdTimestamp}ms, API Latency: ${Math.round(bot.ws.ping)}ms\``
+                    }
+                }
+            });
+}
+  else
         if(bot.commands.get(command.toLowerCase())){
           bot.comands.get(command).interaction(bot, interaction, args);
         }
