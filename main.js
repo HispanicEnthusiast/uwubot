@@ -346,7 +346,10 @@ bot.on('ready', () =>{
 bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
         const args = interaction.data.options;
-console.log(interaction.id)
+  //console.log(interaction.guild_id)
+bot.config={
+  prefix:bot.db.get(`${interaction.guild_id}_prefix`) || process.env.DISCORD_BOT_PREFIX
+}
         if(bot.commands.get(command.toLowerCase())){
           bot.commands.get(command).interaction(bot, interaction, args);
         }
