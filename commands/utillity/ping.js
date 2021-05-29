@@ -16,6 +16,7 @@ exports.interaction= async (bot, interaction, args) =>{
                 }
             });
 }
+exports.options=[]
   exports.info = {
     name: 'ping',
     aliases:[],
