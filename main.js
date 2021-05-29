@@ -1,4 +1,4 @@
-const discord = require("discord.js");
+onst discord = require("discord.js");
 require('discord-inline-replys')
 const { promisify } = require("util");
 const ms = require("ms");
