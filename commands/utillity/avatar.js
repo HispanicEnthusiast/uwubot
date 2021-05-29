@@ -28,7 +28,8 @@ exports.run = async (bot, message, args) => {
 }
 exports.interaction = async (bot, message, arg) => {
 let args=[]
-if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value.catch(()=>arg.find(arg => arg.name.toLowerCase() == "id").value)]
+if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]       
+  
   else {
       args = [message.member.user.id];
     } 
@@ -68,12 +69,6 @@ exports.options=[
     name: "user",
     description: "Which person do you want to see the avatar?",
     type: 6,
-    required: false
-  },
-  {
-    name: "id",
-    description: "(in user id)Which person do you want to see the avatar?",
-    type: 3,
     required: false
   }
 ]
