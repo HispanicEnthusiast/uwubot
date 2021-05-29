@@ -25,16 +25,5 @@ module.exports = {
 
     if(serverQueue){message.client.queue.delete(message.guild.id);console.log("disconnected")}
   },
-  interaction: async function (client, message, args) {
-    const channel = client.guilds.cache.get(message.guild_id).members.fetch(message.member.user.id).voice.channel
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
-    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
-    await channel.leave();
-    message.react("801419553841741904")
-    sendSuccess("<:hikariok:801419553841741904> | Disconnected Successfully!", message);
-    const serverQueue = message.client.queue.get(message.guild.id);
-
-    if(serverQueue){message.client.queue.delete(message.guild.id);console.log("disconnected")}
-  },
   options:[],
 };
