@@ -17,7 +17,7 @@ exports.run = (bot, message, args) => {
       msg.edit("", msgembed);
     });   
 }
-exports.interaction= async (bot, interaction, args) =>{
+exports.interaction= async(bot, interaction, args) =>{
   let link = `https://discord.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot+applications.commands&permissions=2146958847`
 let embed = new Discord.MessageEmbed()
       .setColor('#0affaf')
@@ -31,9 +31,7 @@ let embed = new Discord.MessageEmbed()
   bot.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
                     type: 4,
-                    data: {
-                        content: await bot.createAPIMessage(interaction, embed)
-                    }
+                    data: await bot.createAPIMessage(interaction, embed)
                 }
             });  
 }
