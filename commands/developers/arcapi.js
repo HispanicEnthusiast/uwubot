@@ -11,7 +11,7 @@ exports.run = async (client,message,args)=>{
         "User-Agent": "SecretAPIUA"
     }
 })
-message.channel.send(await a.user.best("KZHaruki", true))
+message.channel.send(await a.user.best("457767993", true))
     }
 }
 exports.info = {
