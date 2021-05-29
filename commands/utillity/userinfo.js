@@ -101,11 +101,17 @@ exports.options=[
     description: "who do you want to see the info?",
     type: 6,
     required: false
+  },
+  {
+    name: "id",
+    description: "(in user id)who do you want to see the info?",
+    type: 3,
+    required: false
   }
 ]
 exports.interaction = async (bot, message, arg) => {
   let args;
-if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
+if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value.catch(()=>arg.find(arg => arg.name.toLowerCase() == "id").value)]
   else {
       args = [message.member.user.id];
     } 
