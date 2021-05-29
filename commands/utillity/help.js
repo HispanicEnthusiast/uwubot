@@ -38,7 +38,7 @@ let pages = [
     {
       Category: "**Music Commands**",
       commands:
-        "> `join`, `play`, `np`, `lyrics`, `pause/continue`, `search-song(search)`, `queue`, `skip`, `skipto`, `skipall`, `loop`, `volume`, `disconnect`"
+        "> `join`, `play`, `np`, `lyrics`, `pause/continue`, `search`, `queue`, `skip`,`skipto`, `skipall`, `loop`, `volume`, `stop`, `disconnect`"
     }, //6
     {
       Category: "**Npc/Tupper Commands**",
