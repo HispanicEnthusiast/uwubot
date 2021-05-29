@@ -20,16 +20,33 @@ const { evaluate } = require("mathjs"),{ MessageEmbed }= require('discord.js');
         message.noMentionReply(embed);
 
 };
-module.exports.run = async (bot, message, args) => {
+module.exports.interaction = async (bot, interaction, arg) => {
 
-        if(!args[0]) return message.mentionReply('<:tairitsuno:801419553933492245> | Please give a question');
+let args=[]
+if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "math-question").value]   
+  
+        if(!args[0]) return bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                        content: '<:tairitsuno:801419553933492245> | Please give a question'
+                    }
+                }
+            });
 
         let resp;
 
         try {
             resp = evaluate(args.join(" ").replace("x", "*").replace("X", "*").replace(":", "/").replace("²", "^2").replace("³", "^3").replace("&", "+"))
         } catch (e) {
-            return message.mentionReply('<:tairitsuno:801419553933492245> | Please give a correct question')
+         return bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                        content: '<:tairitsuno:801419553933492245> | Please give a correct question'
+                    }
+                }
+            });
         }
 
         const embed = new MessageEmbed()
@@ -38,7 +55,12 @@ module.exports.run = async (bot, message, args) => {
         .addField('Question', `\`\`\`css\n${args.join(' ')}\`\`\``)
         .addField('Answer', `\`\`\`css\n${resp}\`\`\``)
 
-        message.noMentionReply(embed);
+        bot.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(interaction, embed)
+                }
+            });
 
 };
 exports.options=[
