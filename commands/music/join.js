@@ -15,6 +15,7 @@ module.exports = {
   },
 //checked
   run: async function (client, message, args) {
+    const channel = message.member.voice.channel
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
@@ -26,7 +27,7 @@ module.exports = {
         "<:tairitsuno:801419553933492245> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         message
       );
-    const channel = message.member.voice.channel
+    
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
     await channel.join();
     
