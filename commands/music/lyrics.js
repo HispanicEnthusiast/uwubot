@@ -53,7 +53,8 @@ if(message.guild!== null){
       if(!serverQueue){
          return sendError("<:tairitsuno:801419553933492245> | Song is currently not playing, please give an argument after the space in the command like this: **"+bot.config.prefix+"lyrics siromaru Cranky Conflict**!", message)
          }
-      const ly = serverQueue.songs[0].title.toString()
+      const ly = serverQueue.songs[0].title.toString().replace(/\\/g, "")
+      console.log(ly)
       const results = await G.songs.search(ly); 
     const song = results[0];
     song.lyrics().then(lyrics => {
@@ -139,7 +140,7 @@ let args=[];
 if(message.guild!== null){
   
           if(args[0]) {
-    const results = await G.songs.search(message.content.split(' ').slice(1).join(' ')); 
+    const results = await G.songs.search(args[0]); 
     const song = results[0];
     song.lyrics().then(async lyrics => {
       var embed
@@ -179,9 +180,10 @@ if(message.guild!== null){
       .get(message.guild_id)
       .client.queue.get(message.guild_id);
       if(!serverQueue){
-         return sendError("<:tairitsuno:801419553933492245> | Song is currently not playing, please give an argument after the space in the command like this: **"+bot.config.prefix+"lyrics siromaru Cranky Conflict**!", message, cliant)
+         return sendError("<:tairitsuno:801419553933492245> | Song is currently not playing, please give an argument after the space in the command like this: **"+bot.config.prefix+"lyrics siromaru Cranky Conflict**!", message, bot)
          }
-      const ly = serverQueue.songs[0].title.toString()
+      const ly = serverQueue.songs[0].title.toString().replace(/\\/g, "")
+      console.log(ly)
       const results = await G.songs.search(ly); 
     const song = results[0];
     song.lyrics().then(async lyrics => {
@@ -221,7 +223,7 @@ if(message.guild!== null){
 }
     
     else if(args[0]){
-     const results = await G.songs.search(message.content.split(' ').slice(1).join(' ')); 
+     const results = await G.songs.search(args[0]); 
     const song = results[0];
     song.lyrics().then(async lyrics => {
       var embed
@@ -257,7 +259,7 @@ if(message.guild!== null){
     
     
 } else {
-  return sendError("<:tairitsuno:801419553933492245> | You're in my DM, not in a server, please give a name of the song to let me search and send you!", message)
+  return sendError("<:tairitsuno:801419553933492245> | You're in my DM, not in a server, please give a name of the song to let me search and send you!", message, bot)
              }
   }
 };
