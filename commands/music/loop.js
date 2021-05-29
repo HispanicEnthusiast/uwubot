@@ -22,7 +22,7 @@ const client = bot;
     const channel = message.member.voice.channel
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
     if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
-    var serverQueue = message.guild.client.queue.get(message.guild.id);
+    var serverQueue = message.client.queue.get(message.guild.id);
 if (!serverQueue) {
       return sendError('<:tairitsuno:801419553933492245> | There are no songs on playing right now, pls add a song to play!!!', message);
     }
@@ -34,7 +34,7 @@ if (!serverQueue) {
             return sendSuccess(`🔁  **|**  Loop is **${serverQueue.loop === true ? "enabled" : "disabled"}**`, message)
     return;
   },
-  option:[],
+  options:[],
   interaction: async function (bot, message, args) {
     let sendError=require('../../util/slash/error.js')
     let sendSuccess=require('../../util/slash/success.js')
