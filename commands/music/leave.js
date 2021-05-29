@@ -6,10 +6,10 @@ module.exports = {
   dm: "no"
   },
   info: {
-    name:"leave",
+    name:"disconnect",
     description: "To stop the music and clearing the queue",
     usage: "",
-    aliases: ["disconnect"],
+    aliases: ["leave"],
   },
 //checked
   run: async function (client, message, args) {

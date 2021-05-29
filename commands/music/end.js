@@ -24,7 +24,7 @@ const sendSuccess = require("../../util/success");
     sendSuccess("<:hikariok:801419553841741904> | Ended Successfully!", message);
     const serverQueue = message.client.queue.get(message.guild.id);
 
-    if(serverQueue){message.client.queue.delete(message.guild.id);console.log("disconnected")}
+    if(serverQueue){serverQueue.connection.dispatcher.end("Disconnected");message.client.queue.delete(message.guild.id);console.log("disconnected")}
   },
   options:[],
   interaction: async function (client, message, args){//message=interaction
@@ -39,6 +39,6 @@ const sendSuccess = require("../../util/success");
     sendSuccess("<:hikariok:801419553841741904> | Ended Successfully!", message, client);
     const serverQueue = client.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 
-    if(serverQueue){client.guilds.cache.get(message.guild_id).client.queue.delete(message.guild_id);console.log("disconnected")}
+    if(serverQueue)serverQueue.connection.dispatcher.end("Disconnected");client.guilds.cache.get(message.guild_id).client.queue.delete(message.guild_id);console.log("disconnected")}
   }
 };
