@@ -384,16 +384,14 @@ console.log('Finished expoerted slash command!')
 bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
         const args = interaction.data.options;
-  //console.log(interaction)
+  
 bot.config={
   prefix:bot.db.get(`${interaction.guild_id}_prefix`) || process.env.DISCORD_BOT_PREFIX
 }
         if(bot.commands.get(command.toLowerCase())){
-          try{
+          
           bot.commands.get(command).interaction(bot, interaction, args);
-          }finally {
-      console.log(`${interaction.member.user.tag} (${interaction.member.user.id}) ran a command: ${bot.commands.get(command).info.name}`);
-    }
+          
         }
     });
 });
