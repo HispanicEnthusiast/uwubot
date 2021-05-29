@@ -377,11 +377,12 @@ bot.api.applications(bot.user.id).guilds(id).commands.post({
 	     options:prop.options
         }
     });//command for slash
-console.log('Finished expoerted slash command!')
+//console.log('Finished expoerted slash command!')
  })
 })
 })
 })
+    console.log('Finished exported slash command!')
    })
   
 bot.ws.on('INTERACTION_CREATE', async interaction => {
