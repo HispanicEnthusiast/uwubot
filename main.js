@@ -34,6 +34,9 @@ bot.on("message", message => {
     };
   }
 });
+const { BotArcApiV4 } = require("botarcapi_lib");
+const api = new BotArcApiV4("http://.glitch.me", 60000)
+
 bot.createAPIMessage= async(interaction, content)=> {
     const apiMessage = await discord.APIMessage.create(bot.channels.resolve(interaction.channel_id), content)
         .resolveData()
