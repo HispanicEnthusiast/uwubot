@@ -607,7 +607,7 @@ exports.options = [
 ];
 exports.interaction = async (bot, message, arg) => {
   let interaction= message, args=[];
-  if(arg) args = [arg.find(arg => arg.name.toLowerCase() == "command-page").value];
+  if(arg) args = [arg.find(arg => arg.name.toLowerCase() == "command-category-page").value];
   let module = bot.helps.array();
   let pages = [
     "**Utillity/misc Commands**\n> `help`, `invite`, `support`, `prefix`, `avatar`, `info`, `userinfo(whois)`",
