@@ -359,7 +359,7 @@ bot.on('ready', () =>{
 
       files.forEach(file => {
         if (!file.endsWith(".js")) return;
-        let prop = require(`./command/${category}/${file}`);
+        let prop = require(`./commands/${category}/${file}`);
         let cmdName = file.split(".")[0];
         if(!prop.options||!prop.interaction)return
         
@@ -389,7 +389,11 @@ bot.config={
   prefix:bot.db.get(`${interaction.guild_id}_prefix`) || process.env.DISCORD_BOT_PREFIX
 }
         if(bot.commands.get(command.toLowerCase())){
+          try{
           bot.commands.get(command).interaction(bot, interaction, args);
+          }finally {
+      console.log(`${interaction.member.user.tag} (${interaction.member.user.id}) ran a command: ${bot.commands.get(command).info.name}`);
+    }
         }
     });
 });
