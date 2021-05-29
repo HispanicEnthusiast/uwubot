@@ -12,6 +12,18 @@ exports.run = (bot, message, args) => {
           msg.edit("", msgembed)
        });
   }
+exports.interaction = (bot, message, args) => {
+         const Discord = require("discord.js")
+         let link =
+             `https://discord.gg/${process.env.DISCORD_BOT_INVITE}`
+         let membed = new Discord.MessageEmbed()
+      .setColor('#0affaf')
+         .setTitle("Supports <:koulove:801419554156445726>")
+      .setDescription('My main support server: [Click here]' + `(${link})`)
+      .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
+       
+  }
+exports.options=[]
   exports.info = {
     name: 'support',
   aliases:[],

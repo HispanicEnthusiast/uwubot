@@ -32,7 +32,7 @@ const flags = {
 	TEAM_USER: 'Team User',
 	SYSTEM: 'System',
 	VERIFIED_BOT: 'Verified Bot',
-	VERIFIED_DEVELOPER: 'Verified Bot Developer'
+	VERIFIED_DEVELOPER: 'Early Verified Bot Developer'
 };
     
     let stat = {
@@ -141,7 +141,7 @@ const flags = {
 	TEAM_USER: 'Team User',
 	SYSTEM: 'System',
 	VERIFIED_BOT: 'Verified Bot',
-	VERIFIED_DEVELOPER: 'Verified Bot Developer'
+	VERIFIED_DEVELOPER: 'Early Verified Bot Developer'
 };
     
     let stat = {

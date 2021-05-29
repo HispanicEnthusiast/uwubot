@@ -384,7 +384,7 @@ console.log('finished')
 bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
         const args = interaction.data.options;
-  console.log(interaction)
+  //console.log(interaction)
 bot.config={
   prefix:bot.db.get(`${interaction.guild_id}_prefix`) || process.env.DISCORD_BOT_PREFIX
 }
