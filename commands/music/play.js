@@ -11,7 +11,7 @@ module.exports = {
   },
   info: {
     name: "play",
-    description: "To play songs :D",
+    description: "To play/add a song/songs",
     usage: "<song_name>",
     aliases: ["p", "add"]
   },
@@ -103,8 +103,8 @@ message.channel.stopTyping()
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);
-        queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line :D
+        //sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);//If you want your bot stay in vc 24/7 remove this line :D
+        //queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line too :D
         message.client.queue.delete(message.guild.id);
         return;
       }

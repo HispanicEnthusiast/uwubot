@@ -1,14 +1,12 @@
 let discord = require("discord.js");
 let { MessageEmbed } = require("discord.js");
-exports.run = async (bot, message, args) => {
-  let module = bot.helps.array();
-  let pages = [
+let pages = [
     "**Utillity/misc Commands**\n> `help`, `invite`, `support`, `prefix`, `avatar`, `info`, `userinfo(whois)`",
     "**Search/query Commands**\n> `say`, `sayembed`, `calculate`, `anime`, `poll`",
     "**Moderation Commands**\n> `kick`, `ban/unban`, `purge`, `setprefix`, `warn`, `warnings`, `mute/unmute`",
     "**Setup Commands**\n> `setprefix`, `setautorole`, `setautorolesystem`, `setmuterole`, `setverifyrole`, `setverifychannel`, `setwelcomemessage`, `setwelcomechannel`, `setleavemessage`, `setleavechannel`, `setwelcomemessagesystem`, `setgoodbyemessagesystem`, `setwelcomeimage`, `setwelcomeembed`, `prefix`, `setwarns`, `setupstatus`, `lvlmsg`",
     "**Economy Commands**\n> `balance`, `daily`, `dice(roll)`, `bet(gamble)`, `transfer`",
-    "**Music Commands**\n> `join`, `play`, `np`, `lyrics`, `pause/continue`, `search-song(search)`, `queue`, `skip`,`skipto`, `skipall`, `loop`, `volume`, `disconnect`",
+    "**Music Commands**\n> `join`, `play`, `np`, `lyrics`, `pause/continue`, `search`, `queue`, `skip`,`skipto`, `skipall`, `loop`, `volume`, `stop`, `disconnect`",
     "**Npc/Tupper Commands**\n> `npc`, `npccreate`, `npcname`, `npclist`, `npcinfo`, `npcdesc`, `npcremove`, `npcavatar`",
     "**Fun/roleplay Commands**\n> `kiss`, `hug`, `pat`, `slap`, `wink`, `cuddle`, `neko`, `foxgirl`",
     "**Leveling Commands**\n> `rank`, `addxp`, `leaderboard`"
@@ -57,6 +55,9 @@ exports.run = async (bot, message, args) => {
       commands: "> `rank`, `addxp`, `leaderboard`"
     }
   ];
+exports.run = async (bot, message, args) => {
+  let module = bot.helps.array();
+  
 
   let page = 1;
 
@@ -609,61 +610,6 @@ exports.interaction = async (bot, message, arg) => {
   let interaction= message, args=[];
   if(arg) args = [arg.find(arg => arg.name.toLowerCase() == "command-category-page").value];
   let module = bot.helps.array();
-  let pages = [
-    "**Utillity/misc Commands**\n> `help`, `invite`, `support`, `prefix`, `avatar`, `info`, `userinfo(whois)`",
-    "**Search/query Commands**\n> `say`, `sayembed`, `calculate`, `anime`, `poll`",
-    "**Moderation Commands**\n> `kick`, `ban/unban`, `purge`, `setprefix`, `warn`, `warnings`, `mute/unmute`",
-    "**Setup Commands**\n> `setprefix`, `setautorole`, `setautorolesystem`, `setmuterole`, `setverifyrole`, `setverifychannel`, `setwelcomemessage`, `setwelcomechannel`, `setleavemessage`, `setleavechannel`, `setwelcomemessagesystem`, `setgoodbyemessagesystem`, `setwelcomeimage`, `setwelcomeembed`, `prefix`, `setwarns`, `setupstatus`, `lvlmsg`",
-    "**Economy Commands**\n> `balance`, `daily`, `dice(roll)`, `bet(gamble)`, `transfer`",
-    "**Music Commands**\n> `join`, `play`, `np`, `lyrics`, `pause/continue`, `search-song(search)`, `queue`, `skip`,`skipto`, `skipall`, `loop`, `volume`, `disconnect`",
-    "**Npc/Tupper Commands**\n> `npc`, `npccreate`, `npcname`, `npclist`, `npcinfo`, `npcdesc`, `npcremove`, `npcavatar`",
-    "**Fun/roleplay Commands**\n> `kiss`, `hug`, `pat`, `slap`, `wink`, `cuddle`, `neko`, `foxgirl`",
-    "**Leveling Commands**\n> `rank`, `addxp`, `leaderboard`"
-  ];
-  let list = [
-    {
-      Category: "**Utillity/misc**",
-      commands:
-        "> `help`, `invite`, `support`, `prefix`, `avatar`, `info`, `userinfo(whois)`"
-    }, //1
-    {
-      Category: "**Search/query Commands**",
-      commands: "> `say`, `sayembed`, `calculate`, `anime`, `poll`"
-    }, //2
-    {
-      Category: "**Moderation Commands**",
-      commands:
-        "> `kick`, `ban/unban`, `purge`, `setprefix`, `warn`, `warnings`, `mute/unmute`"
-    }, //3
-    {
-      Category: "**Setup Commands**",
-      commands:
-        "> `setprefix`, `setautorole`, `setautorolesystem`, `setmuterole`, `setverifyrole`, `setverifychannel`, `setwelcomemessage`, `setwelcomechannel`, `setleavemessage`, `setleavechannel`, `setwelcomemessagesystem`, `setgoodbyemessagesystem`, `setwelcomeimage`, `setwelcomeembed`, `prefix`, `setwarns`, `setupstatus`, `lvlmsg`"
-    }, //4
-    {
-      Category: "**Economy Commands**",
-      commands: "> `balance`, `daily`, `dice(roll)`, `bet(gamble)`, `transfer`"
-    }, //5
-    {
-      Category: "**Music Commands**",
-      commands:
-        "> `join`, `play`, `np`, `lyrics`, `pause/continue`, `search-song(search)`, `queue`, `skip`, `skipto`, `skipall`, `loop`, `volume`, `disconnect`"
-    }, //6
-    {
-      Category: "**Npc/Tupper Commands**",
-      commands:
-        "> `npc`, `npccreate`, `npcname`, `npclist`, `npcinfo`, `npcdesc`, `npcremove`, `npcavatar`"
-    }, //7
-    {
-      Category: "**Fun/roleplay Commands**",
-      commands:
-        "> `kiss`, `hug`, `pat`, `slap`, `wink`, `cuddle`, `neko`, `foxgirl`"
-    }, //8
-    {
-      Category: "**Leveling Commands**",
-      commands: "> `rank`, `addxp`, `leaderboard`"
-    }
-  ];
 
   let page = 1;
 

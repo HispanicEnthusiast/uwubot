@@ -12,7 +12,7 @@ module.exports = {
   },
   info: {
     name: "search-song",
-    description: "To play songs :D",
+    description: "To search, play/add a song/songs :D",
     usage: "<song_name>",
     aliases: [
       "searchsong",
