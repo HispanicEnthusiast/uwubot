@@ -26,7 +26,15 @@ module.exports = {
     
     const Current = await Queue.songs.shift();
     
-    Queue.songs = Queue.songs.sort(() => Math.random() - 0.5);
+    const queue = message.client.queue.get(message.guild.id)
+    if(!queue) return sendError("There is nothing playing in this server.", message);
+    let songs = queue.songs;
+    for (let i = songs.length - 1; i > 1; i--) {
+      let j = 1 + Math.floor(Math.random() * i);
+      [songs[i], songs[j]] = [songs[j], songs[i]];
+    }
+    queue.songs = songs;
+    message.client.queue.set(message.guild.id, queue);
     await Queue.songs.unshift(Current);
     message.react("801419553841741904")
     sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message)
