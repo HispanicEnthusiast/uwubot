@@ -26,7 +26,7 @@ module.exports = {
     if(serverQueue){message.client.queue.delete(message.guild.id);console.log("disconnected")}
   },
   options:[],
-  interaction: async function (client, message, args){
-   console.log(message.member.voice)
+  interaction: async function (client, message, args){//message=interaction
+   client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
   }
 };
