@@ -1,4 +1,4 @@
-onst discord = require("discord.js");
+const discord = require("discord.js");
 require('discord-inline-replys')
 const { promisify } = require("util");
 const ms = require("ms");
@@ -19,7 +19,7 @@ setInterval(async () => {
   await fetch(`https://${process.env.PROJECT_DOMAIN}.glitch.me`); //main projects site
 }, 60000);
 bot.db = require("quick.db");
-//bot.translate= require("translate-google")
+
 bot.sleep = promisify(setTimeout);
 bot.vote = new Map();
 bot.on("message", message => {
