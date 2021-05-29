@@ -30,10 +30,10 @@ const sendSuccess = require("../../util/success");
   interaction: async function (client, message, args){//message=interaction
    let sendError=require('../../util/slash/error.js')
     let sendSuccess=require('../../util/slash/success.js')
-   let channel=client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
+   let channel=await client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message, client);
-    
-    if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message, client);
+    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
+
     await channel.leave();
     message.react("801419553841741904")
     sendSuccess("<:hikariok:801419553841741904> | Disconnected Successfully!", message, client);
