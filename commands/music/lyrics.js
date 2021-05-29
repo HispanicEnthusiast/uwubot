@@ -7,7 +7,7 @@ module.exports = {
   },
   info: {
     name: "lyrics",
-    description: "Shows the song lyrics **Warning: it can be blank if 1 song is currently playing, else it will not show the lyrics!**",
+    description: "Shows the song lyrics(Let it keep empty if you want to know the lyrics the song's playing)",
     usage: "<song_name/(blank)>",
     aliases: ["lyric", "song-lyric", "songlyrics"],
   },
@@ -123,7 +123,7 @@ if(message.guild!== null){
   options: [
   {
     name: "song",
-    description: "Which Song do you want to search the lyrics?",
+    description: "Which song do you want to search the lyrics?",
     type: 3,
     required: false
   }
@@ -141,9 +141,10 @@ if(message.guild!== null){
           if(args[0]) {
     const results = await G.songs.search(message.content.split(' ').slice(1).join(' ')); 
     const song = results[0];
-    song.lyrics().then(lyrics => {
+    song.lyrics().then(async lyrics => {
+      var embed
       if (lyrics.length > 2049) {
-        const embed = new MessageEmbed()
+         embed = new MessageEmbed()
           .setColor(0x0affaf)
           .setTitle(`**${song.artist.name} - ${song.title}**`)
           .setDescription(`[Link]`+ `(${song.url})`);
@@ -154,7 +155,7 @@ if(message.guild!== null){
       }
       
       if (lyrics.length < 2048) {
-        const embed = new MessageEmbed()
+       embed = new MessageEmbed()
           .setColor(0x0affaf)
           .setTitle(`**${song.artist.name} - ${song.title}**`)
           .addField("** **", `[link]`+ `(${song.url})`)
@@ -162,23 +163,31 @@ if(message.guild!== null){
         
       }
   
-    return 
+    return bot.api.interactions(message.id, message.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(message, embed)
+                }
+            });
     })
     
 } 
   else
   if(!args[0]){
     
-      const serverQueue = message.client.queue.get(message.guild.id);
+      const serverQueue = bot.guilds.cache
+      .get(message.guild_id)
+      .client.queue.get(message.guild_id);
       if(!serverQueue){
-         return sendError("<:tairitsuno:801419553933492245> | Song is currently not playing, please give an argument after the space in the command like this: **"+bot.config.prefix+"lyrics siromaru Cranky Conflict**!", message)
+         return sendError("<:tairitsuno:801419553933492245> | Song is currently not playing, please give an argument after the space in the command like this: **"+bot.config.prefix+"lyrics siromaru Cranky Conflict**!", message, cliant)
          }
       const ly = serverQueue.songs[0].title.toString()
       const results = await G.songs.search(ly); 
     const song = results[0];
-    song.lyrics().then(lyrics => {
+    song.lyrics().then(async lyrics => {
+      var embed
       if (lyrics.length > 2049) {
-        const embed = new MessageEmbed()
+        embed = new MessageEmbed()
           .setColor(0x0affaf)
           .setTitle(`**${song.artist.name} - ${song.title}**`)
           .setDescription(`[Link]`+ `(${song.url})`);
@@ -189,7 +198,7 @@ if(message.guild!== null){
       }
       
       if (lyrics.length < 2048) {
-        const embed = new MessageEmbed()
+         embed = new MessageEmbed()
           .setColor(0x0affaf)
           .setTitle(`**${song.artist.name} - ${song.title}**`)
           .addField("** **", `[link]`+ `(${song.url})`)
@@ -197,7 +206,12 @@ if(message.guild!== null){
         
       }
   
-    
+    return bot.api.interactions(message.id, message.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(message, embed)
+                }
+            });
     })
     
     
@@ -209,28 +223,34 @@ if(message.guild!== null){
     else if(args[0]){
      const results = await G.songs.search(message.content.split(' ').slice(1).join(' ')); 
     const song = results[0];
-    song.lyrics().then(lyrics => {
+    song.lyrics().then(async lyrics => {
+      var embed
       if (lyrics.length > 2049) {
-        const embed = new MessageEmbed()
+         embed = new MessageEmbed()
           .setColor(0x0affaf)
           .setTitle(`**${song.artist.name} - ${song.title}**`)
           .setDescription(`[Link]`+ `(${song.url})`);
         
           
-        return message.noMentionReply(lyricsEmbo);
+        
         
       }
       
       if (lyrics.length < 2048) {
-        const embed = new MessageEmbed()
+         embed = new MessageEmbed()
           .setColor(0x0affaf)
           .setTitle(`**${song.artist.name} - ${song.title}**`)
           .addField("** **", `[link]`+ `(${song.url})`)
           .setDescription(lyrics.trim());
-        return message.noMentionReply(lyricsEmbed);
+        
       }
   
-    
+    return bot.api.interactions(message.id, message.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(message, embed)
+                }
+            });
     })
     
     
