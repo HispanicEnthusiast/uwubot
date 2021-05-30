@@ -615,6 +615,7 @@ function xp(message) {
       message.guild.id === "264445053596991498" ||
       message.guild.id === "808770886718193705" ||
       message.guild.id === "264445053596991498" ||
+      
       bot.db.get(`${message.guild.id}_lvlupmsg`) === "no"
     )
       return;
