@@ -34,7 +34,7 @@ module.exports = {
   interaction: async function(client, interaction, arg) {
      
     let args=[arg.find(arg => arg.name.toLowerCase() == "song").value];
-    client.api.interactions(interaction.id, interaction.token).callback
+    
     const sendSuccess = require("../../util/slash/success"),sendError = require("../../util/slash/error");
 const sendSucces = require("../../util/succes");
 const sendEror = require("../../util/eror");
@@ -103,7 +103,7 @@ client.guilds.cache
       .addField("Exit", " type `exit`, `cancel` or `close`");
    let songEmbed= await client.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
-                    type: 4,
+                    type: 4
                     data: await client.createAPIMessage(interaction, embed)
                 }
             }).then(client.guilds.cache
