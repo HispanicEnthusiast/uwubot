@@ -98,8 +98,7 @@ client.guilds.cache
 
       vidArr.push(`${vidNameArr[i]}${vidUrlArr[i]}`);
     }
-var songEmbed = await client.guilds.cache
-      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).send(`🔎 | The list to choose for the song \`${args.slice().join(" ")}\` will be created...`)
+ 
     vidNameArr.push("exit");
     vidNameArr.push("cancel");
     vidNameArr.push("close");
@@ -118,7 +117,7 @@ var songEmbed = await client.guilds.cache
         .addField('** **', `${vidNameArr[8]}`+`${vidUrlArr[8]}`)
         .addField('** **', `${vidNameArr[9]}`+`${vidUrlArr[9]}`)*/
       .addField("Exit", " type `exit`, `cancel` or `close`");
-songEmbed.edit("", { embed }).then(client.guilds.cache
+var songEmbed = await client.api.interactions(interaction.id, interaction.token).callback.editReply("", { embed }).then(client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping());
     try {
       var response = await client.guilds.cache
@@ -135,11 +134,12 @@ songEmbed.edit("", { embed }).then(client.guilds.cache
         client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
         if (songEmbed) {
-          songEmbed.delete();
+          songEmbed.deleteReply();
         }
-        return sendError(
+        return sendEror(
           "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
-          interaction, client
+          client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
         );
       }
       var videoIndex = parseInt(response.first().content);
@@ -148,11 +148,12 @@ songEmbed.edit("", { embed }).then(client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       console.error(err);
       if (songEmbed) {
-        songEmbed.delete();
+        songEmbed.deleteReply();
       }
-      return sendError(
+      return sendEror(
         "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
-        interaction, client
+        client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
       );
     }
     if (
@@ -160,18 +161,18 @@ songEmbed.edit("", { embed }).then(client.guilds.cache
       response.first().content === "close" ||
       response.first().content === "cancel"
     )
-      return songEmbed.delete();
+      return songEmbed.deleteReply();
     try {
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       var songInfo = searched.videos[videoIndex - 1];
-      if (songEmbed) songEmbed.delete();
+      if (songEmbed) songEmbed.deleteReply();
     } catch (err) {
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       console.error(err);
       if (songEmbed) {
-        songEmbed.delete();
+        songEmbed.deleteReply();
       }
     }
     const song = {
@@ -190,7 +191,8 @@ songEmbed.edit("", { embed }).then(client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       if (client.guilds.cache
-      .get(interaction.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', interaction, client);
+      .get(interaction.guild_id).me.voice.channel !== channel)return sendEror('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id));
       serverQueue.songs.push(song);
       let thing = new MessageEmbed()
         .setAuthor(
