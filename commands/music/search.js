@@ -99,16 +99,7 @@ client.guilds.cache
       .setColor("#0affaf")
       .setTitle("Choose a song by giving a number between 1 and 10")
       .setDescription(vidArr.join("\n")) //Ok
-      /*.addField('** **', `${vidNameArr[0]}`+`${vidUrlArr[0]}`)
-        .addField('** **', `${vidNameArr[1]}`+`${vidUrlArr[1]}`)
-        .addField('** **', `${vidNameArr[2]}`+`${vidUrlArr[2]}`)
-        .addField('** **', `${vidNameArr[3]}`+`${vidUrlArr[3]}`)
-        .addField('** **', `${vidNameArr[4]}`+`${vidUrlArr[4]}`)
-        .addField('** **', `${vidNameArr[5]}`+`${vidUrlArr[5]}`)
-        .addField('** **', `${vidNameArr[6]}`+`${vidUrlArr[6]}`)
-        .addField('** **', `${vidNameArr[7]}`+`${vidUrlArr[7]}`)
-        .addField('** **', `${vidNameArr[8]}`+`${vidUrlArr[8]}`)
-        .addField('** **', `${vidNameArr[9]}`+`${vidUrlArr[9]}`)*/
+      
       .addField("Exit", " type `exit`, `cancel` or `close`");
    let songEmbed= await client.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
