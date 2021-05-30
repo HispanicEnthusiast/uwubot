@@ -1,6 +1,20 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
+let axios=require("axios")
+const editInteraction = async (client, interaction, response) => {
+    // Set the data as embed if reponse is an embed object else as content
+    const data = typeof response === 'object' ? { embeds: [ response ] } : { content: response };
+    // Get the channel object by channel id:
+    const channel = await client.channels.resolve(interaction.channel_id);
+    // Edit the original interaction response:
+    return axios
+        .patch(`https://discord.com/api/v8/webhooks/${interaction.id}/${interaction.token}/messages/@original`, data)
+        .then((answer) => {
+            // Return the message object:
+            return channel.messages.fetch(answer.data.id)
+        })
+};
 
 
 module.exports = {
@@ -71,15 +85,25 @@ const sendEror = require("../../util/eror");
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).startTyping();
     var serverQueue = client.guilds.cache
       .get(interaction.guild_id).client.queue.get(interaction.guild_id);
-
+client.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                      content: ``
+                    }
+                }
+            })
     var searched = await yts.search(searchString);
+    
     if (searched.videos.length === 0){
 client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).channel.stopTyping()
       return sendError(
         "<:tairitsuno:801419553933492245> | Looks like I was unable to find the song on YouTube",
         interaction, client
-      );}
+      );
+    }
+    
    const vidNameArr = [];
     const vidUrlArr = [];
     const vidLengthArr = [];
@@ -102,13 +126,9 @@ client.guilds.cache
       .setDescription(vidArr.join("\n")) //Ok
       
       .addField("Exit", " type `exit`, `cancel` or `close`");
-    
-    client.api.interactions(interaction.id, interaction.token).callback.post({
-                data: {
-                    type: 4,
-                    data: await client.createAPIMessage(interaction, embed)
-                }
-            }).then(client.guilds.cache
+  
+    editInteraction(client, interaction, embed)
+      .then(client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping());
     try {
       var response = await client.guilds.cache
