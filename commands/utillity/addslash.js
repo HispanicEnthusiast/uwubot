@@ -43,3 +43,17 @@ bot.api.applications(bot.user.id).guilds(message.guild.id.toString()).commands.p
    return message.noMentionReply(
         `<:hikariok:801419553841741904> | Slash command succesfully exported!`
       );
+      } else return message.mentionReply(
+        "<:tairitsuno:801419553933492245> | You can't use that command! you need at least manage channels, manage server or admin perm!"
+      );
+}
+exports.info = {
+name: 'addslash',
+  aliases:["slashadd", "add-slash", "slash-add"],
+  usage: "",
+  description: "Sets up the slash command for this server.",
+}
+exports.conf={
+  cooldown: 0,
+  dm: "yes"
+}
