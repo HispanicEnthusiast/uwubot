@@ -59,7 +59,14 @@ const sendEror = require("../../util/eror");
         "<:tairitsuno:801419553933492245> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         interaction, client
       );
-
+client.api.interactions(interaction.id, interaction.token).callback.post({
+      data:{
+        type:5,
+        data:{
+          content:``
+             }
+      }
+    })
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
