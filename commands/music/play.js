@@ -225,9 +225,10 @@ const sendEror = require("../../util/eror");
     if (searched.videos.length === 0){
 client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).channel.stopTyping()
-      return sendError(
+      return sendEror(
         "<:tairitsuno:801419553933492245> | Looks like I was unable to find the song on YouTube",
-        interaction, client
+        client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
       );}
     var songInfo = searched.videos[0];
 
@@ -247,7 +248,8 @@ client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       if (client.guilds.cache
-      .get(interaction.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', interaction, client);
+      .get(interaction.guild_id).me.voice.channel !== channel)return sendEror('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id));
       serverQueue.songs.push(song);
       let thing = new MessageEmbed()
         .setAuthor(
