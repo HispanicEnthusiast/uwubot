@@ -64,15 +64,6 @@ const sendEror = require("../../util/eror");
         "<:tairitsuno:801419553933492245> | You didn't provide what you want to play",
         interaction, client
       );
-     client.api.interactions(interaction.id, interaction.token).callback.post({
-                data: {
-                    type: 4,
-                    data: {
-                        content:
-      `🔎 | Searching for \`${args.slice().join(" ")}\`...`
-    }
-                }
-            });
     client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).startTyping();
     var serverQueue = client.guilds.cache
@@ -98,8 +89,7 @@ client.guilds.cache
 
       vidArr.push(`${vidNameArr[i]}${vidUrlArr[i]}`);
     }
-var songEmbed = await client.guilds.cache
-      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).send(`🔎 | The list to choose for the song \`${args.slice().join(" ")}\` will be created...`)
+
     vidNameArr.push("exit");
     vidNameArr.push("cancel");
     vidNameArr.push("close");
@@ -118,7 +108,7 @@ var songEmbed = await client.guilds.cache
         .addField('** **', `${vidNameArr[8]}`+`${vidUrlArr[8]}`)
         .addField('** **', `${vidNameArr[9]}`+`${vidUrlArr[9]}`)*/
       .addField("Exit", " type `exit`, `cancel` or `close`");
-songEmbed.edit("", { embed }).then(client.guilds.cache
+.then(client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping());
     try {
       var response = await client.guilds.cache
