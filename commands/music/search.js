@@ -131,6 +131,7 @@ client.guilds.cache
       .addField("Exit", " type `exit`, `cancel` or `close`");
  editInteraction(client, interaction, embed, client.user.id).then(client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping());
+    
     try {
       var response = await client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).awaitMessages(
