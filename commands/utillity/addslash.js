@@ -28,7 +28,7 @@ exports.run = (bot, message, args) => {
 
         bot.helps.get(category).cmds.push(prop.info.name);
 
-bot.api.applications(bot.user.id).guilds(message.guild.id.toString()).commands.post({
+bot.api.applications(bot.user.id).commands.post({
         data: {
             name: prop.info.name,
             description: prop.info.description,
