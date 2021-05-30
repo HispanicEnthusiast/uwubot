@@ -17,6 +17,28 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     const channel = await bot.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message, bot);
     if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message, bot);
+    const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
+
+    if (!serverQueue) {
+      message.mentionReply("<:tairitsuno:801419553933492245> | Nothing playing in this server");
+    }
+    if(isNaN(args[0]))return sendError("<:tairitsuno:801419553933492245> | Please use Numerical Values only", message)
+    if(args[0]<1)return sendError("<:tairitsuno:801419553933492245> | Please give a number that is higher than 1", message)
+   
+    if(args[0] > serverQueue.songs.length) {
+      return sendError("<:tairitsuno:801419553933492245> | Unable to find this song", message)
+    }
+
+    try {
+      serverQueue.songs.splice(0, args[0]);
+      serverQueue.connection.dispatcher.end("Skiped the music");
+message.react("801419553841741904")
+      return;
+    } catch {
+      serverQueue.connection.dispatcher.end();
+      await channel.leave();
+      return sendError("<:tairitsuno:801419553933492245> | Please try this command again, if it still don't work, report the owner.", message);
+    }
   },
   options: [
   {
