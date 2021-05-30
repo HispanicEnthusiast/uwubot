@@ -26,11 +26,13 @@ module.exports = {
     
     const Current = await Queue.songs.shift();
     
-    Queue.songs = Queue.songs.sort(() => Math.round(Math.random()));
+    for (let i=0;i<Queue.songs.length;i++){
+      Queue.songs = Queue.songs.sort(() => Math.round(Math.sqrt(Math.random())/ i));
     await Queue.songs.unshift(Current);
-    message.react("801419553841741904")
-    sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message)
-    
+    //message.react("801419553841741904")
+    sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message, client)
+
+}
   },
   interaction: async (client, message, args) => {
     let sendSuccess= require("../../util/slash/success"),
@@ -48,12 +50,16 @@ module.exports = {
       return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message, client);
     
     const Current = await Queue.songs.shift();
-    let random=Math.round(Math.random())
-    Queue.songs = Queue.songs.sort(() => random);
+    
+    for (let i=0;i<Queue.songs.length;i++){
+      Queue.songs = Queue.songs.sort(() => Math.round(Math.sqrt(Math.random())/ i));
     await Queue.songs.unshift(Current);
     //message.react("801419553841741904")
     sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message, client)
-    
+
+
+}
+        
   },
   options:[]
   
