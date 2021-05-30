@@ -22,8 +22,7 @@ module.exports = {
             "qrm",
             "queuerm",
             "qurm"]
-  }
-  ,
+  },
   interaction: (bot, message, arg) => {
     const sendSuccess = require("../../util/slash/success")
 const sendError =require("../../util/slash/error")
@@ -47,6 +46,14 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     serverQueue.songs.splice(args[0] - 1, 1)
     sendSuccess("<:hikariok:801419553841741904> | Song is removed sucessfully!", message)
   },
+  options: [
+  {
+    name: "song",
+    description: "which song do you want to remove(By number)",
+    type: 3,
+    required: false
+  }
+],
   run: (bot, message, args) => {
     const sendSuccess = require("../../util/success")
 const sendError =require("../../util/error")
@@ -67,5 +74,6 @@ const sendError =require("../../util/error")
     
     serverQueue.songs.splice(args[0] - 1, 1)
     sendSuccess("<:hikariok:801419553841741904> | Song is removed sucessfully!", message)
-  }
+  },
+  
 };
