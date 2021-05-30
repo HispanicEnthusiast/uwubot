@@ -35,24 +35,38 @@ module.exports = {
     name: "volume",
     description: "(1-100) How many percents of volume do you want to set?",
     type: 3,
-    required: true
+    required: false
   }
 ],
-  interaction: async function (client, message, arg) {
+  interaction: async function (bot, message, arg) {
     const sendError = require("../../util/slash/error");
-    const channel = message.member.voice.channel
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
-    if (message.guild.me.voice.channel.id !== channel.id)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
-    const serverQueue = message.client.queue.get(message.guild.id);
-    if (!serverQueue) return sendError("There is nothing playing in this server.", message);
-    if (!args[0])return message.noMentionReply(`The current volume is: **${serverQueue.volume}**`);
+    let args=[]
+if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "volume").value]  
+    const channel = bot.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message, bot);
+    if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message, bot);
+    const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild.id);
+    if (!serverQueue) return sendError("There is nothing playing in this server.", message, bot);
+    if (!args[0])return bot.api.interactions(message.id, message.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                      content:`The current volume is: **${serverQueue.volume}**`
+                    }
+                }
+            });
     serverQueue.volume = args[0]; 
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);;
-    if(isNaN(args[0]))return sendError("Please use Numerical Values only", message)
+    if(isNaN(args[0]))return sendError("Please use Numerical Values only", message, bot)
     let xd = new MessageEmbed()
     .setDescription(`<:hikariok:801419553841741904> | I set the volume to: **${args[0]}/100**`)
     .setTitle("Server Volume Manager")
     .setColor("BLUE")
-    return message.noMentionReply(xd);
+    return bot.api.interactions(message.id, message.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await bot.createAPIMessage(message, xd)
+                }
+            });;
   },
 };
