@@ -22,11 +22,11 @@ module.exports = {
     const Queue = await message.client.queue.get(message.guild.id);
 
     if (!Queue)
-      return sendError("There is nothing playing in this server.", message);
+      return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message);
     
     const Current = await Queue.songs.shift();
     
-    Queue.songs = Queue.songs.sort(() => Math.random() - 0.5);
+    Queue.songs = Queue.songs.sort(() => Math.round(Math.random()));
     await Queue.songs.unshift(Current);
     message.react("801419553841741904")
     sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message)
@@ -45,15 +45,16 @@ module.exports = {
     const Queue = await client.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
     
     if (!Queue)
-      return sendError("There is nothing playing in this server.", message, client);
+      return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message, client);
     
     const Current = await Queue.songs.shift();
     
-    Queue.songs = Queue.songs.sort(() => Math.random() - 0.5);
+    Queue.songs = Queue.songs.sort(() => Math.round(Math.random()));
     await Queue.songs.unshift(Current);
     //message.react("801419553841741904")
     sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message, client)
     
-  }
+  },
+  options:[]
   
 };
