@@ -19,14 +19,13 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message, bot);
     const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 
-    if (!serverQueue) {
-      message.mentionReply("<:tairitsuno:801419553933492245> | Nothing playing in this server");
-    }
-    if(isNaN(args[0]))return sendError("<:tairitsuno:801419553933492245> | Please use Numerical Values only", message)
-    if(args[0]<1)return sendError("<:tairitsuno:801419553933492245> | Please give a number that is higher than 1", message)
+    if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message, bot);
+
+    if(isNaN(args[0]))return sendError("<:tairitsuno:801419553933492245> | Please use Numerical Values only", message, bot)
+    if(args[0]<1)return sendError("<:tairitsuno:801419553933492245> | Please give a number that is higher than 1", message, bot)
    
     if(args[0] > serverQueue.songs.length) {
-      return sendError("<:tairitsuno:801419553933492245> | Unable to find this song", message)
+      return sendError("<:tairitsuno:801419553933492245> | Unable to find this song", message, bot)
     }
 
     try {
@@ -34,16 +33,17 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
       serverQueue.connection.dispatcher.end("Skiped the music");
 message.react("801419553841741904")
       return;
-    } catch {
+    } catch (err){
       serverQueue.connection.dispatcher.end();
       await channel.leave();
-      return sendError("<:tairitsuno:801419553933492245> | Please try this command again, if it still don't work, report the owner.", message);
+      console.error(err)
+      return sendError("<:tairitsuno:801419553933492245> | Please try this command again, if it still don't work, report the owner.", message, bot);
     }
   },
   options: [
   {
     name: "song",
-    description: "which song do you want to remove(By number)",
+    description: "To which song do you want to skip(By number)",
     type: 3,
     required: true
   }
