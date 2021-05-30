@@ -167,6 +167,7 @@ console.log(song.url)
     }
   },
   interaction: async function(client, interaction, arg) {
+    let args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     const sendSuccess = require("../../util/slash/success"),sendError = require("../../util/slash/error");
 const sendSucces = require("../../util/succes");
 const sendEror = require("../../util/eror");
@@ -179,36 +180,46 @@ const sendEror = require("../../util/eror");
         interaction, client
       );
 
-    const permissions = channel.permissionsFor(message.client.user);
+    const permissions = channel.permissionsFor(client.guilds.cache
+      .get(interaction.guild_id).client.user);
     if (!permissions.has("CONNECT")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
         "<:tairitsuno:801419553933492245> | I cannot connect to your voice channel, make sure I have the proper permissions!",
-        message
+        interaction, client
       );
     if (!permissions.has("SPEAK")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
         "<:tairitsuno:801419553933492245> | I cannot speak in this voice channel, make sure I have the proper permissions!",
-        message
+        interaction, client
       );
 
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
         "<:tairitsuno:801419553933492245> | You didn't provide what you want to play",
-        message
+        interaction, client
       );
-    var songEmbed = await message.noMentionReply(
+    var songEmbed = await client.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: {
+                        content:
       `🔎 | Searching for \`${args.slice().join(" ")}\`...`
-    );
-    message.channel.startTyping();
-    var serverQueue = message.client.queue.get(message.guild.id);
+    }
+                }
+            });
+    client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).startTyping();
+    var serverQueue = client.guilds.cache
+      .get(interaction.guild_id).client.queue.get(interaction.guild_id);
 
     var searched = await yts.search(searchString);
     if (searched.videos.length === 0){
-message.channel.stopTyping()
+client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).channel.stopTyping()
       return sendError(
         "<:tairitsuno:801419553933492245> | Looks like I was unable to find the song on YouTube",
-        message
+        interaction, client
       );}
     var songInfo = searched.videos[0];
 
@@ -220,13 +231,15 @@ message.channel.stopTyping()
       ago: songInfo.ago,
       duration: songInfo.duration.toString(),
       img: songInfo.image,
-      req: message.author
+      req: interaction.member.user.id
     };
 
     if (serverQueue&&serverQueue.songs!==null) {
       
-      message.channel.stopTyping();
-      if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
+      client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
+      if (client.guilds.cache
+      .get(interaction.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', interaction, client);
       serverQueue.songs.push(song);
       let thing = new MessageEmbed()
         .setAuthor(
@@ -239,28 +252,34 @@ message.channel.stopTyping()
         .addField("Duration", song.duration)
         .addField("Requested by", song.req.tag)
         .setFooter(`Views: ${song.views} | ${song.ago||'Unknown'}`);
-      message.channel.stopTyping();
+      client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)
       return message.noMentionReply(thing);
     }
 
     const queueConstruct = {
-      textChannel: message.channel,
+      textChannel: client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).id,
       voiceChannel: channel,
       connection: null,
       songs: [],
       volume: 100,
       playing: true
     };
-    message.client.queue.set(message.guild.id, queueConstruct);
+    client.guilds.cache
+      .get(interaction.guild_id).client.queue.set(interaction.guild_id, queueConstruct);
     queueConstruct.songs.push(song);
-    message.channel.stopTyping();
+    client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
     const play = async song => {
-      const queue = message.client.queue.get(message.guild.id);
+      const queue = client.guilds.cache
+      .get(interaction.guild_id).client.queue.get(interaction.guild_id);
       if (!song) {
         //sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);//If you want your bot stay in vc 24/7 remove this line :D
         //queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line too :D
-        message.client.queue.delete(message.guild.id);
+        client.guilds.cache
+      .get(interaction.guild_id).client.queue.delete(interaction.guild_id);
         return;
       }
 console.log(song.url)
@@ -299,24 +318,28 @@ console.log(song.url)
         .addField("Requested by", song.req.tag, true)
         .setFooter(`Views: ${song.views} | Ago: ${song.ago||'Unknown'}`);
       queue.textChannel.send(thing);
-      message.channel.stopTyping();
+      client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
 
       //songEmbed.edit("",thing);
     };
 
     try {
       const connection = await channel.join();
-      message.channel.stopTyping();
+      client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       queueConstruct.connection = connection;
       channel.guild.voice.setSelfDeaf(true);
       play(queueConstruct.songs[0]);
     } catch (error) {
       console.error(`I could not join the voice channel: ${error}`);
-      message.client.queue.delete(message.guild.id);
+      client.guilds.cache
+      .get(interaction.guild_id).client.queue.delete(interaction.guild_id);
       await channel.leave();
       return sendEror(
         `<:tairitsuno:801419553933492245> | I could not join the voice channel: ${error}`,
-        message.channel
+        client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
       );
     }
   }
