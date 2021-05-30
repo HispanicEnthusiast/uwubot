@@ -347,7 +347,7 @@ fs.readdir("./commands/", (err, categories) => {
 
 bot.on('ready', () =>{
   
-  bot.guilds.cache.forEach((guild, id)=>{
+  
   fs.readdir("./commands/", (err, categories) => {
 	if (err) console.log(err);
   categories.forEach(category => {
@@ -370,7 +370,7 @@ bot.on('ready', () =>{
 
         bot.helps.get(category).cmds.push(prop.info.name);
 
-bot.api.applications(bot.user.id).guilds(id).commands.post({
+bot.api.applications(bot.user.id).commands.post({
         data: {
             name: prop.info.name,
             description: prop.info.description,
@@ -381,9 +381,8 @@ bot.api.applications(bot.user.id).guilds(id).commands.post({
  })
 })
 })
-})
+}) 
     console.log('Finished exported slash command!')
-   })
   
 bot.ws.on('INTERACTION_CREATE', async interaction => {
         const command = interaction.data.name.toLowerCase();
