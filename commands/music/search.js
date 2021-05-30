@@ -86,14 +86,16 @@ const sendEror = require("../../util/eror");
     var serverQueue = client.guilds.cache
       .get(interaction.guild_id).client.queue.get(interaction.guild_id);
 
-    client.api.interactions(interaction.id, interaction.token).callback.post({
+    let songEmbed=await client.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
                     type: 5,
-                    data: {
+                    /*data: {
                       content: `🔎 | Searching for \`${args.slice().join(" ")}\`...`
-                    }
+                    }*/
                 }
             })
+    
+    console.log(songEmbed)
     var searched = await yts.search(searchString);
     
     if (searched.videos.length === 0){
