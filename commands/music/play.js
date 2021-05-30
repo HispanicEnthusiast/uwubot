@@ -4,12 +4,12 @@ const yts = require("yt-search");
 const sendSuccess = require("../../util/success"),sendError = require("../../util/error");
 const sendSucces = require("../../util/succes");
 const sendEror = require("../../util/eror");
-async function play (song, queueConstruct, guild, client) {
-      const queue = client.guilds.cache.get(guild.i);
+async function play (song, queueConstruct, client, guild) {
+      const queue = client.guilds.cache.get(guild.id).client.queue.get(guild.id);
       if (!song) {
         //sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);//If you want your bot stay in vc 24/7 remove this line :D
         //queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line too :D
-        guild.client.queue.delete(guild.id);
+        client.guilds.cache.get(guild.id).client.queue.delete(guild.id);
         return;
       }
 console.log(song.url)
@@ -156,7 +156,7 @@ message.channel.stopTyping()
       message.channel.stopTyping();
       queueConstruct.connection = connection;
       channel.guild.voice.setSelfDeaf(true);
-      play(queueConstruct.songs[0], queueConstruct, message.guild);
+      play(queueConstruct.songs[0], queueConstruct, client, message.guild);
     } catch (error) {
       console.error(`I could not join the voice channel: ${error}`);
       message.client.queue.delete(message.guild.id);
