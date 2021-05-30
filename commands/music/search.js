@@ -170,7 +170,7 @@ client.guilds.cache
       response.first().content === "close" ||
       response.first().content === "cancel"
     )
-      
+     return 
     try {
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
