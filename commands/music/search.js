@@ -32,7 +32,9 @@ module.exports = {
   }
 ],
   interaction: async function(client, interaction, arg) {
-    let args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
+     
+    let args=[arg.find(arg => arg.name.toLowerCase() == "song").value];
+    console.log(client.api.interactions(interaction.id, interaction.token))
     const sendSuccess = require("../../util/slash/success"),sendError = require("../../util/slash/error");
 const sendSucces = require("../../util/succes");
 const sendEror = require("../../util/eror");
@@ -108,7 +110,12 @@ client.guilds.cache
         .addField('** **', `${vidNameArr[8]}`+`${vidUrlArr[8]}`)
         .addField('** **', `${vidNameArr[9]}`+`${vidUrlArr[9]}`)*/
       .addField("Exit", " type `exit`, `cancel` or `close`");
-.then(client.guilds.cache
+   let songEmbed= await client.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 4,
+                    data: await client.createAPIMessage(interaction, embed)
+                }
+            }).then(client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping());
     try {
       var response = await client.guilds.cache
