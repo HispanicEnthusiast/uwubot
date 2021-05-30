@@ -59,15 +59,9 @@ const sendEror = require("../../util/eror");
         "<:tairitsuno:801419553933492245> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         interaction, client
       );
-client.api.interactions(interaction.id, interaction.token).callback.post({
-      data:{
-        type:5,
-        data:{
-          content:``
-             }
-      }
-    })
+
     var searchString = args.join(" ");
+    
     if (!searchString)
       return sendError(
         "<:tairitsuno:801419553933492245> | You didn't provide what you want to play",
@@ -77,7 +71,11 @@ client.api.interactions(interaction.id, interaction.token).callback.post({
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).startTyping();
     var serverQueue = client.guilds.cache
       .get(interaction.guild_id).client.queue.get(interaction.guild_id);
-
+client.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 5
+                }
+            });
     var searched = await yts.search(searchString);
     if (searched.videos.length === 0){
 client.guilds.cache
@@ -110,7 +108,7 @@ client.guilds.cache
       .addField("Exit", " type `exit`, `cancel` or `close`");
    let songEmbed= await client.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
-                    type: 4
+                    type: 4,
                     data: await client.createAPIMessage(interaction, embed)
                 }
             }).then(client.guilds.cache
