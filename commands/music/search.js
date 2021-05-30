@@ -34,7 +34,7 @@ module.exports = {
   interaction: async function(client, interaction, arg) {
      
     let args=[arg.find(arg => arg.name.toLowerCase() == "song").value];
-    console.log(client.api.interactions(interaction.id, interaction.token))
+    client.api.interactions(interaction.id, interaction.token).callback
     const sendSuccess = require("../../util/slash/success"),sendError = require("../../util/slash/error");
 const sendSucces = require("../../util/succes");
 const sendEror = require("../../util/eror");
