@@ -239,7 +239,7 @@ client.guilds.cache
       ago: songInfo.ago,
       duration: songInfo.duration.toString(),
       img: songInfo.image,
-      req: client.guilds.cache.get(interaction.guild_id).members.cache.get(interaction.member.user.id)
+      req: client.guilds.cache.get(interaction.guild_id).members.cache.get(interaction.member.user.id).user
     };
 
     if (serverQueue&&serverQueue.songs!==null) {
@@ -263,14 +263,11 @@ client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)
-      return client.guilds.cache
-      .get(message.guild_id)
-      .channels.cache.get()
+      return client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id).send(thing)
     }
 
     const queueConstruct = {
-      textChannel: client.guilds.cache
-      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).id,
+      textChannel: client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id),
       voiceChannel: channel,
       connection: null,
       songs: [],
