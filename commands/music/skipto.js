@@ -1,4 +1,3 @@
-let sendSuccess= require("../../util/success"),sendError= require("../../util/error")
 module.exports = {
   conf:{
     cooldown: 0,
@@ -10,8 +9,26 @@ module.exports = {
     usage: "<number>",
     aliases: ["skip-to"],
   },
-
+  interaction: async (bot, message, arg) => {
+    const sendSuccess = require("../../util/slash/success")
+const sendError =require("../../util/slash/error")
+    let args=[]
+if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]  
+    const channel = await bot.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message, bot);
+    if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message, bot);
+  },
+  options: [
+  {
+    name: "song",
+    description: "which song do you want to remove(By number)",
+    type: 3,
+    required: true
+  }
+ ],
   run: async (client, message, args) => {
+    let sendSuccess= require("../../util/success"),sendError= require("../../util/error")
+
 
     const { channel } = message.member.voice;
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
