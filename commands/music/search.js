@@ -180,7 +180,7 @@ client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       console.error(err);
-      
+      return
     }
     const song = {
       id: songInfo.videoId,
