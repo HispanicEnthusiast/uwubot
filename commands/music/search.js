@@ -9,14 +9,14 @@ module.exports = {
     dm: "no"
   },
   info: {
-    name: "search-song",
+    name: "search",
     description: "To search, play/add a song/songs :D",
     usage: "<song_name>",
     aliases: [
       "searchsong",
       "search-music",
       "searchmusic",
-      "search",
+      "search-song",
       "find-song",
       "findsong",
       "find-music",
@@ -64,7 +64,7 @@ const sendEror = require("../../util/eror");
         "<:tairitsuno:801419553933492245> | You didn't provide what you want to play",
         interaction, client
       );
-    var songEmbed = await client.api.interactions(interaction.id, interaction.token).callback.post({
+     client.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
                     type: 4,
                     data: {
@@ -86,8 +86,94 @@ client.guilds.cache
         "<:tairitsuno:801419553933492245> | Looks like I was unable to find the song on YouTube",
         interaction, client
       );}
-    var songInfo = searched.videos[0];
+   const vidNameArr = [];
+    const vidUrlArr = [];
+    const vidLengthArr = [];
+    const vidArr = [];
+    for (let i = 0; i < searched.videos.length && i < 10; i++) {
+      vidNameArr.push(
+        `\`${i + 1}.\` [${Util.escapeMarkdown(searched.videos[i].title)}]`
+      );
+      vidUrlArr.push(`(${Util.escapeMarkdown(searched.videos[i].url)})`);
 
+      vidArr.push(`${vidNameArr[i]}${vidUrlArr[i]}`);
+    }
+var songEmbed = await client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).send(`🔎 | The list to choose for the song \`${args.slice().join(" ")}\` will be created...`)
+    vidNameArr.push("exit");
+    vidNameArr.push("cancel");
+    vidNameArr.push("close");
+    const embed = new MessageEmbed()
+      .setColor("#0affaf")
+      .setTitle("Choose a song by giving a number between 1 and 10")
+      .setDescription(vidArr.join("\n")) //Ok
+      /*.addField('** **', `${vidNameArr[0]}`+`${vidUrlArr[0]}`)
+        .addField('** **', `${vidNameArr[1]}`+`${vidUrlArr[1]}`)
+        .addField('** **', `${vidNameArr[2]}`+`${vidUrlArr[2]}`)
+        .addField('** **', `${vidNameArr[3]}`+`${vidUrlArr[3]}`)
+        .addField('** **', `${vidNameArr[4]}`+`${vidUrlArr[4]}`)
+        .addField('** **', `${vidNameArr[5]}`+`${vidUrlArr[5]}`)
+        .addField('** **', `${vidNameArr[6]}`+`${vidUrlArr[6]}`)
+        .addField('** **', `${vidNameArr[7]}`+`${vidUrlArr[7]}`)
+        .addField('** **', `${vidNameArr[8]}`+`${vidUrlArr[8]}`)
+        .addField('** **', `${vidNameArr[9]}`+`${vidUrlArr[9]}`)*/
+      .addField("Exit", " type `exit`, `cancel` or `close`");
+songEmbed.edit("", { embed }).then(client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping());
+    try {
+      var response = await client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).awaitMessages(
+        msg => (msg.content > 0 && msg.content < 11) || msg.content === "exit",
+        {
+          max: 1,
+          maxProcessed: 1,
+          time: 60000,
+          errors: ["time"]
+        }
+      );
+      if (response.first() === undefined) {
+        client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
+        if (songEmbed) {
+          songEmbed.delete();
+        }
+        return sendError(
+          "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
+          interaction, client
+        );
+      }
+      var videoIndex = parseInt(response.first().content);
+    } catch (err) {
+      client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
+      console.error(err);
+      if (songEmbed) {
+        songEmbed.delete();
+      }
+      return sendError(
+        "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
+        interaction, client
+      );
+    }
+    if (
+      response.first().content === "exit" ||
+      response.first().content === "close" ||
+      response.first().content === "cancel"
+    )
+      return songEmbed.delete();
+    try {
+      client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
+      var songInfo = searched.videos[videoIndex - 1];
+      if (songEmbed) songEmbed.delete();
+    } catch (err) {
+      client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
+      console.error(err);
+      if (songEmbed) {
+        songEmbed.delete();
+      }
+    }
     const song = {
       id: songInfo.videoId,
       title: Util.escapeMarkdown(songInfo.title),
