@@ -23,16 +23,16 @@ module.exports = {
             "queuerm",
             "qurm"]
   },
-  interaction: (bot, message, arg) => {
+  interaction: async (bot, message, arg) => {
     const sendSuccess = require("../../util/slash/success")
 const sendError =require("../../util/slash/error")
     let args=[]
 if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]  
-    const channel = message.member.voice.channel
+    const channel = await bot.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
-    if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
+    if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
 
-    const serverQueue = message.client.queue.get(message.guild.id);
+    const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 
     if (!serverQueue)return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message);
      if(isNaN(args[0]))return sendError("<:tairitsuno:801419553933492245> | Please use Numerical Values only", message)
@@ -51,7 +51,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     name: "song",
     description: "which song do you want to remove(By number)",
     type: 3,
-    required: false
+    required: true
   }
 ],
   run: (bot, message, args) => {
