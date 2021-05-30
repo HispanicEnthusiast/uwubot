@@ -13,8 +13,7 @@ module.exports = {
   },
   //checked
   run: async function(client, message, args) {
-    const sendError = require("../../util/error");
-    const sendSuccess = require("../../util/success");
+    const sendError = require("../../util/error"), sendSuccess = require("../../util/success");
 
     const channel = message.member.voice.channel;
     if (!channel)
