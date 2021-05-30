@@ -32,7 +32,8 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
       serverQueue.songs.splice(0, args[0]-1);
       serverQueue.connection.dispatcher.end("Skiped the music");
 //message.react("801419553841741904")
-      return;
+      return sendSuccess('<:hikariok:801419553841741904> | Skipped the song!', message, bot)
+      
     } catch (err){
       serverQueue.connection.dispatcher.end();
       await channel.leave();
