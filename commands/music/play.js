@@ -4,54 +4,6 @@ const yts = require("yt-search");
 const sendSuccess = require("../../util/success"),sendError = require("../../util/error");
 const sendSucces = require("../../util/succes");
 const sendEror = require("../../util/eror");
-async function play (song, queueConstruct, client, guild) {
-      const queue = client.guilds.cache.get(guild.id).client.queue.get(guild.id);
-      if (!song) {
-        //sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);//If you want your bot stay in vc 24/7 remove this line :D
-        //queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line too :D
-        client.guilds.cache.get(guild.id).client.queue.delete(guild.id);
-        return;
-      }
-console.log(song.url)
-      const dispatcher = queue.connection
-        .play(ytdl(song.url, {filter:"audioonly"}))
-        .on("finish", () => {
-          if (queue.loop === true) {
-            queue.songs.push(queue.songs.shift());
-          }
-          if (queue.skip !== true) {
-            queue.songs.shift();
-            play(queue.songs[0]);
-            console.log(
-              queue.skip === true ? "enabled" : "disabled" + ": !true"
-            );
-          } else {
-            console.log(
-              queue.skip === true ? "enabled" : "disabled" + ": true"
-            );
-            queue.skip = false;
-            play(queue.songs[0]);
-            //
-          }
-
-          //const command = args.shift().toLowerCase();
-          
-        }) //thynk
-        .on("error", error => console.error);
-      dispatcher.setVolumeLogarithmic(queueConstruct.volume / 100);
-      let thing = new MessageEmbed()
-        .setAuthor("Now Playing", song.req.displayAvatarURL({ dynamic: true }))
-        .setThumbnail(song.img)
-        .setColor("BLUE")
-        .addField("Name", `[${song.title}]` + `(${song.url})`)
-        .addField("Duration", song.duration, true)
-        .addField("Requested by", song.req.tag, true)
-        .setFooter(`Views: ${song.views} | Ago: ${song.ago||'Unknown'}`);
-      queue.textChannel.send(thing);
-      
-
-      //songEmbed.edit("",thing);
-    };
 module.exports = {
   conf: {
     cooldown: 0,
@@ -148,15 +100,61 @@ message.channel.stopTyping()
     message.client.queue.set(message.guild.id, queueConstruct);
     queueConstruct.songs.push(song);
     message.channel.stopTyping();
-    
+    const play = async song => {
+      const queue = message.client.queue.get(message.guild.id);
+      if (!song) {
+        //sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);//If you want your bot stay in vc 24/7 remove this line :D
+        //queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line too :D
+        message.client.queue.delete(message.guild.id);
+        return;
+      }
+console.log(song.url)
+      const dispatcher = queue.connection
+        .play(ytdl(song.url, {filter:"audioonly"}))
+        .on("finish", () => {
+          if (queue.loop === true) {
+            queue.songs.push(queue.songs.shift());
+          }
+          if (queue.skip !== true) {
+            queue.songs.shift();
+            play(queue.songs[0]);
+            console.log(
+              queue.skip === true ? "enabled" : "disabled" + ": !true"
+            );
+          } else {
+            console.log(
+              queue.skip === true ? "enabled" : "disabled" + ": true"
+            );
+            queue.skip = false;
+            play(queue.songs[0]);
+            //
+          }
+
+          //const command = args.shift().toLowerCase();
+          
+        }) //thynk
+        .on("error", error => console.error);
+      dispatcher.setVolumeLogarithmic(queueConstruct.volume / 100);
+      let thing = new MessageEmbed()
+        .setAuthor("Now Playing", song.req.displayAvatarURL({ dynamic: true }))
+        .setThumbnail(song.img)
+        .setColor("BLUE")
+        .addField("Name", `[${song.title}]` + `(${song.url})`)
+        .addField("Duration", song.duration, true)
+        .addField("Requested by", song.req.tag, true)
+        .setFooter(`Views: ${song.views} | Ago: ${song.ago||'Unknown'}`);
+      queue.textChannel.send(thing);
+      message.channel.stopTyping();
+
+      //songEmbed.edit("",thing);
+    };
 
     try {
-      message.channel.stopTyping();
       const connection = await channel.join();
       message.channel.stopTyping();
       queueConstruct.connection = connection;
       channel.guild.voice.setSelfDeaf(true);
-      play(queueConstruct.songs[0], queueConstruct, client, message.guild);
+      play(queueConstruct.songs[0]);
     } catch (error) {
       console.error(`I could not join the voice channel: ${error}`);
       message.client.queue.delete(message.guild.id);
