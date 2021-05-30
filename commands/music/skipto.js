@@ -29,9 +29,9 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     }
 
     try {
-      serverQueue.songs.splice(0, args[0]);
+      serverQueue.songs.splice(0, args[0]-1);
       serverQueue.connection.dispatcher.end("Skiped the music");
-message.react("801419553841741904")
+//message.react("801419553841741904")
       return;
     } catch (err){
       serverQueue.connection.dispatcher.end();
@@ -67,7 +67,7 @@ message.react("801419553841741904")
     }
 
     try {
-      serverQueue.songs.splice(0, args[0]);
+      serverQueue.songs.splice(0, args[0]-1);
       serverQueue.connection.dispatcher.end("Skiped the music");
 message.react("801419553841741904")
       return;
