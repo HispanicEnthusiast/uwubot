@@ -26,7 +26,7 @@ module.exports = {
       let xd = new MessageEmbed()
       .setDescription("⏸ Paused the music for you!")
       .setColor("YELLOW")
-      .setTitle("Music has been paused!")
+      .setTitle("<:hikariok:801419553841741904> | Music has been paused!")
       return message.noMentionReply(xd);
     }
     return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message);
@@ -45,7 +45,7 @@ module.exports = {
       let embed = new MessageEmbed()
       .setDescription("⏸ Paused the music for you!")
       .setColor("YELLOW")
-      .setTitle("Music has been paused!")
+      .setTitle("<:hikariok:801419553841741904> | Music has been paused!")
       return client.api.interactions(message.id, message.token).callback.post({
                 data: {
                     type: 4,

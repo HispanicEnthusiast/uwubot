@@ -76,7 +76,7 @@ vote.vote++
     message.react("801419553841741904")
 },
   options:[],
-  run: async function (client, message, args) {
+  interaction: async function (client, message, args) {
     const sendError = require("../../util/slash/error"),sendSuccess = require("../../util/slash/success");
     const channel = client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
@@ -97,7 +97,7 @@ vote.vote++
     serverQueue.skip = !serverQueue.skip
     serverQueue.connection.dispatcher.end("Skiped the music");
     
-    return
+    return sendSuccess(`<:hikariok:801419553841741904> | Skipped the song!`)
        }
        
        if(vote.voters.includes(message.member.user.id)) {
@@ -112,14 +112,14 @@ vote.vote++
     //serverQueue.songs.shift()
     serverQueue.skip = !serverQueue.skip
     serverQueue.connection.dispatcher.end("Skiped the music");
-    
+    return sendSuccess(`<:hikariok:801419553841741904> | Skipped the song!`)
        }
        
        
        
 vote.vote++
        vote.voters.push(message.author.id)
-       return message.noMentionReply(`Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} votes more to skip`)
+       return sendSuccess(`<:hikariok:801419553841741904> | Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} votes more to skip`, message, client)
     
      
      
