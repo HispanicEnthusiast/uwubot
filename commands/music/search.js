@@ -1,9 +1,7 @@
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const sendSuccess = require("../../util/success"),sendError = require("../../util/error");
-const sendSucces = require("../../util/succes");
-const sendEror = require("../../util/eror");
+
 
 module.exports = {
   conf: {
@@ -27,6 +25,9 @@ module.exports = {
   },
   //checked, only the error on ${song.ago} because or topic-user's song, collection and the others are ok
   run: async function(client, message, args) {
+    const sendSuccess = require("../../util/success"),sendError = require("../../util/error");
+const sendSucces = require("../../util/succes");
+const sendEror = require("../../util/eror");
     const channel = message.member.voice.channel;
     if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
     const permissions = channel.permissionsFor(message.client.user);
