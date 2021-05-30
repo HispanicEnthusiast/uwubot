@@ -53,6 +53,6 @@ module.exports = {
                 }
             });
     }
-    return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message);
+    return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message, client);
   },
 };
