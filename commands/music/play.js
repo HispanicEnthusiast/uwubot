@@ -166,6 +166,14 @@ console.log(song.url)
       );
     }
   },
+  options: [
+  {
+    name: "song",
+    description: "which song do you want to play?",
+    type: 3,
+    required: true
+  }
+],
   interaction: async function(client, interaction, arg) {
     let args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     const sendSuccess = require("../../util/slash/success"),sendError = require("../../util/slash/error");
@@ -231,7 +239,7 @@ client.guilds.cache
       ago: songInfo.ago,
       duration: songInfo.duration.toString(),
       img: songInfo.image,
-      req: interaction.member.user.id
+      req: client.guilds.cache.get(interaction.guild_id).members.cache.get(interaction.member.user.id)
     };
 
     if (serverQueue&&serverQueue.songs!==null) {
@@ -255,7 +263,9 @@ client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)
-      return message.noMentionReply(thing);
+      return client.guilds.cache
+      .get(message.guild_id)
+      .channels.cache.get()
     }
 
     const queueConstruct = {
