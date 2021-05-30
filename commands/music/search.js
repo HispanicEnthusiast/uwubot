@@ -85,9 +85,10 @@ const sendEror = require("../../util/eror");
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).startTyping();
     var serverQueue = client.guilds.cache
       .get(interaction.guild_id).client.queue.get(interaction.guild_id);
-client.api.interactions(interaction.id, interaction.token).callback.post({
+
+    client.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
-                    type: 4,
+                    type: 5,
                     data: {
                       content: `🔎 | Searching for \`${args.slice().join(" ")}\`...`
                     }
@@ -126,9 +127,12 @@ client.guilds.cache
       .setDescription(vidArr.join("\n")) //Ok
       
       .addField("Exit", " type `exit`, `cancel` or `close`");
-  
-    editInteraction(client, interaction, embed)
-      .then(client.guilds.cache
+ client.api.interactions(interaction.id, interaction.token).callback.post({
+                data: {
+                    type: 7,
+                    data: await client.createAPIMessage(interaction, embed)
+                }
+            }).then(client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping());
     try {
       var response = await client.guilds.cache
