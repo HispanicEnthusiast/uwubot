@@ -71,11 +71,7 @@ const sendEror = require("../../util/eror");
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).startTyping();
     var serverQueue = client.guilds.cache
       .get(interaction.guild_id).client.queue.get(interaction.guild_id);
-client.api.interactions(interaction.id, interaction.token).callback.post({
-                data: {
-                    type: 5
-                }
-            });
+
     var searched = await yts.search(searchString);
     if (searched.videos.length === 0){
 client.guilds.cache
@@ -106,7 +102,8 @@ client.guilds.cache
       .setDescription(vidArr.join("\n")) //Ok
       
       .addField("Exit", " type `exit`, `cancel` or `close`");
-   let songEmbed= await client.api.interactions(interaction.id, interaction.token).callback.post({
+    
+    client.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
                     type: 4,
                     data: await client.createAPIMessage(interaction, embed)
@@ -127,9 +124,7 @@ client.guilds.cache
       if (response.first() === undefined) {
         client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
-        if (songEmbed) {
-          songEmbed.delete();
-        }
+        
         return sendEror(
           "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
           client.guilds.cache
@@ -141,9 +136,7 @@ client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       console.error(err);
-      if (songEmbed) {
-        songEmbed.delete();
-      }
+      
       return sendEror(
         "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
         client.guilds.cache
@@ -155,19 +148,17 @@ client.guilds.cache
       response.first().content === "close" ||
       response.first().content === "cancel"
     )
-      return songEmbed.delete();
+      
     try {
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       var songInfo = searched.videos[videoIndex - 1];
-      if (songEmbed) songEmbed.delete();
+     
     } catch (err) {
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       console.error(err);
-      if (songEmbed) {
-        songEmbed.delete();
-      }
+      
     }
     const song = {
       id: songInfo.videoId,
