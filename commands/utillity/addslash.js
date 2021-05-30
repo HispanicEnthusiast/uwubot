@@ -3,10 +3,9 @@ const { MessageEmbed } = require("discord.js");
 const sendError =require("../../util/success"), fs=require('fs')
 exports.run = (bot, message, args) => {
   
-      if (!message.member.hasPermission("MANAGE_GUILD")&&!bot.config.owners.includes(message.author.id)&&!message.member.hasPermission("MANAGE_CHANNELS")&&!message.member.hasPermission("ADMINISTRATOR")&&message.guild)
-      return message.mentionReply(
-        "<:tairitsuno:801419553933492245> | You can't use that command! you need at least manage channels, manage server or admin perm!"
-      );
+      if (message.member.hasPermission("MANAGE_GUILD")||bot.config.owners.includes(message.author.id)||message.member.hasPermission("MANAGE_CHANNELS")||message.member.hasPermission("ADMINISTRATOR")||message.guild){
+
+      
     fs.readdir("./commands/", (err, categories) => {
 	if (err) console.log(err);
   categories.forEach(category => {
@@ -41,8 +40,11 @@ bot.api.applications(bot.user.id).guilds(message.guild.id.toString()).commands.p
 })
 })
 })
-   message.noMentionReply(
+   return message.noMentionReply(
         `<:hikariok:801419553841741904> | Slash command succesfully exported!`
+      );
+      } else return message.mentionReply(
+        "<:tairitsuno:801419553933492245> | You can't use that command! you need at least manage channels, manage server or admin perm!"
       );
 }
 exports.info = {
