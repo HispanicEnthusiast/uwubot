@@ -137,9 +137,10 @@ songEmbed.edit("", { embed }).then(client.guilds.cache
         if (songEmbed) {
           songEmbed.delete();
         }
-        return sendError(
+        return sendEror(
           "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
-          interaction, client
+          client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
         );
       }
       var videoIndex = parseInt(response.first().content);
@@ -150,9 +151,10 @@ songEmbed.edit("", { embed }).then(client.guilds.cache
       if (songEmbed) {
         songEmbed.delete();
       }
-      return sendError(
+      return sendEror(
         "<:tairitsuno:801419553933492245> | Please try again and enter a number between 1 and 10 or exit",
-        interaction, client
+        client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
       );
     }
     if (
@@ -190,7 +192,8 @@ songEmbed.edit("", { embed }).then(client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       if (client.guilds.cache
-      .get(interaction.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', interaction, client);
+      .get(interaction.guild_id).me.voice.channel !== channel)return sendEror('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', client.guilds.cache
+      .get(interaction.guild_id).channels.cache.get(interaction.channel_id));
       serverQueue.songs.push(song);
       let thing = new MessageEmbed()
         .setAuthor(
