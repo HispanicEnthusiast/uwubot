@@ -21,14 +21,14 @@ module.exports = {
       message.mentionReply("<:tairitsuno:801419553933492245> | Nothing playing in this server");
     }
     if(isNaN(args[0]))return sendError("<:tairitsuno:801419553933492245> | Please use Numerical Values only", message)
-    if(args[0]<2)return sendError("<:tairitsuno:801419553933492245> | Please give a number that is higher than 1", message)
+    if(args[0]<1)return sendError("<:tairitsuno:801419553933492245> | Please give a number that is higher than 1", message)
    
     if(args[0] > serverQueue.songs.length) {
       return sendError("<:tairitsuno:801419553933492245> | Unable to find this song", message)
     }
 
     try {
-      serverQueue.songs.splice(0, args[0]-1);
+      serverQueue.songs.splice(0, args[0]);
       serverQueue.connection.dispatcher.end("Skiped the music");
 message.react("801419553841741904")
       return;
