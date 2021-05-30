@@ -14,8 +14,8 @@ module.exports = {
   interaction: async (client, message, args) => {
 let sendSuccess= require("../../util/slash/success"),sendError= require("../../util/slash/error")
     const { channel } = client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice;
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
-    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
+    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message, client);
+    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message, client);
     const serverQueue = client.guilds.cache.get(message.guild_id).client.queue.get(message.guild.id);
     if (!serverQueue) {
       sendError("<:tairitsuno:801419553933492245> | Nothing playing in this server", message, client);
