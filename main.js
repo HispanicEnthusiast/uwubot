@@ -385,6 +385,7 @@ bot.api.applications(bot.user.id).commands.post({
     console.log('Finished exported slash command!')
   
 bot.ws.on('INTERACTION_CREATE', async interaction => {
+  bot.guilds.cache.
         const command = interaction.data.name.toLowerCase();
         const args = interaction.data.options;
   
