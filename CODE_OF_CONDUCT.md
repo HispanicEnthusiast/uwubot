@@ -57,7 +57,7 @@ If a community member engages in unacceptable behavior, the community organizers
 
 ## 7. Reporting Guidelines
 
-If you are subject to or witness unacceptable behavior, or have any other concerns, please notify a community organizer as soon as possible. [CONTACT_INFO_HERE].
+If you are subject to or witness unacceptable behavior, or have any other concerns, please notify a community organizer as soon as possible. [tags4owo@gmail.com].
 
 [LINK_TO_REPORTING_GUIDELINES]
 
@@ -77,7 +77,7 @@ This code of conduct and its related procedures also applies to unacceptable beh
 
 ## 10. Contact info
 
-[YOUR_CONTACT_INFO_HERE -- this should be a single person or a small team who can respond to issues directly]
+[tags4owo@gmail.com -- this should be a single person or a small team who can respond to issues directly]
 
 ## 11. License and attribution
 
