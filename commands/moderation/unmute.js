@@ -5,7 +5,7 @@ exports.run = async(bot, message, args) => {
      const permissions = message.channel.permissionsFor(message.client.user);
  let perm= message.channel.permissionsFor(message.member)//perm.has()
   if(!permissions.has("MANAGE_ROLES")) return
-  if(!perm.has("MANAGE_ROLES")&&!perm.has("MANAGE_MEMBERS")&&!message.member.hasPermission("MANAGE_GUILD")&&!message.member.hasPermission("ADMINISTRATOR"))return
+  if(!perm.has("MANAGE_ROLES")&&!perm.has("MANAGE_MEMBERS")&&!perm.has("MANAGE_GUILD")&&!perm.has("ADMINISTRATOR"))return
   if(!args[0])return message.mentionReply(
           "⚠ |Please mention the person who you want to unmute"
         );
