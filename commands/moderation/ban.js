@@ -26,7 +26,7 @@ exports.run = async (bot, message, args) => {
         return message.mentionReply("<:tairitsuno:801419553933492245> | You can not ban yourself");
       }
   let tar=message.channel.permissionsFor(target)//perm.has()
-      if (tar.has("ADMINISTRATOR")/*hasPermission("ADMINISTRATOR")*/){
+      if (tar.has("ADMINISTRATOR")){
         return message.mentionReply("<:tairitsuno:801419553933492245> | The user you want to ban is a moderator/administrator I can't do that,try to ban him/her/them yourself..");
   }
       let reason = args.slice(1).join(" ");
