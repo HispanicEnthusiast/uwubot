@@ -12,7 +12,7 @@ module.exports.run=async(bot,message,args)=>{
         
 
       let prefix = bot.db.set(`${message.guild.id}_prefix`, args.slice().join(" ").toLowerCase());
-
+if(args.slice().join(" ").toLowerCase()==='+')bot.db.delete(`${message.guild.id}_prefix`)
 
       console.log(prefix);
 

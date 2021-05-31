@@ -5,7 +5,7 @@ exports.run = (bot, message, args) => {
   let perm=message.channel.permissionsFor(message.member)//perm.has()
       if (perm.has("MANAGE_GUILD")||bot.config.owners.includes(message.author.id)||perm.has("MANAGE_CHANNELS")||perm.has("ADMINISTRATOR")){
 if(!message.guild)return
-      
+      //if (perm.has("MANAGE_GUILD")||bot.config.owners.includes(message.author.id)||perm.has("MANAGE_CHANNELS")&&!perm.has("ADMINISTRATOR"))
     fs.readdir("./commands/", (err, categories) => {
 	if (err) console.log(err);
   categories.forEach(category => {
