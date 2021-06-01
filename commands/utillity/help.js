@@ -13,12 +13,12 @@ let pages = [
   ];
   let list = [
     {
-      Category: "**Utillity/misc**",
+      Category: "**Utillity/Misc**",
       commands:
         "> `help`, `invite`, `support`, `prefix`, `avatar`, `info`, `userinfo(whois)`"
     }, //1
     {
-      Category: "**Search/query Commands**",
+      Category: "**Search/Query Commands**",
       commands: "> `say`, `sayembed`, `calculate`, `anime`, `poll`"
     }, //2
     {
@@ -41,12 +41,12 @@ let pages = [
         "> `join`, `play`, `np`, `lyrics`, `pause/continue`, `search`, `queue`, `skip`,`skipto`, `skipall`, `loop`, `volume`, `stop`, `disconnect`"
     }, //6
     {
-      Category: "**Npc/Tupper Commands**",
+      Category: "**NPC/Tupper Commands**",
       commands:
         "> `npc`, `npccreate`, `npcname`, `npclist`, `npcinfo`, `npcdesc`, `npcremove`, `npcavatar`"
     }, //7
     {
-      Category: "**Fun/roleplay Commands**",
+      Category: "**Fun/Roleplay Commands**",
       commands:
         "> `kiss`, `hug`, `pat`, `slap`, `wink`, `cuddle`, `neko`, `foxgirl`"
     }, //8

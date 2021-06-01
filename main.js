@@ -35,8 +35,6 @@ bot.on("message", message => {
   }
 });
 
-   
-
 bot.createAPIMessage= async(interaction, content)=> {
     const apiMessage = await discord.APIMessage.create(bot.channels.resolve(interaction.channel_id), content)
         .resolveData()
