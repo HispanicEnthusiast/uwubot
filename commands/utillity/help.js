@@ -9,7 +9,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === 'y.help') {
-    msg.reply('Check out my commands here: ');
+    msg.reply('Check out my commands here: https://docs.google.com/document/d/1ckSnvVqVQnGhI36xMlw4fGX_eqpan83RNUZu7sffKeI');
   }
 });
 

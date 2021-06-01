@@ -18,7 +18,7 @@ if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
       message.mention= message.author
       message.xpadd= args[0];
         
-        message.noMentionReply("<:hikariok:801419553841741904> | EXP added successfully!")
+        message.noMentionReply("EXP added successfully!")
         let a = message.guild.id;
   let xp = bot.db.add(`${a}xp_${message.mention.id}`, message.xpadd);
   let level = Math.floor(0.3 * Math.sqrt(xp));
