@@ -143,7 +143,7 @@ exports.run = async (bot, message, args) => {
           page = 9;
         } else
           return message.mentionReply(
-            "<:tairitsuno:801419553933492245> | Unknown Command or Category"
+            "Unknown Command or Category"
           );
       } else {
         let commandinfo = new discord.MessageEmbed()
@@ -173,17 +173,17 @@ about the brackets:
 React :arrow_right: to go to Page ${page + 1}`);
 
     message.noMentionReply(embed).then(msg => {
-      msg.react("766649447413055498");
-      msg.react("766649411014361159").then(r => {
-        msg.react("🗑");
+      msg.react(":arrow_right:");
+      msg.react(":arrow_right:").then(r => {
+        msg.react("➡️");
         const BackwardFilter = (reaction, user) =>
-          reaction.emoji.id === "766649447413055498" &&
+          reaction.emoji.id === ":arrow_right:" &&
           user.id === message.author.id;
         const ForwardFilter = (reaction, user) =>
-          reaction.emoji.id === "766649411014361159" &&
+          reaction.emoji.id === ":arrow_right:" &&
           user.id === message.author.id;
         const CloseFilter = (reaction, user) =>
-          reaction.emoji.name === "🗑" && user.id === message.author.id;
+          reaction.emoji.name === "➡️" && user.id === message.author.id;
         const backward = msg.createReactionCollector(BackwardFilter, {
           time: 60000,
           dispose: true
@@ -215,7 +215,7 @@ React :arrow_right: to go to Page ${page + 1}`);
           if (page == 1) {
             embed.setDescription(`${pages[page - 1]}
 
-React <:botarrowright:766649411014361159>to go to page ${page + 1}`);
+React :arrow_right: to go to Page ${page + 1}`);
             msg.edit(embed);
             return;
           }
@@ -223,8 +223,8 @@ React <:botarrowright:766649411014361159>to go to page ${page + 1}`);
             `${pages[page - 1]}` +
               `
 
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}
-Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
+React with :arrow_left: to go back Page ${page - 1}
+Or react with :arrow_right: to go to Page ${page + 1}`
           );
           embed.setTitle(`Page ${page}/${pages.length}`);
           msg.edit(embed);
@@ -235,7 +235,7 @@ Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
           if (page == 1) {
             embed.setDescription(`${pages[page - 1]}
 
-React <:botarrowright:766649411014361159>to go to page ${page + 1}`);
+React :arrow_right: to go to Page ${page + 1}`);
             msg.edit(embed);
             return;
           }
@@ -243,8 +243,8 @@ React <:botarrowright:766649411014361159>to go to page ${page + 1}`);
             `${pages[page - 1]}` +
               `
 
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}
-Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
+React with :arrow_left: to go back to Page ${page - 1}
+Or react with :arrow_right: to go to Page ${page + 1}`
           );
           embed.setTitle(`Page ${page}/${pages.length}`);
           msg.edit(embed);
@@ -267,7 +267,7 @@ Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
               `${pages[page - 1]}` +
                 `
 
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}`
+React with :arrow_left: to go back to Page ${page - 1}`
             );
             embed.setTitle(`Page ${page}/${pages.length}`);
             msg.edit(embed);
@@ -277,8 +277,8 @@ React with <:botarrowleft:766649447413055498>to go back page ${page - 1}`
             pages[page - 1] +
               `
 
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1} 
-Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
+React with :arrow_left: to go back to Page ${page - 1} 
+Or react with :arrow_right: to go to Page ${page + 1}`
           );
           embed.setTitle(`Page ${page}/${pages.length}`);
           msg.edit(embed);
@@ -291,7 +291,7 @@ Or react with <:botarrowright:766649411014361159>to go to page ${page + 1}`
               `${pages[page - 1]}` +
                 `
 
-React with <:botarrowleft:766649447413055498>to go back page ${page - 1}`
+React with :arrow_left: to go back Page ${page - 1}`
             );
             embed.setTitle(`Page ${page}/${pages.length}`);
             msg.edit(embed);
