@@ -4,7 +4,7 @@ const midDuel = new Set();
 module.exports = {
   info: {
     name: "TicTacToe",
-    description: "Fun game of TicTacToe",
+    description: "Fun Game of TicTacToe",
     minArgs: 1,
     maxArgs: 1,
     usage: "<mention>",
@@ -17,19 +17,19 @@ module.exports = {
   run: async(bot, message, args) => {
     let msg = message;
     const author = message.author.id; 
-    let member = await message.guild.members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
+    let member = await message.guild.members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("Please mention a correct user or give a correct ID of the user!") })
     const authorName = message.author.username; 
     const memberName = member.user.tag; 
 
     // All different failures
     if (!member) {
       // No user mentioned
-      return message.mentionReply("<:tairitsuno:801419553933492245> | Incorrect Syntax! Please mention a user!");
+      return message.mentionReply("Incorrect syntax, please mention a user!");
     }
     if (member.id === author) {
       // Played tries to duel himself
       return message.mentionReply(
-        "<:tairitsuno:801419553933492245> | Incorrext Syntax! You cannot duel yourself!"
+        "Incorrext syntax, you cannot duel yourself!"
       );
     }
     if (midDuel.has(author)) {
@@ -41,7 +41,7 @@ module.exports = {
     }
     if (member.id === message.client.user.id) {
       // User tries to duel the bot
-      return message.mentionReply("<:tairitsuno:801419553933492245> | You can't duel me!");
+      return message.mentionReply("You cannot duel me, silly!");
     }
 
     // Adds both players to a set so all of the above failures take affect
@@ -64,7 +64,7 @@ module.exports = {
 let url = member.avatarURL({dynamic:true, size:1024})
     // Creating the actual winner
     const Embed = new Discord.MessageEmbed()
-      .setTitle("<:ifyoucan:801419554063384586> | Tic Tac Toe")
+      .setTitle("Tic Tac Toe")
       .setThumbnail(url)
       .setDescription(
        //`🎮 **${authorName}** VS ${memberName} 🎮\n\n⬛1️⃣2️⃣3️⃣⬛\n⬛${a1}${a2}${a3}⬛\n⬛${b1}${b2}${b3}⬛\n⬛${c1}${c2}${c3}⬛\n⬛1️⃣2️⃣3️⃣⬛`
@@ -124,7 +124,7 @@ You may type "cancel" at any time to stop the game.
               if (a1 == "⭕" || a1 == "❌") {
                 // User tries to place at an already claimed spot
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -147,7 +147,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (a2 == "⭕" || a2 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -169,7 +169,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (a3 == "⭕" || a3 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -191,7 +191,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (b1 == "⭕" || b1 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -213,7 +213,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (b2 == "⭕" || b2 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -235,7 +235,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (b3 == "⭕" || b3 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -258,7 +258,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (c1 == "⭕" || c1 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -280,7 +280,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (c2 == "⭕" || c2 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);
@@ -302,7 +302,7 @@ You may type "cancel" at any time to stop the game.
             ) {
               if (c3 == "⭕" || c3 == "❌") {
                 message.channel.send(
-                  "That spot is already occupied.. and now you lost..."
+                  "That spot is already occupied and now you lost."
                 );
                 midDuel.delete(author);
                 midDuel.delete(member.id);

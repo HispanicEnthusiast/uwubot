@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     }
 
     if (user.bot || user === client.user) {
-        return message.noMentionReply("<:koulaugh:801419553220984862> | This user is a bot.");
+        return message.noMentionReply("This user is a bot.");
         // If the user was a bot, ignore it.
     }
 
@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
 
 exports.info = {
     name: "credit",
-    description: "Checking yours, or other members money.",
+    description: "Checking yours or other members money.",
     usage: "(<user_id_or_mention>)",
     aliases: ["bal", "balance","coin", "money", "credit"],
     example: "balance \nbalance @ray#1337"
