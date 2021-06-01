@@ -23,7 +23,7 @@ exports.run = async (bot, message, args) => {
       )
       .catch(err => {
         return message.mentionReply(
-          ":ddAlert: | Remember to mention a valid user to hug!"
+          "Remember to mention a valid user to hug!"
         );
       });
     usern = userm.user;
@@ -33,13 +33,13 @@ exports.run = async (bot, message, args) => {
 
   if (!userm || !args[0]) {
     return message.mentionReply(
-      ":ddAlert: | Remember to mention a valid user to hug!"
+      "Remember to mention a valid user to hug!"
     );
   }
 
   let embed = new discord.MessageEmbed()
     .setTitle(
-      `${author.username} gives ${usern.username} a hug <3 <3 Full of love owo!!!`
+      `${author.username} gives ${usern.username} a hug <3 Full of Love! OwO`
     )
     .setImage(mat.url)
     .setColor("RANDOM")

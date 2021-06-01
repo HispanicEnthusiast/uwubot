@@ -9,9 +9,9 @@ const perm=message.channel.permissionsFor(message.member)//perm.has()
   if(!perm.has("MANAGE_MEMBERS")&&!perm.has("MANAGE_GUILD")&&!perm.has("ADMINISTRATOR")) return message.mentionReply("<:tairitsuno:801419553933492245> | You don't have permission to warn!!!");
   let wUser = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Remember to mention a valid user to warn!") })
   if(!wUser) return message.mentionReply("I couldn't find the user!");
-  if(wUser.user.id === message.author.id)return message.mentionReply("<:tairitsuno:801419553933492245> | You can't warn yourself!")
+  if(wUser.user.id === message.author.id)return message.mentionReply("You can't warn yourself!")
  let pUser = message.channel.permissionsFor(wUser)//perm.has()
-  if(pUser.has("ADMINISTRATOR")) return message.mentionReply("<:tairitsuno:801419553933492245> | You don't have permission to warn an admin/mod!!!");
+  if(pUser.has("ADMINISTRATOR")) return message.mentionReply("You don't have permission to warn an admin/mod!!!");
   let reason = args.slice(1).join(" ");
       if (!reason) reason = "";
       let a=bot.db.get(`${wUser.user.id}_${message.guild.id}_warns`)||0
@@ -34,7 +34,7 @@ console.log(warnings)
         
         target.ban({reason: `get too much warns`});
        
-       return message.noMentionReply(`<:hikariok:801419553841741904> | Banned sucessfully **|** get too much warns`)
+       return message.noMentionReply(`has been banned sucessfully **|** they have reached the maximum amount of warnings.`)
 }   
   else
   if(a > d-1){
@@ -44,13 +44,13 @@ console.log(warnings)
         
         target.kick({reason: `get too much warns`});
        
-       return message.noMentionReply(`<:hikariok:801419553841741904> | Kicked sucessfully **|** get too much warns`)
+       return message.noMentionReply(`has been kicked sucessfully **|** they have reached the maximum amount of warnings.`)
 }  
   else
     if(a > c-1){
    
   
-    let userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@", "").replace(">", "")).catch(err => { console.error(err);return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this Person") })
+    let userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@", "").replace(">", "")).catch(err => { console.error(err);return message.mentionReply("Unable to find that user. NANI!?") })
     
         let target = userm
   
