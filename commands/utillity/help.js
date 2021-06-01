@@ -170,7 +170,7 @@ about the brackets:
       pages[page - 1]
     }
 
-React <:botarright:766649411014361159>to go to page ${page + 1}`);
+React :arrow_right: to go to Page ${page + 1}`);
 
     message.noMentionReply(embed).then(msg => {
       msg.react("766649447413055498");

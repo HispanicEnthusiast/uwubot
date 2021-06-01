@@ -23,7 +23,7 @@ exports.run = async (bot, message, args) => {
       )
       .catch(err => {
         return message.mentionReply(
-          "<:tairitsuno:801419553933492245> | Remember to mention a valid user to hug!"
+          ":ddAlert: | Remember to mention a valid user to hug!"
         );
       });
     usern = userm.user;
@@ -33,7 +33,7 @@ exports.run = async (bot, message, args) => {
 
   if (!userm || !args[0]) {
     return message.mentionReply(
-      "<:tairitsuno:801419553933492245> | Remember to mention a valid user to hug!"
+      ":ddAlert: | Remember to mention a valid user to hug!"
     );
   }
 
@@ -44,7 +44,7 @@ exports.run = async (bot, message, args) => {
     .setImage(mat.url)
     .setColor("RANDOM")
     .setTimestamp()
-    .setFooter("Hug hug hug!!!");
+    .setFooter("Hug hug hug!");
   message.channel.send(embed);
 };
 exports.info = {

@@ -83,7 +83,7 @@ exports.run = async (client, message, args) => {
             }
           );
           message.noMentionReply(
-            `<:hikariok:801419553841741904> | I set my ${stat.toLowerCase()} Status to :\n\`\`\`${args
+            `:ddPepeOkay: | My status is now set to:\n\`\`\`${args
               .slice(1)
               .join(" ")
               .replace("$MEMBER$", totalMembers)
