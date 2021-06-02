@@ -528,7 +528,7 @@ const promises = [
 ];
 
 let status;
-var actions = ["WATCHING", "PLAYING", "LISTENING"];
+var actions = ["WATCHING"];
 let guildssize = [],
   memberssize = [];
 let totalGuilds, totalMembers;
@@ -539,18 +539,17 @@ Promise.all(promises)
       (acc, memberCount) => acc + memberCount,
       0
     );
-    console.log(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
+    console.log(`Server Count: ${totalGuilds}\nMember Count: ${totalMembers}`);
 
     status = [
-      `${process.env.DISCORD_BOT_PREFIX}h for help | ${process.env.DISCORD_BOT_USERNAME}`,
-      `${process.env.DISCORD_BOT_PREFIX}help for help | ${process.env.DISCORD_BOT_USERNAME}`
+      `Servers 👀 | ${process.env.DISCORD_BOT_PREFIX}help`
     ];
   })
   .catch(console.error);
 //bot.shard.fetchClientValues('guilds.cache.size')
 
 bot.on("ready", () => {
-  console.log("Ok it works!!!");
+  console.log("Ok it works!");
   var randt = actions[Math.floor(Math.random() * actions.length)];
   var randstatus = status[Math.floor(Math.random() * status.length)];
   //console.log(randstatus)

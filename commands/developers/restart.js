@@ -3,14 +3,14 @@ exports.run = async (client,message,args)=>{
   
 
   
-    if(client.config.owners.includes(message.author.id)) {//make sure u replace your id here
-      message.react("801419553841741904").then(()=>process.exit(1))
+    if(client.config.owners.includes(message.author.id)) {
+      message.react("👍").then(()=>process.exit(1))
     }
 }
 exports.info = {
   name: 'restart',
   aliases: [],
-  description: "turn off the bot (Owner or trusted person only)",
+  description: "Restart Yukimo (Developer-Only Access)",
   usage : "",
   example: "",
 }
