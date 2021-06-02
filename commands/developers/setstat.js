@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
           0
         );
         console.log(
-          `Server Count: ${totalGuilds}\nMember Count: ${totalMembers}`
+          `Server count: ${totalGuilds}\nMember count: ${totalMembers}`
         );
 
         if (
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
           );
 
           message.noMentionReply(
-            `<:ddPepeOkay:845819956201521202> | Otay, my status is now set to:\n\`\`\`${args
+            `<:hikariok:801419553841741904> | I set my stream Status to :\n\`\`\`${args
               .slice(2)
               .join(" ")
               .replace("$MEMBER$", totalMembers)
@@ -83,7 +83,7 @@ exports.run = async (client, message, args) => {
             }
           );
           message.noMentionReply(
-            `<:ddPepeOkay:845819956201521202> | Otay, my status is now set to:\n\`\`\`${args
+            `:ddPepeOkay: | My status is now set to:\n\`\`\`${args
               .slice(1)
               .join(" ")
               .replace("$MEMBER$", totalMembers)

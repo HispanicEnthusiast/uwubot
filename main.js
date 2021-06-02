@@ -190,7 +190,7 @@ ${bot.db.get(`${member.guild.id}_welcomemessagesys`)}`);
     if (!bot.db.get(`${member.guild.id}_welcomemessage`)) {
       bot.db.set(
         `${member.guild.id}_welcomemessage`,
-        "A-ho $MENTION$, welcome to $SERVER$!"
+        "Welcome to $SERVER$, $MENTION$!"
       );
     }
     if (!bot.db.get(`${member.guild.id}_welcomeimg`)) {
@@ -528,7 +528,7 @@ const promises = [
 ];
 
 let status;
-var actions = ["WATCHING"];
+var actions = ["WATCHING", "PLAYING", "LISTENING"];
 let guildssize = [],
   memberssize = [];
 let totalGuilds, totalMembers;
@@ -539,15 +539,27 @@ Promise.all(promises)
       (acc, memberCount) => acc + memberCount,
       0
     );
-    console.log(`Server Count: ${totalGuilds}\nMember Count: ${totalMembers}`);
-  
+    console.log(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
+
     status = [
-      `Servers 👀 | ${process.env.DISCORD_BOT_PREFIX}help`
+      `${process.env.DISCORD_BOT_PREFIX}h for help | ${process.env.DISCORD_BOT_USERNAME}`,
+      `${process.env.DISCORD_BOT_PREFIX}help for help | ${process.env.DISCORD_BOT_USERNAME}`
     ];
   })
+  .catch(console.error);
+//bot.shard.fetchClientValues('guilds.cache.size')
 
 bot.on("ready", () => {
-  console.log("Ok it works!");
+  console.log("Ok it works!!!");
+  var randt = actions[Math.floor(Math.random() * actions.length)];
+  var randstatus = status[Math.floor(Math.random() * status.length)];
+  //console.log(randstatus)
+  bot.user
+    .setActivity(randstatus, {
+      type: randt
+    })
+    .catch(console.error);
+});
 
 function pad(n) {
   return parseInt(n) < 10 // If number less than 10

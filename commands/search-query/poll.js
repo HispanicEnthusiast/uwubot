@@ -10,15 +10,15 @@ message.delete()
   let vote = args.join(" ").replace(args[0], "").trim()
   if(!time) {
     let pollEmbedFall = new discord.MessageEmbed()
-    .setDescription("Please type the command correctly:\n*vote <time> <vote description>")
+    .setDescription("<:tairitsuno:801419553933492245> | Please type the command correctly:\n*vote <time> <Vote Description>")
   }
   if(args[0].toLowerCase().includes("s".toLowerCase())||args[0].toLowerCase().includes("m".toLowerCase())||args[0].toLowerCase().includes("ms".toLowerCase())||args[0].toLowerCase().includes("h".toLowerCase())||args[0].toLowerCase().includes("d".toLowerCase())) {
     if(args.join(" ").length < 1) {
     return
   }
   let pollEmbed = new discord.MessageEmbed()
-  .setTitle("Poll")
-  .setDescription(vote + "\Hosted By: <@!"+message.member.id+"> \nTime Left: " + args[0] )
+  .setTitle("Vote")
+  .setDescription(vote + "\nUser: <@!"+message.member.id+"> \nTime: " + args[0] )
   .setColor('#0affaf')
 const sendEmbed= await message.channel.send(pollEmbed)
   await sendEmbed.react("👍")
@@ -37,7 +37,7 @@ collectorv.on("end",collectv => {
   collectorx.on("end",(collectx) => {
      CompleteEmbed
     .setTitle("Time's up!")
- .setDescription(vote + `\Hosted By: <@!${message.member.id}>\n Time Left: 
+ .setDescription(vote + `\nUser: <@!${message.member.id}>\n Time: 
 ${args[0]}  
 Result:
 👍(Yes): ${collectv.size}
