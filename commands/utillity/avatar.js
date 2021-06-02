@@ -20,7 +20,7 @@ exports.run = async (bot, message, args) => {
   console.log(use.user.avatarURL({dynamic: true, size: 1024}))
   let embed = new discord.MessageEmbed()
   .setTitle(`${use.user.tag}`)
-  .setDescription(`[Avatar link]`+`(${use.user.avatarURL({dynamic: true, size: 1024})})`)
+  .setDescription(`[Avatar Link]`+`(${use.user.avatarURL({dynamic: true, size: 1024})})`)
   .setImage(`${use.user.avatarURL({dynamic: true, size: 1024})}`)
   .setColor(use.displayHexColor === "#000000" ? "#ffffff" : use.displayHexColor)
   message.noMentionReply(embed)
@@ -34,7 +34,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
       args = [message.member.user.id];
     } 
   let use;
-      use = await bot.guilds.cache.get(message.guild_id).members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
+      use = await bot.guilds.cache.get(message.guild_id).members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("Please mention a correct user or give a correct ID of the user!") })
     
     
     
@@ -44,7 +44,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
                 data: {
                     type: 4,
                     data: {
-                        content: "<:tairitsuno:801419553933492245> | Unable to find this person!"
+                        content: "Unable to find this user!"
                     }
                 }
             });
@@ -53,7 +53,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
  // console.log(use.user.avatarURL({dynamic: true, size: 1024}))
   let embed = new discord.MessageEmbed()
   .setTitle(`${use.user.tag}`)
-  .setDescription(`[Avatar link]`+`(${use.user.avatarURL({dynamic: true, size: 1024})})`)
+  .setDescription(`[Avatar Link]`+`(${use.user.avatarURL({dynamic: true, size: 1024})})`)
   .setImage(`${use.user.avatarURL({dynamic: true, size: 1024})}`)
   .setColor(use.displayHexColor === "#000000" ? "#ffffff" : use.displayHexColor)
   bot.api.interactions(message.id, message.token).callback.post({
