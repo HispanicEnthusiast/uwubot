@@ -540,25 +540,14 @@ Promise.all(promises)
       0
     );
     console.log(`Server Count: ${totalGuilds}\nMember Count: ${totalMembers}`);
-
+  
     status = [
       `Servers 👀 | ${process.env.DISCORD_BOT_PREFIX}help`
     ];
   })
-  .catch(console.error);
-//bot.shard.fetchClientValues('guilds.cache.size')
 
 bot.on("ready", () => {
   console.log("Ok it works!");
-  var randt = actions[Math.floor(Math.random() * actions.length)];
-  var randstatus = status[Math.floor(Math.random() * status.length)];
-  //console.log(randstatus)
-  bot.user
-    .setActivity(randstatus, {
-      type: randt
-    })
-    .catch(console.error);
-});
 
 function pad(n) {
   return parseInt(n) < 10 // If number less than 10

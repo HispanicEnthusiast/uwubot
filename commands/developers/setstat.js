@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
           );
 
           message.noMentionReply(
-            `<:ddPepeOkay:845819956201521202> | Otay!, my status is now set to:\n\`\`\`${args
+            `<:ddPepeOkay:845819956201521202> | Otay, my status is now set to:\n\`\`\`${args
               .slice(2)
               .join(" ")
               .replace("$MEMBER$", totalMembers)
