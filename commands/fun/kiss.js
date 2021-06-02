@@ -23,7 +23,7 @@ return message.mentionReply('Remember to mention a valid user to kiss!');
 }
     
   let embed = new MessageEmbed()
-  .setTitle(`${author.username} gives ${usern.username} a big kiss <3 Much Love! UwU`)
+  .setTitle(`${author.username} gives ${usern.username} a big kiss <:ddPRXAww:842745994167976016> Much Love! UwU`)
   .setImage(mat.url)
   .setColor('RANDOM')
   .setTimestamp()

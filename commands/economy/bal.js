@@ -23,8 +23,8 @@ exports.run = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
     .setColor(0x7289DA)
-    .setTitle(`${user.tag}'s Credit Card`)
-    .addField("Credits", `$${(balance).toLocaleString()}`)
+    .setTitle(`${user.tag}'s Wallet`)
+    .addField("Balance", `$${(balance).toLocaleString()}`)
     .setThumbnail(user.displayAvatarURL({size: 4096, dynamic: true}))
     .setTimestamp(new Date) 
     return message.noMentionReply(embed);

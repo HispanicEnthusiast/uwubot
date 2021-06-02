@@ -190,7 +190,7 @@ ${bot.db.get(`${member.guild.id}_welcomemessagesys`)}`);
     if (!bot.db.get(`${member.guild.id}_welcomemessage`)) {
       bot.db.set(
         `${member.guild.id}_welcomemessage`,
-        "Welcome to $SERVER$, $MENTION$!"
+        "A-ho $MENTION$, welcome to $SERVER$!"
       );
     }
     if (!bot.db.get(`${member.guild.id}_welcomeimg`)) {
