@@ -5,19 +5,17 @@ const moment = require("moment");
 
 exports.run = async (bot, message, args) => {
 
-  
-
     let userm;
 
     if (!args[0]) {
-      userm = await message.guild.members.fetch(message.member.id).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this Person") });
+      userm = await message.guild.members.fetch(message.member.id).catch(err => { return message.mentionReply("Unable to find this user!") });
     } else {
       if(!message.guild) return;
-      userm = message.mentions.members.last() || await message.guild.members.fetch(args[0]).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this Person") })
+      userm = message.mentions.members.last() || await message.guild.members.fetch(args[0]).catch(err => { return message.mentionReply("Unable to find this user?") })
     }
 
     if (!userm) {
-      return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this person!")
+      return message.mentionReply("Unable to find this user!")
     }
 const flags = {
 	DISCORD_EMPLOYEE: 'Discord Employee',
@@ -74,13 +72,13 @@ let data;
       //OTHER STUFF 
              if(userm.user.displayAvatarURL()!==undefined) embed.setAuthor(userm.user.tag, userm.user.displayAvatarURL({ dynamic: true })||"https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
 else embed.setAuthor(userm.user.tag, "https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
-       embed.addField("Nickname", userm.nickname||"no nickname("+userm.user.username+")")
-      embed.addField("Joined this Server At", moment(userm.joinedAt).format("LLLL"))
-        embed.addField("Account Created At", moment(userm.user.createdAt).format("LLLL"))
+       embed.addField("Server Nickname", userm.nickname||"no nickname("+userm.user.username+")")
+      embed.addField("Joined Server on", moment(userm.joinedAt).format("LLLL"))
+        embed.addField("Account Created on", moment(userm.user.createdAt).format("LLLL"))
         
-        embed.addField("Common Information", `ID: \`${userm.user.id}\`\nTag: #${userm.user.discriminator}\nIs a Bot: ${userm.user.bot}\nIs a Deleted User: ${userm.deleted}`)
+        embed.addField("Common Information", `ID: \`${userm.user.id}\`\nTag: #${userm.user.discriminator}\nBot: ${userm.user.bot}\nDeleted User: ${userm.deleted}`)
                                 
-       if(userm._roles) embed.addField("Roles",`<@&${userm._roles.join('> <@&')}>`.replace("<@&>", "No Roles"))
+       if(userm._roles) embed.addField("Server Roles",`<@&${userm._roles.join('> <@&')}>`.replace("<@&>", "No Roles"))
         embed.addField("Highest Role", userm.roles.highest)
         if(userm.roles.hoist)embed.addField("Rank/Hoist Role", userm.roles.hoist)
         if(userm.user.flags.toArray())embed.addField("Flags", userm.user.flags.toArray().length ? userm.user.flags.toArray().map(flag => flags[flag]).join(', ') : 'None')
@@ -111,7 +109,7 @@ if(arg) args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
       args = [message.member.user.id];
     } 
   let userm;
-      userm = await bot.guilds.cache.get(message.guild_id).members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
+      userm = await bot.guilds.cache.get(message.guild_id).members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("Please mention a correct user or give a correct ID of the user!") })
     
     
     
@@ -121,7 +119,7 @@ if(arg) args=[arg.find(arg => arg.name.toLowerCase() == "user").value]
                 data: {
                     type: 4,
                     data: {
-                        content: "<:tairitsuno:801419553933492245> | Unable to find this person!"
+                        content: "Unable to find this user!"
                     }
                 }
             });
@@ -183,13 +181,13 @@ let data;
       //OTHER STUFF 
              if(userm.user.displayAvatarURL()!==undefined) embed.setAuthor(userm.user.tag, userm.user.displayAvatarURL({ dynamic: true })||"https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
 else embed.setAuthor(userm.user.tag, "https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
-       embed.addField("Nickname", userm.nickname||"no nickname("+userm.user.username+")")
-      embed.addField("Joined this Server At", moment(userm.joinedAt).format("LLLL"))
-        embed.addField("Account Created At", moment(userm.user.createdAt).format("LLLL"))
+       embed.addField("Server Nickname", userm.nickname||"no nickname("+userm.user.username+")")
+      embed.addField("Joined Server on", moment(userm.joinedAt).format("LLLL"))
+        embed.addField("Account Created on", moment(userm.user.createdAt).format("LLLL"))
         
-        embed.addField("Common Information", `ID: \`${userm.user.id}\`\nTag: #${userm.user.discriminator}\nIs a Bot: ${userm.user.bot}\nIs a Deleted User: ${userm.deleted}`)
+        embed.addField("Common Information", `ID: \`${userm.user.id}\`\nTag: #${userm.user.discriminator}\nBot: ${userm.user.bot}\nDeleted User: ${userm.deleted}`)
                                 
-       if(userm._roles) embed.addField("Roles",`<@&${userm._roles.join('> <@&')}>`.replace("<@&>", "No Roles"))
+       if(userm._roles) embed.addField("Server Roles",`<@&${userm._roles.join('> <@&')}>`.replace("<@&>", "No Roles"))
         embed.addField("Highest Role", userm.roles.highest)
         if(userm.roles.hoist)embed.addField("Rank/Hoist Role", userm.roles.hoist)
         if(userm.user.flags)embed.addField("Flags", userm.user.flags.toArray().length ? userm.user.flags.toArray().map(flag => flags[flag]).join(', ') : 'None')

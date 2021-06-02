@@ -8,12 +8,12 @@ exports.run = async (bot, message, args) => {
       use = message.member;
     } else {
       if(!message.guild) return;
-      use = await message.guild.members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Please Mention a correct user or give a correct id of the user!") })
+      use = await message.guild.members.fetch(args[0].replace("<@!","").replace("<@", "").replace(">","")).catch(err => { return message.mentionReply("Please mention a correct user or give a correct ID of the user!") })
     
     }
 
     if (!use) {
-      return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this person!")
+      return message.mentionReply("Unable to find this user!")
     }
  
   // user.avatarURL({dynamic: true, size: 1024});

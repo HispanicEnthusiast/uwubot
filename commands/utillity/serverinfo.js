@@ -40,21 +40,21 @@ exports.run = async (bot, message, args) => {
 		const emojis = message.guild.emojis.cache;
 
 		const embed = new MessageEmbed()
-			.setTitle(`**Server information for __${message.guild.name}__**`)
+			.setTitle(`**Server Information for __${message.guild.name}__**`)
 			.setColor(0x0affaf)
 			.setThumbnail(message.guild.iconURL({ dynamic: true }))
 			.setDescription([
-				`**Name**\n${message.guild.name}`,
-				`**Server ID**\n${message.guild.id}`,
-				`**Owner**\n${message.guild.owner.user.tag} (${message.guild.ownerID})`,
+				`**Server Name**\n${message.guild.name}`,
+				`**ID**\n${message.guild.id}`,
+				`**Server Owner**\n${message.guild.owner.user.tag} (${message.guild.ownerID})`,
 				`**Region**\n${regions[message.guild.region]}`,
 				`**Boost Level**\n${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
         `**Server Boosts**\n${message.guild.premiumSubscriptionCount || '0'}`,
 				//`**Explicit Filter**\n${filterLevels[message.guild.explicitContentFilter]}`,
         `**Members**\n${message.guild.memberCount}`,
-        `**Roles**\n${roles.length}`,
-				`**Verification**\n${verificationLevels[message.guild.verificationLevel]}`,
-				`**Created At**\n${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} (${moment(message.guild.createdTimestamp).fromNow()})`,
+        `**Server Roles**\n${roles.length}`,
+				`**Verification Level**\n${verificationLevels[message.guild.verificationLevel]}`,
+				`**Server Created on**\n${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} (${moment(message.guild.createdTimestamp).fromNow()})`,
 				'\u200b'
 			])
 			/*.setDescription('**Statistics**', [
@@ -70,13 +70,6 @@ exports.run = async (bot, message, args) => {
 				`**Server Boosts**\n${message.guild.premiumSubscriptionCount || '0'}`,
 				'\u200b'
 			])*/
-			.addField('**Statuses**', [
-				`**Online**\n${members.filter(member => member.presence.status === 'online').size}`,
-				`**Idle**\n${members.filter(member => member.presence.status === 'idle').size}`,
-				`**Do Not Disturb**\n${members.filter(member => member.presence.status === 'dnd').size}`,
-				`**Offline**\n${members.filter(member => member.presence.status === 'offline').size}`,
-				'\u200b'
-			])
 			//.addField(`Roles [${roles.length - 1}]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
 			.setTimestamp();
 		message.noMentionReply(embed);
@@ -89,21 +82,21 @@ exports.interaction = async (bot, message, args) => {
 		const emojis = message.guild.emojis.cache;
 
 		const embed = new MessageEmbed()
-			.setTitle(`**Server information for __${message.guild.name}__**`)
+			.setTitle(`**Server Information for __${message.guild.name}__**`)
 			.setColor(0x0affaf)
 			.setThumbnail(message.guild.iconURL({ dynamic: true }))
 			.setDescription([
-				`**Name**\n${message.guild.name}`,
-				`**Server ID**\n${message.guild.id}`,
-				`**Owner**\n${message.guild.owner.user.tag} (${message.guild.ownerID})`,
+				`**Server Name**\n${message.guild.name}`,
+				`**ID**\n${message.guild.id}`,
+				`**Server Owner**\n${message.guild.owner.user.tag} (${message.guild.ownerID})`,
 				`**Region**\n${regions[message.guild.region]}`,
 				`**Boost Level**\n${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
         `**Server Boosts**\n${message.guild.premiumSubscriptionCount || '0'}`,
 				//`**Explicit Filter**\n${filterLevels[message.guild.explicitContentFilter]}`,
         `**Members**\n${message.guild.memberCount}`,
-        `**Roles**\n${roles.length}`,
-				`**Verification**\n${verificationLevels[message.guild.verificationLevel]}`,
-				`**Created At**\n${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} (${moment(message.guild.createdTimestamp).fromNow()})`,
+        `**Server Roles**\n${roles.length}`,
+				`**Verification Level**\n${verificationLevels[message.guild.verificationLevel]}`,
+				`**Server Created on**\n${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} (${moment(message.guild.createdTimestamp).fromNow()})`,
 				'\u200b'
 			])
 			/*.setDescription('**Statistics**', [
