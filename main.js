@@ -528,7 +528,7 @@ const promises = [
 ];
 
 let status;
-var actions = ["WATCHING", "PLAYING", "LISTENING"];
+var actions = ["WATCHING"];
 let guildssize = [],
   memberssize = [];
 let totalGuilds, totalMembers;
@@ -542,8 +542,7 @@ Promise.all(promises)
     console.log(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
 
     status = [
-      `${process.env.DISCORD_BOT_PREFIX}h for help | ${process.env.DISCORD_BOT_USERNAME}`,
-      `${process.env.DISCORD_BOT_PREFIX}help for help | ${process.env.DISCORD_BOT_USERNAME}`
+       `Servers 👀 | ${process.env.DISCORD_BOT_PREFIX}help`
     ];
   })
   .catch(console.error);
