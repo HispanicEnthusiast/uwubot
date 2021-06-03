@@ -1,21 +1,21 @@
 const { evaluate } = require("mathjs"),{ MessageEmbed }= require('discord.js');
     module.exports.run = async (bot, message, args) => {
 
-        if(!args[0]) return message.mentionReply('<:tairitsuno:801419553933492245> | Please give a question');
+        if(!args[0]) return message.mentionReply('Please give a problem to solve.');
 
         let resp;
 
         try {
             resp = evaluate(args.join(" ").replace("x", "*").replace("X", "*").replace(":", "/").replace("²", "^2").replace("³", "^3").replace("&", "+"))
         } catch (e) {
-            return message.mentionReply('<:tairitsuno:801419553933492245> | Please give a correct question')
+            return message.mentionReply('This problem does not work, try a different sign.')
         }
 
         const embed = new MessageEmbed()
         .setColor(0x0affaf)
-        .setTitle('Calculator')
-        .addField('Question', `\`\`\`css\n${args.join(' ')}\`\`\``)
-        .addField('Answer', `\`\`\`css\n${resp}\`\`\``)
+        .setTitle('Yukimo Calculator')
+        .addField('Question:', `\`\`\`css\n${args.join(' ')}\`\`\``)
+        .addField('Answer:', `\`\`\`css\n${resp}\`\`\``)
 
         message.noMentionReply(embed);
 
@@ -29,7 +29,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "math-question").value]
                 data: {
                     type: 4,
                     data: {
-                        content: '<:tairitsuno:801419553933492245> | Please give a question'
+                        content: 'Please give a problem to solve.'
                     }
                 }
             });
@@ -43,7 +43,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "math-question").value]
                 data: {
                     type: 4,
                     data: {
-                        content: '<:tairitsuno:801419553933492245> | Please give a correct question'
+                        content: 'This problem does not work, try a different sign.'
                     }
                 }
             });
@@ -51,9 +51,9 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "math-question").value]
 
         const embed = new MessageEmbed()
         .setColor(0x0affaf)
-        .setTitle('Calculator')
-        .addField('Question', `\`\`\`css\n${args.join(' ')}\`\`\``)
-        .addField('Answer', `\`\`\`css\n${resp}\`\`\``)
+        .setTitle('Yukimo Calculator')
+        .addField('Question:', `\`\`\`css\n${args.join(' ')}\`\`\``)
+        .addField('Answer:', `\`\`\`css\n${resp}\`\`\``)
 
         bot.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
