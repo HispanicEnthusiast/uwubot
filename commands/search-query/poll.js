@@ -10,15 +10,15 @@ message.delete()
   let vote = args.join(" ").replace(args[0], "").trim()
   if(!time) {
     let pollEmbedFall = new discord.MessageEmbed()
-    .setDescription("<:tairitsuno:801419553933492245> | Please type the command correctly:\n*vote <time> <Vote Description>")
+    .setDescription("Please type the command correctly:\n*poll <time> <poll description>")
   }
   if(args[0].toLowerCase().includes("s".toLowerCase())||args[0].toLowerCase().includes("m".toLowerCase())||args[0].toLowerCase().includes("ms".toLowerCase())||args[0].toLowerCase().includes("h".toLowerCase())||args[0].toLowerCase().includes("d".toLowerCase())) {
     if(args.join(" ").length < 1) {
     return
   }
   let pollEmbed = new discord.MessageEmbed()
-  .setTitle("Vote")
-  .setDescription(vote + "\nUser: <@!"+message.member.id+"> \nTime: " + args[0] )
+  .setTitle("Poll")
+  .setDescription(vote + "\nHosted By: <@!"+message.member.id+"> \nTime Left: " + args[0] )
   .setColor('#0affaf')
 const sendEmbed= await message.channel.send(pollEmbed)
   await sendEmbed.react("👍")
@@ -31,14 +31,13 @@ const sendEmbed= await message.channel.send(pollEmbed)
  const collectorx = sendEmbed.createReactionCollector(reactionx,{time})
  
 collectorv.on("end",collectv => {
-      console.log("ok...");
+      console.log("Okay.");
       let CompleteEmbed = new discord.MessageEmbed()
    .setColor("#0affaf")
   collectorx.on("end",(collectx) => {
      CompleteEmbed
     .setTitle("Time's up!")
- .setDescription(vote + `\nUser: <@!${message.member.id}>\n Time: 
-${args[0]}  
+ .setDescription("Poll" + "\nHosted By: <@!"+message.member.id+"> \n Time Left: " + args[0] )  
 Result:
 👍(Yes): ${collectv.size}
 👎(No): ${collectx.size}`)
