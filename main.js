@@ -545,11 +545,9 @@ Promise.all(promises)
        `Servers 👀 | ${process.env.DISCORD_BOT_PREFIX}help`
     ];
   })
-  .catch(console.error);
-//bot.shard.fetchClientValues('guilds.cache.size')
 
 bot.on("ready", () => {
-  console.log("Ok it works!!!");
+  console.log("Ok it works!");
   var randt = actions[Math.floor(Math.random() * actions.length)];
   var randstatus = status[Math.floor(Math.random() * status.length)];
   //console.log(randstatus)
