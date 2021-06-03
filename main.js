@@ -527,35 +527,15 @@ const promises = [
   )
 ];
 
-let status;
-var actions = ["WATCHING"];
-let guildssize = [],
-  memberssize = [];
-let totalGuilds, totalMembers;
-Promise.all(promises)
-  .then(results => {
-    totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
-    totalMembers = results[1].reduce(
-      (acc, memberCount) => acc + memberCount,
-      0
-    );
-    console.log(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
-
-    status = [
-       `Servers 👀 | ${process.env.DISCORD_BOT_PREFIX}help`
-    ];
-  })
-
-bot.on("ready", () => {
-  console.log("Ok it works!");
-  var randt = actions[Math.floor(Math.random() * actions.length)];
-  var randstatus = status[Math.floor(Math.random() * status.length)];
-  //console.log(randstatus)
-  bot.user
-    .setActivity(randstatus, {
-      type: randt
-    })
-    .catch(console.error);
+bot.on('ready', () => {
+    bot.user.setStatus('available')
+    bot.user.setPresence({
+        game: {
+            name: 'with depression',
+            type: "STREAMING",
+            url: "https://www.twitch.tv/monstercat"
+        }
+    });
 });
 
 function pad(n) {
