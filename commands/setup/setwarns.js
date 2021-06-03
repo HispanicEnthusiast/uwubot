@@ -8,7 +8,7 @@ exports.run = (bot, message, args) => {
         let perm=message.channel.permissionsFor(message.member)//perm.has()
       if (!perm.has("MANAGE_GUILD")&&!bot.config.owners.includes(message.author.id)&&!perm.has("MANAGE_CHANNELS")&&!perm.has("ADMINISTRATOR"))
       return message.mentionReply(
-        "<:tairitsuno:801419553933492245> | You can't use that command! you need at least manage channels, manage server or admin perm!"
+        "You can't use that command! you need at least manage channels, manage server or admin perm!"
       );
     if(isNaN(args[0])&&!isNaN(args[1])){
       const setup = args[1]
