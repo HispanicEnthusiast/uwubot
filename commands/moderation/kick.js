@@ -4,41 +4,41 @@ exports.run = async (bot, message, args) => {
   //console.log(message.member)
   const permissions = message.channel.permissionsFor(message.client.user);
   let perm=message.channel.permissionsFor(message.member)//perm.has()
-  if(!permissions.has("KICK_MEMBERS")) return message.noMentionReply("<:koucry:801419554311241728> | I don't have permission to ban!!!");
+  if(!permissions.has("KICK_MEMBERS")) return message.noMentionReply("🔨 | I don't have permission to kick!");
  if (!perm.has("KICK_MEMBERS")&&!perm.has("MANAGE_GUILD")&&!perm.has("MANAGE_MEMBERS")&&!perm.has("ADMINISTRATOR"))
-        return message.mentionReply("<:tairitsuno:801419553933492245> | You don't have permission to kick!!!");
+        return message.mentionReply("🔨 | You don't have permission to kick!");
 
  if (!args[0]) {
         return message.mentinReply(
-          "⚠ |Please mention or give the id of the person who you want to kick"
+          "🔨 | Please mention or give the ID of the person who you want to kick."
         );
       }
-      let target = await message.guild.members.fetch(message.member.id).catch(err => { return message.mentionReply("<:tairitsuno:801419553933492245> | Unable to find this Person") });
+      let target = await message.guild.members.fetch(message.member.id).catch(err => { return message.mentionReply("🔨 | Unable to find the user.") });
 
       if (target === !args[0]) {
         return message.mentionReply(
-          "⚠ |Please mention or give the id of the person who you want to kick"
+          "🔨 | Please mention or give the ID of the person who you want to kick"
         );
       }
       
       if (target.id === message.author.id) {
-        return message.mentionReply("<:tairitsuno:801419553933492245> | You can not kick yourself");
+        return message.mentionReply("🔨 | You can not kick yourself, silly.");
       }
   let tar=message.channel.permissionsFor(target)//perm.has()
       if (tar.has("ADMINISTRATOR")){
-        return message.mentionReply("<:tairitsuno:801419553933492245> | The user you want to kick is a moderator/administrator I can't do that,try to kick him/her/them yourself..");
+        return message.mentionReply("🔨 | The user you want to kick is a Moderator/Administrator I can't do that, sorry.");
   }
       let reason = args.slice(1).join(" ");
       if (!reason) reason = "-";
-      message.noMentionReply("kicking...")
+      message.noMentionReply("Kicking user...")
       .then(msg => {
         let reasonb = args.slice(1).join(" ");
         target.kick({reason: reason+` || by ${message.member.user.tag}`});
         if(!reasonb){
-        msg.edit(`<:hikariok:801419553841741904> | Kicked sucessfully`)
+        msg.edit(`🔨 **| Kicked sucessfully.**`)
         };
       if(reasonb) {
-        msg.edit(`<:hikariok:801419553841741904> | Kicked sucessfully **|** ${reason}`);}
+        msg.edit(`🔨 **| Kicked sucessfully.** - __${reason}__`);}
     });
       
 }

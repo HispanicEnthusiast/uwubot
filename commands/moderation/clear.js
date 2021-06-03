@@ -14,7 +14,7 @@ exports.run = (bot, message, args) => {
      }
      
     try{
-      message.channel.bulkDelete(args[0]+1).then(msg => message.noMentionReply(`🔨 | Deleted **${args[0]-1}** messages sucessfully`).then(msg=>msg.delete({timeout: 5000})))
+      message.channel.bulkDelete(args[0]+1).then(msg => message.noMentionReply(`🔨 | Deleted **${args[0]-1}** messages sucessfully.`).then(msg=>msg.delete({timeout: 5000})))
     }
     catch(error) {
       message.noMentionReply('Error:' + error)
