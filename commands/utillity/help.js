@@ -19,14 +19,4 @@ const helpEmbed = new Discord.MessageEmbed()
 	.setTimestamp()
 	.setFooter('Thank you so much for choosing Haunt, it means the world to me! <3');
   
-exports.info = {
-  name: 'help',
-  aliases: ['h'],
-  usage: "",
-  description: "shows the info of the bot"
-}
-
-exports.conf={
-  cooldown: 0,
-  dm: "yes"
 }
