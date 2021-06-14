@@ -598,11 +598,8 @@ function xp(message) {
       return;
     message.channel
       .send(`${message.author.toString()} is now on level ${newLevel}!`)
-      .then(ms => {
-        ms.delete({ timeout: "5000" });
-      });
+      };
   }
-}
 
 function serverxp(message) {
   let a = message.guild.id;
@@ -627,9 +624,6 @@ function serverxp(message) {
       .send(
         `${message.author.toString()} is now on level ${newLevel} in this server!`
       )
-      .then(ms => {
-        ms.delete({ timeout: "5000" });
-      });
   }
 }
 
