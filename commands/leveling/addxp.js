@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, args) => {
   let perm=message.channel.permissionsFor(message.member)//perm.has()
   if (!perm.has("MANAGE_GUILD")&&!perm.has("ADMINISTRATOR"))
       return message.mentionReply(
-        "<:tairitsuno:801419553933492245> | You can't use that command! you need at least manage channels, manage server or admin perm!"
+        "You can't use that command! you need at least manage channels, manage server or admin perm!"
       );
   let userm;
 if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
