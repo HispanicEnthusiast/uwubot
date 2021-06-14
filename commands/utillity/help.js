@@ -1,21 +1,24 @@
-const discord = require('discord.js')
+const Discord = require('discord.js')
 exports.run = (bot, message, args) => {
 const version = process.env.VERSION;
 
-let embed = new discord.MessageEmbed()
-    .setTitle("Haunt Bot Commands")
-    .setDescription('Utility: ?invite | ?support | ?prefix | ?avatar | ?info | ?whois')
-    .setDescription('Query: ?calculate | ?anime')
-    .setDescription('Moderation: ?kick | ?ban | ?mute | ?warn | ?purge | ?warnings')
-    .setDescription('Economy: ?bal | ?daily | ?roll | ?bet | ?give')
-    .setDescription('Music: ?play | ?np | ?lyrics | ?pause | ?search | ?queue | ?skip | ?vol')
-    .setDescription('Fun: ?kiss | ?hug | ?pat | ?slap | ?wink | ?cuddle')
-    .setDescription('NSFW: ?neko | ?foxgirl')
-    .setThumbnail(bot.user.avatarURL({dynamic:true, size: 1024}))
-    .setFooter("Thank you so much for choosing Haunt, it means the world to me! <3")
-    .setColor("#78d7fa")
-}
-
+const helpEmbed = new Discord.MessageEmbed()
+	.setColor('#0099ff')
+	.setTitle('Haunt Bot Commands (Help)')
+	.setURL('https://discord.gg/gassed')
+	.setAuthor('Haunt', 'https://i.imgur.com/wSTFkRM.png')
+	.addFields(
+		{ name: 'Utility', value: '?invite | ?support | ?prefix | ?avatar | ?info | ?whois' },
+    { name: 'Query', value: '?calculate | ?anime' },
+    { name: 'Moderation', value: '?kick | ?ban | ?mute | ?warn | ?purge | ?warnings' },
+    { name: 'Economy', value: '?bal | ?daily | ?roll | ?bet | ?give' },
+    { name: 'Music', value: '?play | ?np | ?lyrics | ?pause | ?search | ?queue | ?skip | ?vol' },
+    { name: 'Fun', value: '?kiss | ?hug | ?pat | ?slap | ?wink | ?cuddle' },
+    { name: 'NSFW', value: '?neko | ?foxgirl' },
+	)
+	.setTimestamp()
+	.setFooter('Thank you so much for choosing Haunt, it means the world to me! <3');
+  
 exports.info = {
   name: 'help',
   aliases: ['h'],
