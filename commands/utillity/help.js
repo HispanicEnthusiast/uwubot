@@ -5,16 +5,9 @@ exports.run = (bot, message, args) => {
   
     .setTitle("Haunt Bot Commands")
   
-    .addField("Utility: ?invite | ?support | ?prefix | ?avatar | ?info | ?whois")
-    .addField("Query: ?calculate | ?anime")
-    .addField("Moderation: ?kick | ?ban | ?mute | ?warn | ?purge | ?warnings")
-    .addField("Economy: ?bal | ?daily | ?roll | ?bet | ?give")
-    .addField("Music: ?play | ?join | ?np | ?lyrics | ?pause/continue | ?search | ?queue | ?skip/skipto | ?volume | ?stop | ?disconnect")
-    .addField("Fun: ?kiss | ?hug | ?pat | ?slap | ?wink | ?cuddle")
-    .addField("NSFW: ?neko | ?foxgirl")
+    .setDescription('Utility: ?invite | ?support | ?prefix | ?avatar | ?info | ?whois', 'Query: ?calculate | ?anime', 'Moderation: ?kick | ?ban | ?mute | ?warn | ?purge | ?warnings', 'Economy: ?bal | ?daily | ?roll | ?bet | ?give', 'Music: ?play | ?np | ?lyrics | ?pause | ?search | ?queue | ?skip | ?vol', 'Fun: ?kiss | ?hug | ?pat | ?slap | ?wink | ?cuddle', 'NSFW: ?neko | ?foxgirl')
   
     .setThumbnail(bot.user.avatarURL({dynamic:true, size: 1024}))
-    .addField("Bot Developer:", process.env.DISCORD_BOT_OWNER, true)
     .setFooter("Thank you so much for choosing Haunt, it means the world to me! <3")
     .setColor("#78d7fa")
     
@@ -25,7 +18,7 @@ exports.info = {
   name: 'help',
   aliases: ['h'],
   usage: "",
-  description: "shows the info of the bot"
+  description: "show the commands"
 }
 exports.conf = {
   cooldown: 5,
