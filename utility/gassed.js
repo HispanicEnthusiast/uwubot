@@ -3,12 +3,10 @@ exports.run = (bot, message, args) => {
 const version = process.env.VERSION;
 
 const newEmbed = new Discord.MessageEmbed()
-.setColor('#304281')
-.setThumbnail(bot.user.avatarURL({dynamic:true, size: 1024}))
-.setTitle('Haunt Bot Commands')
-.setDescription('These are my awesome-sauce commands that are useful.')
+.setColor('#050505')
+.setTitle('// ᓚᘏᗢ * .  +')
 .addFields(
-    {name: 'Utility/Misc', value: '?invite | ?support | ?prefix | ?avatar | ?info | ?whois'},
+    {name: '', value: '?invite | ?support | ?prefix | ?avatar | ?info | ?whois'},
     {name: 'Query/Search', value: '?calculate | ?anime'},
     {name: 'Moderation/Main', value: '?kick | ?ban | ?mute | ?warn | ?purge | ?warnings'},
     {name: 'Economy/Money', value: '?bal | ?daily | ?roll | ?bet | ?give'},
@@ -16,7 +14,6 @@ const newEmbed = new Discord.MessageEmbed()
     {name: 'Fun/Activities', value: '?kiss | ?hug | ?pat | ?slap | ?wink | ?cuddle'},
     {name: 'NSFW/Adult', value: '?neko | ?foxgirl'}
 )
-.setFooter('Thank you so much for choosing Haunt, it means the world to me!')
 
 message.channel.send(newEmbed);
 

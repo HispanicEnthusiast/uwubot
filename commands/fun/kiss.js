@@ -12,7 +12,7 @@ if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
       author = bot.user
     } else if(args[0]){
       if(!message.guild) return;
-      userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.mentionReply(":ddAlert: | Remember to mention a valid user to hug!") })
+      userm = await message.guild.members.fetch(args[0].replace("<@!", "").replace("<@","").replace(">","")).catch(err => { return message.mentionReply("Remember to mention a valid user to kiss!") })
       usern =userm.user
       //userm =use.user
       author = message.author
