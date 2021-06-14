@@ -7,31 +7,28 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', msg => {
-  if (msg.content === 'y.help') {
-    msg.reply('Check out my commands here: https://docs.google.com/document/d/1ckSnvVqVQnGhI36xMlw4fGX_eqpan83RNUZu7sffKeI');
-  }
-});
+exports.run = async (client, message, args) => {
+    let user;
+    if (message.mentions.users.first()) {
+      if(!message.guild) return;
+        user = message.mentions.users.first();
+    } else if (args[0]) {
+      if(!message.guild) return;
+        user = message.guild.members.cache.get(args[0]).user;
+    } else {
+        user = message.author;
+    }
 
-client.login('ODI1MTE2NzcxOTk2MTM5NTMw.YF5P4A.ZaC9nFVMcBgN62x-EnU-Rl700cg');
+    const embed = new Discord.MessageEmbed()
+    .setColor(0x7289DA)
+    .setTitle(`Haunt's Bot Commands`)
+    .addField("?invite | ?s")
+    .setThumbnail(user.displayAvatarURL({size: 4096, dynamic: true}))
+    .setTimestamp(new Date) 
+    return message.noMentionReply(embed);
+}
 
-exports.info = {
-  name: "help",
-  aliases: [
-    "h",
-    "command",
-    "commands",
-    "commandlist",
-    "commandslist",
-    "cmd",
-    "cmds",
-    "cmdlist",
-    "cmdlists"
-  ],
-  usage: "(<command>)",
-  description: "Get the information of a command or get the help list"
-};
 exports.conf = {
-  cooldown: 0,
+  cooldown: 5,
   dm: "yes"
-};
+}
