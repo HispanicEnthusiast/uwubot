@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
   
     let pad_zero = num => (num < 10 ? '0' : '') + num;
     let cooldown = 8.64e+7; 
-    let amount = 500; 
+    let amount = 1115; 
     let lastDaily = await client.db.get(`lastDaily.${message.author.id}`);
     let buck = await client.db.get(`account.${message.author.id}.balance`);
 
@@ -31,7 +31,7 @@ let totalSeconds = (timeObj / 1000);
         } else {
            client.db.set(`lastDaily.${message.author.id}`, Date.now());
             client.db.add(`account.${message.author.id}.balance`, amount);
-            return message.noMentionReply(`Great **${message.author.tag}**, you've been given $1,000 as daily!`);
+            return message.noMentionReply(`Great **${message.author.tag}**, you've been given $1,115 as daily!`);
         }
 
     } catch (error) {
