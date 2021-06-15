@@ -11,7 +11,7 @@ exports.run = async (bot, message, args) => {
       userm = await message.guild.members.fetch(message.member.id).catch(err => { return message.mentionReply("Unable to find this user!") });
     } else {
       if(!message.guild) return;
-      userm = message.mentions.members.last() || await message.guild.members.fetch(args[0]).catch(err => { return message.mentionReply("Unable to find this user?") })
+      userm = message.mentions.members.last() || await message.guild.members.fetch(args[0]).catch(err => { return message.mentionReply("Unable to find this user!") })
     }
 
     if (!userm) {
