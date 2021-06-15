@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
   
     let pad_zero = num => (num < 10 ? '0' : '') + num;
     let cooldown = 8.64e+7; 
-    let amount = 1115; 
+    let amount = 99999999999999999999999; 
     let lastDaily = await client.db.get(`lastDaily.${message.author.id}`);
     let buck = await client.db.get(`account.${message.author.id}.balance`);
 
