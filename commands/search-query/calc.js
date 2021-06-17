@@ -13,7 +13,7 @@ const { evaluate } = require("mathjs"),{ MessageEmbed }= require('discord.js');
 
         const embed = new MessageEmbed()
         .setColor(0x0affaf)
-        .setTitle('Yukimo Calculator')
+        .setTitle('Timmys Calculator')
         .addField('Question:', `\`\`\`css\n${args.join(' ')}\`\`\``)
         .addField('Answer:', `\`\`\`css\n${resp}\`\`\``)
 
@@ -51,7 +51,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "math-question").value]
 
         const embed = new MessageEmbed()
         .setColor(0x0affaf)
-        .setTitle('Yukimo Calculator')
+        .setTitle('Timyys Calculator')
         .addField('Question:', `\`\`\`css\n${args.join(' ')}\`\`\``)
         .addField('Answer:', `\`\`\`css\n${resp}\`\`\``)
 

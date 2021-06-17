@@ -16,13 +16,13 @@ module.exports = {
 
     
     const channel = message.member.voice.channel
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
-    if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);    
+    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message);
+    if (message.guild.me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);    
     
     const Queue = await message.client.queue.get(message.guild.id);
 
     if (!Queue)
-      return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message);
+      return sendError("<a:checkmark:854477462829006858> | There is nothing playing in this server.", message);
     
     const Current = await Queue.songs.shift();
     
@@ -40,13 +40,13 @@ module.exports = {
     
     const channel = await client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
 
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message, client);
-    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message, client);    
+    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message, client);
+    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message, client);    
     
     const Queue = await client.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
     
     if (!Queue)
-      return sendError("<:tairitsuno:801419553933492245> | There is nothing playing in this server.", message, client);
+      return sendError("<a:checkmark:854477462829006858> | There is nothing playing in this server.", message, client);
     
     const Current = await Queue.songs.shift();
     

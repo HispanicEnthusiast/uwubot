@@ -17,8 +17,8 @@ module.exports = {
   run: async function (client, message, args) {
     const sendError = require("../../util/error");
     const channel = message.member.voice.channel
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
-    if (message.guild.me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
+    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message);
+    if (message.guild.me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message);
     /*let{vote}=client
@@ -40,7 +40,7 @@ module.exports = {
        }
        
        if(vote.voters.includes(message.author.id)) {
-         return message.mentionReply("<:tairitsuno:801419553933492245> | You already voted for this song")
+         return message.mentionReply("<a:checkmark:854477462829006858> | You already voted for this song")
        }
        
        if(vcvote === 2) {
@@ -80,8 +80,8 @@ vote.vote++
   interaction: async function (client, message, args) {
     const sendError = require("../../util/slash/error"),sendSuccess = require("../../util/slash/success");
     const channel = client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
-    if (!channel)return sendError('<:tairitsuno:801419553933492245> | You need to join a voice channel to use this command!', message);
-    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:tairitsuno:801419553933492245> | You need to join voice channel where the bot is to use this command!', message);
+    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message);
+    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);
     const serverQueue = client.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
     if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message);
     /*let{vote}=client
@@ -102,7 +102,7 @@ vote.vote++
        }
        
        if(vote.voters.includes(message.member.user.id)) {
-         return message.mentionReply("<:tairitsuno:801419553933492245> | You already voted for this song")
+         return message.mentionReply("<a:checkmark:854477462829006858> | You already voted for this song")
        }
        
        if(vcvote === 2) {
