@@ -5,7 +5,7 @@ const version = process.env.VERSION;
 const newEmbed = new Discord.MessageEmbed()
 .setColor('#304281')
 .setThumbnail(bot.user.avatarURL({dynamic:true, size: 1024}))
-.setTitle('Haunt Bot Commands')
+.setTitle('Timmy Bot Commands')
 .setDescription('These are my awesome-sauce commands that are useful.')
 .addFields(
     {name: 'Utility/Misc', value: '?invite | ?support | ?prefix | ?avatar | ?info | ?whois'},
@@ -16,7 +16,7 @@ const newEmbed = new Discord.MessageEmbed()
     {name: 'Fun/Activities', value: '?kiss | ?hug | ?pat | ?slap | ?wink | ?cuddle'},
     {name: 'NSFW/Adult', value: '?neko | ?foxgirl'}
 )
-.setFooter('Thank you so much for choosing Haunt, it means the world to me!')
+.setFooter('Thank you so much for choosing Timmy, it means the world to me!')
 
 message.channel.send(newEmbed);
 
