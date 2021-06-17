@@ -147,7 +147,7 @@ console.log(song.url)
       queue.textChannel.send(thing);
       message.channel.stopTyping();
 
-      //songEmbed.edit("",thing);
+      songEmbed.edit("",thing);
     };
 
     try {
@@ -264,7 +264,7 @@ client.guilds.cache
         .setFooter(`Views: ${song.views} | Uploaded: ${song.ago||'Unknown'}`);
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
-      //if(songEmbed)return songEmbed.edit("",thing)
+      if(songEmbed)return songEmbed.edit("",thing)
       return client.guilds.cache.get(interaction.guild_id).channels.cache.get(interaction.channel_id).send(thing)
     }
 
@@ -285,8 +285,6 @@ client.guilds.cache
       const queue = client.guilds.cache
       .get(interaction.guild_id).client.queue.get(interaction.guild_id);
       if (!song) {
-        //sendSucces("<:hikariok:801419553841741904> | Disconnected sucessfully!", message.channel);//If you want your bot stay in vc 24/7 remove this line :D
-        //queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line too :D
         client.guilds.cache
       .get(interaction.guild_id).client.queue.delete(interaction.guild_id);
         return;
@@ -325,12 +323,12 @@ console.log(song.url)
         .addField("Name", `[${song.title}]` + `(${song.url})`)
         .addField("Duration", song.duration, true)
         .addField("Requested by", song.req.tag, true)
-        .setFooter(`Views: ${song.views} | Ago: ${song.ago||'Unknown'}`);
+        .setFooter(`Views: ${song.views} | Uploaded: ${song.ago||'Unknown'}`);
       queue.textChannel.send(thing);
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
 
-      //songEmbed.edit("",thing);
+      songEmbed.edit("",thing);
     };
 
     try {

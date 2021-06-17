@@ -25,7 +25,7 @@ module.exports = {
       let xd = new MessageEmbed()
       .setDescription("▶ Resumed the music for you!")
       .setColor("YELLOW")
-      .setTitle("<:hikariok:801419553841741904> | Music has been Resumed!")
+      .setTitle("<a:checkmark:854477462829006858> | Music has been resumed!")
       return message.noMentionReply(xd);
     }
     return sendError("There is nothing playing in this server.", message);
@@ -44,7 +44,7 @@ module.exports = {
       let embed = new MessageEmbed()
       .setDescription("▶ Resumed the music for you!")
       .setColor("YELLOW")
-      .setTitle("<:hikariok:801419553841741904> | Music has been Resumed!")
+      .setTitle("<a:checkmark:854477462829006858> | Music has been resumed!")
       return client.api.interactions(message.id, message.token).callback.post({
                 data: {
                     type: 4,

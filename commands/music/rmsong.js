@@ -44,7 +44,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     
     
     serverQueue.songs.splice(args[0], 1)
-    sendSuccess("<:hikariok:801419553841741904> | Song is removed sucessfully!", message, bot)
+    sendSuccess("<a:checkmark:854477462829006858> | Song has been removed sucessfully!", message, bot)
   },
   options: [
   {
@@ -73,7 +73,7 @@ const sendError =require("../../util/error")
     
     
     serverQueue.songs.splice(args[0], 1)
-    sendSuccess("<:hikariok:801419553841741904> | Song is removed sucessfully!", message)
+    sendSuccess("<a:checkmark:854477462829006858> | Song has been removed sucessfully!", message)
   },
   
 };

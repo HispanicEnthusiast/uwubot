@@ -25,7 +25,7 @@ module.exports = {
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);;
     if(isNaN(args[0]))return sendError("Please use Numerical Values only", message)
     let xd = new MessageEmbed()
-    .setDescription(`<:hikariok:801419553841741904> | I set the volume to: **${args[0]}/100**`)
+    .setDescription(`<a:checkmark:854477462829006858> | I set the volume to: **${args[0]}/100**`)
     .setTitle("Server Volume Manager")
     .setColor("BLUE")
     return message.noMentionReply(xd);
@@ -59,7 +59,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "volume").value]
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);;
     if(isNaN(args[0]))return sendError("Please use Numerical Values only", message, bot)
     let xd = new MessageEmbed()
-    .setDescription(`<:hikariok:801419553841741904> | I set the volume to: **${args[0]}/100**`)
+    .setDescription(`<<a:checkmark:854477462829006858> | I set the volume to: **${args[0]}/100**`)
     .setTitle("Server Volume Manager")
     .setColor("BLUE")
     return bot.api.interactions(message.id, message.token).callback.post({

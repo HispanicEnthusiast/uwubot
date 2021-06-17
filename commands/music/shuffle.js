@@ -30,7 +30,7 @@ module.exports = {
       Queue.songs = Queue.songs.sort(song => song[Math.floor(Math.random()*Queue.songs.size)]);
     await Queue.songs.unshift(Current);
     //message.react("801419553841741904")
-    sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message, client)
+    sendSuccess("<a:checkmark:854477462829006858> | Queue has been shuffled!", message, client)
 
   },
   interaction: async (client, message, args) => {
@@ -53,7 +53,7 @@ module.exports = {
           Queue.songs = Queue.songs.sort(song => song[Math.floor(Math.random()*Queue.songs.size)]);
     await Queue.songs.unshift(Current);
     //message.react("801419553841741904")
-    sendSuccess("<:hikariok:801419553841741904> | Queue Has Been Shuffled", message, client)
+    sendSuccess("<a:checkmark:854477462829006858>| Queue has been shuffled!", message, client)
 
         
   },

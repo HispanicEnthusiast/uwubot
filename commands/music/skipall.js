@@ -25,7 +25,7 @@ let sendSuccess= require("../../util/slash/success"),sendError= require("../../u
     try {
       serverQueue.songs.splice(0, serverQueue.songs.length-2);
       serverQueue.connection.dispatcher.end("Skiped the music");
-      sendSuccess("<:hikariok:801419553841741904>  | Skipped all the songs!", message, client);
+      sendSuccess("<a:checkmark:854477462829006858>  | Skipped all the songs!", message, client);
 //message.react("801419553841741904")
       return;
     } catch {

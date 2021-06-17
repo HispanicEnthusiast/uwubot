@@ -73,7 +73,7 @@ vote.vote++
     console.log(serverQueue.loop === true ? "enabled" : "disabled"+ ": !true")
 
     serverQueue.skip = true
-    serverQueue.connection.dispatcher.end("Skiped the music");
+    serverQueue.connection.dispatcher.end("Skiped the music.");
     message.react("801419553841741904")
 },
   options:[],
@@ -136,7 +136,7 @@ vote.vote++
 
     serverQueue.skip = true
     serverQueue.connection.dispatcher.end("Skiped the music");
-    sendSuccess('<:hikariok:801419553841741904> | Skipped the song!', message, client)
+    sendSuccess('<a:checkmark:854477462829006858> | Skipped the song!', message, client)
 }
  // } 
       
