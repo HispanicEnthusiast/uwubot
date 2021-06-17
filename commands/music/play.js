@@ -84,7 +84,7 @@ message.channel.stopTyping()
         .addField("Name", `[${song.title}]` + `(${song.url})`)
         .addField("Duration", song.duration)
         .addField("Requested by", song.req.tag)
-        .setFooter(`Views: ${song.views} | ${song.ago||'Unknown'}`);
+        .setFooter(`Views: ${song.views} | Uploaded: ${song.ago||'Unknown'}`);
       message.channel.stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)
       return message.noMentionReply(thing);
@@ -143,7 +143,7 @@ console.log(song.url)
         .addField("Name", `[${song.title}]` + `(${song.url})`)
         .addField("Duration", song.duration, true)
         .addField("Requested by", song.req.tag, true)
-        .setFooter(`Views: ${song.views} | Ago: ${song.ago||'Unknown'}`);
+        .setFooter(`Views: ${song.views} | Uploaded: ${song.ago||'Unknown'}`);
       queue.textChannel.send(thing);
       message.channel.stopTyping();
 
@@ -261,7 +261,7 @@ client.guilds.cache
         .addField("Name", `[${song.title}]` + `(${song.url})`)
         .addField("Duration", song.duration)
         .addField("Requested by", song.req.tag)
-        .setFooter(`Views: ${song.views} | ${song.ago||'Unknown'}`);
+        .setFooter(`Views: ${song.views} | Uploaded: ${song.ago||'Unknown'}`);
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       //if(songEmbed)return songEmbed.edit("",thing)

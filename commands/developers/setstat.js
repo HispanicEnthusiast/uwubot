@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
           );
 
           message.noMentionReply(
-            `<:hikariok:801419553841741904> | I set my stream Status to :\n\`\`\`${args
+            `<a:checkmark:854477462829006858> | I set my stream Status to :\n\`\`\`${args
               .slice(2)
               .join(" ")
               .replace("$MEMBER$", totalMembers)
@@ -83,7 +83,7 @@ exports.run = async (client, message, args) => {
             }
           );
           message.noMentionReply(
-            `:ddPepeOkay: | My status is now set to:\n\`\`\`${args
+            `<a:checkmark:854477462829006858> | My status is now set to:\n\`\`\`${args
               .slice(1)
               .join(" ")
               .replace("$MEMBER$", totalMembers)
