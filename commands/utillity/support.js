@@ -5,7 +5,7 @@ exports.run = (bot, message, args) => {
          let msgembed = new Discord.MessageEmbed()
       .setColor('#0affaf')
          .setTitle("Support Server")
-      .setDescription('My Main Support Server: [Click Here]' + `(${link})`)
+      .setDescription('My Main Support Server: https://discord.gg/RpyKuDNghR')
       .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
        message.noMentionReply("Generating support servers invites...")
         .then(msg => {
@@ -19,7 +19,7 @@ exports.interaction = async(bot, interaction, args) => {
          let embed = new Discord.MessageEmbed()
       .setColor('#0affaf')
       .setTitle("Support Server")
-      .setDescription('My Main Support Server: [Click Here]' + `(${link})`)
+      .setDescription('My Main Support Server: https://discord.gg/RpyKuDNghR')
       .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
        bot.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
