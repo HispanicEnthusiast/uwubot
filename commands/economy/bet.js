@@ -21,11 +21,11 @@ exports.run = async (client, message, args) => {
     if (result < 5) {
         await client.db.set(`lastGamble.${message.author.id}`, Date.now());
         await client.db.subtract(`account.${message.author.id}.balance`, amount);
-        return message.noMentionReply(`Ahh, no. You lose ${amount} cookies. Good luck next time.`);
+        return message.noMentionReply(`Oh noes, you lose ${amount} cookies. Good luck next time.`);
     } else if (result > 5) {
         await client.db.set(`lastGamble.${message.author.id}`, Date.now());
         await client.db.add(`account.${message.author.id}.balance`, amount);
-        return message.noMentionReply(`Woohoo! You won ${amount} cookies! Good luck, have fun!`);
+        return message.noMentionReply(`Woohoo, you won ${amount} cookies! UwU`);
     }
 }
 

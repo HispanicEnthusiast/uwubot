@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.MessageEmbed()
     .setColor(0x7289DA)
     .setTitle(`${user.tag}'s Cookie-Wallet`)
-    .addField(`Cookie Balance: ${(balance).toLocaleString()} cookies`)
+    .addField("Cookie Balance", `${(balance).toLocaleString()} cookies`)
     .setThumbnail(user.displayAvatarURL({size: 4096, dynamic: true}))
     .setTimestamp(new Date) 
     return message.noMentionReply(embed);

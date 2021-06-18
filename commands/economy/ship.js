@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
     if (user.id === message.author.id || user === message.author) return message.mentionReply("You cant give cookies to yourself, silly. UwU <3");
 
     let amount = parseInt(args[1]);
-    if (!amount) return message.mentionReply("Please input the amount of cookies that you would like to transfer.");
+    if (!amount) return message.mentionReply("Input an amount of cookies that you would like to give, silly. UwU <3");
     if (isNaN(amount)) return message.mentionReply("Please input a valid number.");
     // isNaN = is Not a Number.
 
