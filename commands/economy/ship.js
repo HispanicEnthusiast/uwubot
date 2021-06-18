@@ -13,27 +13,27 @@ exports.run = async (client, message, args) => {
 
     if (!user) return message.mentionReply("Please mention the user or input the user ID.");
     if (user.bot || user === client.user) return message.mentionReply("This user is a bot.");
-    if (user.id === message.author.id || user === message.author) return message.mentionReply("Why you want to transfer a credit to yourself? Hahaha!");
+    if (user.id === message.author.id || user === message.author) return message.mentionReply("You cant give cookies to yourself, silly. UwU <3");
 
     let amount = parseInt(args[1]);
-    if (!amount) return message.mentionReply("Please input a credits that you want to transfer it.");
+    if (!amount) return message.mentionReply("Please input the amount of cookies that you would like to transfer.");
     if (isNaN(amount)) return message.mentionReply("Please input a valid number.");
     // isNaN = is Not a Number.
 
-    if (!balance || balance == 0) return message.mentionReply("Your wallet is empty.");
-    if (amount > balance) return message.mentionReply("You don't have an enough credits to transfer. That is way too much.");
-    if (amount === 0) return message.mentionReply("You transfer, nothing? No. You cannot.");
+    if (!balance || balance == 0) return message.mentionReply("Your cookie-wallet is empty.");
+    if (amount > balance) return message.mentionReply("You don't have enough cookies to give, try an amount you have. `?bal - to view how much cookies you have`");
+    if (amount === 0) return message.mentionReply("You can't give nothing, silly. UwU <3");
 
     await db.add(`account.${user.id}.balance`, amount);
     await db.subtract(`account.${message.author.id}.balance`, amount);
 
-    return message.noMentionReply(`You've been transferred to your friends (${user.tag}) $${amount} credits!`);
+    return message.noMentionReply(`You have given (${user.tag}) ${amount} cookies, aww you're so nice! UwU <3`);
 }
 
 exports.info = {
     name: "transfer",
     aliases: ["tf", "ship", "give"],
-    description: "Transfer a credits to the user.",
+    description: "Transfer a cookies to the user.",
     usage: "transfer <user_id_or_mention> <amount>",
     example: "transfer @t404owo#2452 900"
 }

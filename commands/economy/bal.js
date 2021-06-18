@@ -23,8 +23,8 @@ exports.run = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
     .setColor(0x7289DA)
-    .setTitle(`${user.tag}'s Credit Card`)
-    .addField("Credits", `$${(balance).toLocaleString()}`)
+    .setTitle(`${user.tag}'s Cookie-Wallet`)
+    .addField(`Cookie Balance: ${(balance).toLocaleString()} cookies`)
     .setThumbnail(user.displayAvatarURL({size: 4096, dynamic: true}))
     .setTimestamp(new Date) 
     return message.noMentionReply(embed);
@@ -32,9 +32,9 @@ exports.run = async (client, message, args) => {
 
 exports.info = {
     name: "credit",
-    description: "Checking yours or other members money.",
+    description: "Checking yours or other members cookies.",
     usage: "(<user_id_or_mention>)",
-    aliases: ["bal", "balance","coin", "money", "credit"],
+    aliases: ["bal", "balance","coin", "cookies", "money"],
     example: "balance \nbalance @ray#1337"
 }
 exports.conf = {

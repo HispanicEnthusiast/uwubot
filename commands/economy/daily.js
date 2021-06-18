@@ -27,16 +27,16 @@ let totalSeconds = (timeObj / 1000);
                 ss = pad_zero(timeObj.seconds).padStart(2, "0");
 
             let finalTime = `**${hours}:${mins}:${secs}**`;
-            return message.mentionReply(`You cannot collect your dailies too early. Please wait ${finalTime}.`);
+            return message.mentionReply(`You cannot collect your daily cookies too early. Please wait ${finalTime}.`);
         } else {
            client.db.set(`lastDaily.${message.author.id}`, Date.now());
             client.db.add(`account.${message.author.id}.balance`, amount);
-            return message.noMentionReply(`Great **${message.author.tag}**, you've been given $1,115 as daily!`);
+            return message.noMentionReply(`Great **${message.author.tag}**, you've been given 1,115 cookies today!`);
         }
 
     } catch (error) {
         console.log(error);
-        return message.noMentionReply(`Oopsie, unknown error I guess: ${error}`);
+        return message.noMentionReply(`Oopsie, unknown error I guess: ${error}.`);
     }
 }
 
@@ -44,7 +44,7 @@ exports.info = {
     name: "daily",
     aliases: ["dailies"],
     usage:"",
-    description: "Collect the daily credits."
+    description: "Collect the daily cookies."
 }
 
 exports.conf = {

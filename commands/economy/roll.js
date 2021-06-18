@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     .setTitle("Dice | Bad luck, man...")
     .setDescription( "🎲 | You got rolled a "+diceresult)//má sao lại edit tui đang test?
     .setThumbnail(message.author.displayAvatarURL({size: 4096, dynamic: true}))
-    .setFooter(`You lost $${money}, sadly...`)//thôi đc r
+    .setFooter(`You lost ${money} cookies, sadly.`)//thôi đc r
     client.db.add(`account.${message.author.id}.balance`, moneyadd)
     
   } else {
@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
     .setTitle("Dice | Lucky!")//Ok đỏ r
     .setDescription("``🎲`` | You got rolled a "+roll)
     .setThumbnail(message.author.displayAvatarURL({size: 4096, dynamic: true}))
-    .setFooter(`You win $${money}, smile yay!`)// có $ r ko cần coins
+    .setFooter(`You win ${money} cookies, congrats!`)// có $ r ko cần coins
     client.db.add(`account.${message.author.id}.balance`, money)
     
   }
@@ -36,7 +36,7 @@ exports.info = {
   name: "dice",
   usage: "",
   aliases: ["d", "roll"],
-  description: "Collect the dice rolling credits."
+  description: "Collect the dice rolling cookies."
 };
 
 exports.conf = {
