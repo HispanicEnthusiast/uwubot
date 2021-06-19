@@ -7,7 +7,7 @@ const newEmbed = new Discord.MessageEmbed()
 .setThumbnail('https://media.discordapp.net/attachments/849765225329852427/853860157515366430/AggravatingQuaintBittern-max-1mb.gif?width=72&height=72')
 .setTitle('// ᓚᘏᗢ * .  +')
 .addFields(
-    {name: '♡・gassed', value: 'da rules'},
+    {name: '♡・xoxo', value: 'da rules'},
     {name: 'rule 1', value: '— no child imgs'},
     {name: 'rule 2', value: '— no gore'},
     {name: 'rule 3', value: '— no nsfw'},
@@ -18,8 +18,8 @@ message.channel.send(newEmbed);
 
 }
 exports.info = {
-  name: 'gassed',
-  aliases: ['g'],
+  name: 'xoxo',
+  aliases: ['xo'],
   usage: "",
   description: "shows the commands"
 }
