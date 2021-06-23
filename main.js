@@ -1,4 +1,7 @@
-<!-- Thanks for choosing UwU Bot, message or email me for any q !-->
+// Thank you for choosing UwU Bot, message or email me for any questions.
+
+// My Discord: R. Romero#0001
+// My Email: EThot@FBI.Systems
 
 const discord = require("discord.js");
 require('discord-inline-replys')
