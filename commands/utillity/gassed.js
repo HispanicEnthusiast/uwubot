@@ -10,7 +10,7 @@ const newEmbed = new Discord.MessageEmbed()
     {name: 'Rule 1', value: '— No Bullying/Harassment'},
     {name: 'Rule 2', value: '— No Nudity/Hentai/Gore'},
     {name: 'Rule 3', value: '— No Doxxing/DDoSing'},
-    {name: 'Rule 4', value: '— Follow Discords TOS/Guidelines'}
+    {name: 'Rule 4', value: '— Follow [Discords Terms of Service](https://discord.com/terms)'}
 )
 
 message.channel.send(newEmbed);
