@@ -5,21 +5,20 @@ const version = process.env.VERSION;
 const newEmbed = new Discord.MessageEmbed()
 .setColor('#050505')
 .setThumbnail('https://media.discordapp.net/attachments/849765225329852427/853860157515366430/AggravatingQuaintBittern-max-1mb.gif?width=72&height=72')
-.setTitle('// ᓚᘏᗢ * .  +')
+.setTitle("Rob's Lounge - Server Rules")
 .addFields(
-    {name: '♡・xoxo', value: 'da rules'},
-    {name: 'rule 1', value: '— no child imgs'},
-    {name: 'rule 2', value: '— no gore'},
-    {name: 'rule 3', value: '— no nsfw'},
-    {name: 'rule 4', value: '— follow tos'}
+    {name: 'Rule 1', value: '— No Bullying/Harassment'},
+    {name: 'Rule 2', value: '— No Nudity/Hentai/Gore'},
+    {name: 'Rule 3', value: '— No Doxxing/DDoSing'},
+    {name: 'Rule 4', value: '— Follow Discords TOS/Guidelines'}
 )
 
 message.channel.send(newEmbed);
 
 }
 exports.info = {
-  name: 'xoxo',
-  aliases: ['xo'],
+  name: 'robsloungeinfo',
+  aliases: ['rlinfo'],
   usage: "",
   description: "shows the commands"
 }
