@@ -1,3 +1,5 @@
+<!-- Thanks for choosing UwU Bot, message or email me for any q !-->
+
 const discord = require("discord.js");
 require('discord-inline-replys')
 const { promisify } = require("util");

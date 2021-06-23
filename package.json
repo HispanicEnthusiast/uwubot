@@ -1,7 +1,8 @@
 {
-  "name": "t404owo-discord-bot",
-  "version": "1.0.0",
-  "description": "Good discord bot on Glitch",
+  "title": "UwU Bot (Discord)",
+  "author": "R. Romero (rromero.glitch.me)",
+  "version": "5.7.2",
+  "description": "The Best Damn UwU Bot Across Discord. Music/Economy/Moderation/Utility",
   "main": "shard.ts",
   "devDependencies": {
     "typescript": "^4.1.3",
