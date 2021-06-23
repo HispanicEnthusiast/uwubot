@@ -72,7 +72,7 @@ return message.mentionReply("No leaderboard available.");}
     };
 
     const embed = new MessageEmbed()
-    .setTitle("Global leaderboard")
+    .setTitle("Global Leaderboard")
     .setColor("RANDOM")
     lb.forEach(d => {
         embed.addField(`${d.rank}. ${d.user.tag}`, `**Level** - ${d.level}\n**XP** - ${d.xp} / ${d.xpreq}`);
@@ -111,7 +111,7 @@ return message.mentionReply("No leaderboard");
     };
 
     const embed = new MessageEmbed()
-    .setTitle("Global leaderboard")
+    .setTitle("Global Leaderboard")
     .setColor("RANDOM")
     lb.forEach(d => {
         embed.addField(`${d.rank}. ${d.user.tag}`, `**Level** - ${d.level}\n**XP** - ${d.xp} / ${d.xpreq}`);
@@ -151,7 +151,7 @@ return message.mentionReply("No leaderboard");
     };
 
     const embed = new MessageEmbed()
-    .setTitle("Leaderboard")
+    .setTitle("Server Leaderboard")
     .setColor("RANDOM")
     lb.forEach(d => {
         embed.addField(`${d.rank}. ${d.user.tag}`, `**Level** - ${d.level||1}\n**XP** - ${d.xp} / ${d.xpreq||100}`);
@@ -186,7 +186,7 @@ return message.mentionReply("No leaderboard");
     };
 
     const embed = new MessageEmbed()
-    .setTitle("Leaderboard")
+    .setTitle("Server Leaderboard")
     .setColor("RANDOM")
     lb.forEach(d => {
         embed.addField(`${d.rank}. ${d.user.tag}`, `**Level** - ${d.level||1}\n**XP** - ${d.xp} / ${d.xpreq}`);
@@ -221,7 +221,7 @@ return message.mentionReply("No leaderboard");
     };
 
     const embed = new MessageEmbed()
-    .setTitle("Leaderboard")
+    .setTitle("Server Leaderboard")
     .setColor("RANDOM")
     lb.forEach(d => {
         embed.addField(`${d.rank}. ${d.user.tag}`, `**Level** - ${d.level||1}\n**XP** - ${d.xp} / ${d.xpreq||100}`);
