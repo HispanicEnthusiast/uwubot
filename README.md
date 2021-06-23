@@ -1,4 +1,5 @@
-# UwU the Bot - The Best Damn UwU Bot Across Discord. Music/Economy/Moderation/Utility
+# UwU the Bot
+The Best Damn UwU Bot Across Discord. Music/Economy/Moderation/Utility
 
 I am still updating this bot almost weekly to monthly and I recommend always re-coming back to view the updates.
 If you do enjoy this bot a star is highly appreciated.
