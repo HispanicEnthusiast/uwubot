@@ -8,13 +8,13 @@ const newEmbed = new Discord.MessageEmbed()
 .setTitle('UwU Bot Commands')
 .setDescription('These are my awesome-sauce commands that are useful.')
 .addFields(
-    {name: 'Utility/Misc', value: '?invite | ?support | ?prefix | ?avatar | ?info | ?whois'},
-    {name: 'Query/Search', value: '?calculate | ?anime'},
-    {name: 'Moderation/Main', value: '?kick | ?ban | ?mute | ?warn | ?purge | ?warnings'},
-    {name: 'Economy/Money', value: '?bal | ?daily | ?roll | ?bet | ?give'},
-    {name: 'Music/Audip', value: '?play | ?np | ?lyrics | ?pause | ?search | ?queue | ?skip | ?vol'},
-    {name: 'Fun/Activities', value: '?kiss | ?hug | ?pat | ?slap | ?wink | ?cuddle'},
-    {name: 'NSFW/Adult', value: '?neko | ?foxgirl'}
+    {name: 'Utility/Misc', value: 'uwu invite | uwu support | uwu prefix | uwu avatar | uwu info | uwu whois'},
+    {name: 'Query/Search', value: 'uwu calculate | uwu anime'},
+    {name: 'Moderation/Main', value: 'uwu kick | uwu ban | uwu mute | uwu warn | uwu purge | uwu warnings'},
+    {name: 'Economy/Money', value: 'uwu bal | uwu daily | uwu roll | uwu bet | uwu give'},
+    {name: 'Music/Audip', value: 'uwu play | uwu np | uwu lyrics | uwu pause | uwu search | uwu queue | uwu skip | uwu vol'},
+    {name: 'Fun/Activities', value: 'uwu kiss | uwu hug | uwu pat | uwu slap | uwu wink | uwu cuddle'},
+    {name: 'NSFW/Adult', value: 'uwu neko | uwu foxgirl'}
 )
 .setFooter('Thank you so much for choosing UwU Bot, it means the world to me!')
 
