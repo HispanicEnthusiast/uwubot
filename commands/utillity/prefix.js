@@ -16,11 +16,11 @@ if(args.slice().join(" ").toLowerCase()==='+')bot.db.delete(`${message.guild.id}
 
       console.log(prefix);
 
-      message.noMentionReply(`My prefix is set to \`**${prefix}**\``);
+      message.noMentionReply(`**My prefix is now set to \`${prefix}\`**`);
 
       return;
-    } else return message.noMentionReply(`My prefix is \`${bot.config.prefix}\`, but you can also <@!${bot.user.id}> me`)
-      }else message.noMentionReply(`My prefix is \`${bot.config.prefix}\`, but you can also <@!${bot.user.id}> me`)
+    } else return message.noMentionReply(`My prefix is **\`${bot.config.prefix}\`**, but you can also <@!${bot.user.id}> ping me as a prefix too. (Example: <@!${bot.user.id}> help)`)
+      }else message.noMentionReply(`My prefix is **\`${bot.config.prefix}\`**, but you can also <@!${bot.user.id}> ping me as a prefix too. (Example: <@!${bot.user.id}> help)`)
 }
 exports.options=[]
 module.exports.interaction=async(bot,message,args)=>{
@@ -29,7 +29,7 @@ module.exports.interaction=async(bot,message,args)=>{
                 data: {
                     type: 4,
                     data: {
-                      content:`My prefix is \`${bot.config.prefix}\`, but you can also <@!${bot.user.id}> me`
+                      content:`My prefix is **\`${bot.config.prefix}\`**, but you can also <@!${bot.user.id}> ping me as a prefix too. (Example: <@!${bot.user.id}> help)`
                     }
                 }
             })

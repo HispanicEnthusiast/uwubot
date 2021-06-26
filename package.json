@@ -2,7 +2,7 @@
   "title": "UwU Bot (Discord)",
   "author": "R. Romero (rromero.glitch.me)",
   "version": "5.7.2",
-  "description": "The Best Damn UwU Bot Across Discord. Music/Economy/Moderation/Utility",
+  "description": "The best damn UwU robot across Discord with all the features you need in one bot!",
   "main": "shard.ts",
   "devDependencies": {
     "typescript": "^4.1.3",

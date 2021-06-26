@@ -3,7 +3,7 @@ exports.run = (bot, message, args) => {
         message.noMentionReply('Ping?')
       .then(msg => {
           
-        msg.edit(`Pong! \`Latency: ${Date.now()- message.createdTimestamp}ms, Message Latency: ${Date.now()- msg.createdTimestamp}ms, API Latency: ${Math.round(bot.ws.ping)}ms\``);
+        msg.edit(`Pong! :ping_pong: \`Latency: ${Date.now()- message.createdTimestamp}ms, Message Latency: ${Date.now()- msg.createdTimestamp}ms, API Latency: ${Math.round(bot.ws.ping)}ms\``);
       });   
   }
 exports.interaction= async (bot, interaction, args) =>{

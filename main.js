@@ -99,7 +99,7 @@ bot.on("guildMemberAdd", async member => {
           });
           member.guild.channels.cache.forEach(async (channel, id) => {
             await channel.updateOverwrite(
-              member.guild.roles.cache.find(r => r.name === "muted"),
+              member.guild.roles.cache.find(r => r.name === "Muted"),
               {
                 CREATE_INSTANT_INVITE: true,
                 ADD_REACTIONS: false,
@@ -532,15 +532,16 @@ const promises = [
   )
 ];
 
+const activities_list = [ 
+    "Playing", 
+    "Watching"
+    ]; // creates an arraylist containing phrases you want your bot to switch through.
+
 bot.on('ready', () => {
-    bot.user.setStatus('available')
-    bot.user.setPresence({
-        game: {
-            name: 'with depression',
-            type: "STREAMING",
-            url: "https://www.twitch.tv/monstercat"
-        }
-    });
+    setInterval(() => {
+        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+        bot.user.setActivity(activities_list[index]); // sets bot's activities to one of the phrases in the arraylist.
+    }, 10000); // Runs this every 10 seconds.
 });
 
 function pad(n) {
