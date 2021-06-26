@@ -14,9 +14,9 @@ const newEmbed = new Discord.MessageEmbed()
     {name: 'Economy/Money', value: 'uwu bal | uwu daily | uwu roll | uwu bet | uwu give'},
     {name: 'Music/Audio', value: 'uwu play | uwu np | uwu lyrics | uwu pause | uwu search | uwu queue | uwu skip | uwu vol'},
     {name: 'Fun/Activities', value: 'uwu kiss | uwu hug | uwu pat | uwu slap | uwu wink | uwu cuddle'},
-    {name: 'NSFW/Adult', value: 'uwu neko | uwu foxgirl'}
-)
-.setFooter('Thank you so much for choosing UwU Bot, it means the world to me! ♡')
+    {name: 'NSFW/Adult', value: 'uwu neko | uwu foxgirl'})
+.addField('\[Website\]\(https://uwuthebot.glitch.me) | [Support](https://discord.gg/RpyKuDNghR)')
+.setFooter('♡ Made by R. Romero#0001 - Thank You ♡')
 
 message.channel.send(newEmbed);
 
