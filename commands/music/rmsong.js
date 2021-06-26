@@ -35,7 +35,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 
     if (!serverQueue)return sendError("<:Oops:858157163876319252> | There is nothing playing in this server.", message, bot);
-     if(isNaN(args[0]))return sendError("<:Oops:858157163876319252> | Please use numerical Values only.", message, bot)
+     if(isNaN(args[0]))return sendError("<:Oops:858157163876319252> | Please use numerical values only.", message, bot)
     if(args[0]<1)return sendError("<:Oops:858157163876319252> | Please give a number that is higher than 0.", message, bot)
    
     if(args[0] > serverQueue.songs.length) {
@@ -66,7 +66,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 
     if (!serverQueue)return sendError("<:Oops:858157163876319252> | There is nothing playing in this server.", message, bot);
-     if(isNaN(args[0]))return sendError("<:Oops:858157163876319252> | Please use numerical Values only.", message, bot)
+     if(isNaN(args[0]))return sendError("<:Oops:858157163876319252> | Please use numerical values only.", message, bot)
     if(args[0]<1)return sendError("<:Oops:858157163876319252> | Please give a number that is higher than 0.", message, bot)
    
     if(args[0] > serverQueue.songs.length) {

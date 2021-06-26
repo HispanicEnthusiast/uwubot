@@ -21,8 +21,8 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
 
     if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message, bot);
 
-    if(isNaN(args[0]))return sendError("Please use Numerical Values only", message, bot)
-    if(args[0]<1)return sendError("Please give a number that is higher than 1", message, bot)
+    if(isNaN(args[0]))return sendError("Please use numerical values only.", message, bot)
+    if(args[0]<1)return sendError("Please give a number that is higher than 1.", message, bot)
    
     if(args[0] > serverQueue.songs.length) {
       return sendError("Unable to find this song", message, bot)
@@ -31,7 +31,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     try {
       serverQueue.songs.splice(0, args[0]-1);
       serverQueue.connection.dispatcher.end("Skiped the music");
-//message.react("801419553841741904")
+message.react("✅")
       return;
     } catch (err){
       serverQueue.connection.dispatcher.end();
@@ -59,17 +59,17 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     if (!serverQueue) {
       message.mentionReply("Nothing playing in this server");
     }
-    if(isNaN(args[0]))return sendError(" Please use Numerical Values only", message)
-    if(args[0]<1)return sendError("Please give a number that is higher than 1", message)
+    if(isNaN(args[0]))return sendError(" Please use numerical values only", message)
+    if(args[0]<1)return sendError("Please give a number that is higher than 1.", message)
    
     if(args[0] > serverQueue.songs.length) {
-      return sendError("Unable to find this song", message)
+      return sendError("Unable to find this song.", message)
     }
 
     try {
       serverQueue.songs.splice(0, args[0]-1);
       serverQueue.connection.dispatcher.end("Skiped the music");
-message.react("801419553841741904")
+message.react("✅")
       return;
     } catch {
       serverQueue.connection.dispatcher.end();

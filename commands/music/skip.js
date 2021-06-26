@@ -21,12 +21,16 @@ module.exports = {
     if (message.guild.me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message);
-    /*let{vote}=client
-    const vcvote = Math.floor(message.guild.me.voice.channel.members.size / 2)
-    const okie = Math.floor(message.guild.me.voice.channel.members.size / 2 - 1)
-    console.log(message.guild.me.voice.channel.members.size)
-    let perm=message.channel.permissionsFor(message.member)//perm.has()
-    if(!perm.has("ADMINISTRATOR")&&client.music.vote===true) {
+    
+    
+    
+    
+    
+        let{vote}=client
+    const vcvote = Math.floor(client.guilds.cache.get(message.guild_id).me.voice.channel.members.size / 2)
+    const okie = Math.floor(client.guilds.cache.get(message.guild_id).me.voice.channel.members.size / 2 - 1)
+    console.log(client.guilds.cache.get(message.guild_id).me.voice.channel.members.size)
+    if(!client.guilds.cache.get(message.guild_id).channels.cache.get(message.channel_id).permissionsFor(client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id)).has("ADMINISTRATOR")&&client.music.vote===true) {
        if(vote.vote > okie) {
          const shiffed = serverQueue.songs.shift();
             if (serverQueue.loop === true) {
@@ -35,12 +39,12 @@ module.exports = {
     //serverQueue.songs.shift()
     serverQueue.skip = !serverQueue.skip
     serverQueue.connection.dispatcher.end("Skiped the music");
-    message.react("766664525356204092")
-    return
+    
+    return sendSuccess(`<a:Checkmark:858154320117235742> | The current song has been skipped!`)
        }
        
-       if(vote.voters.includes(message.author.id)) {
-         return message.mentionReply("<a:checkmark:854477462829006858> | You already voted for this song")
+       if(vote.voters.includes(message.member.user.id)) {
+         return message.mentionReply("<:Oops:858157163876319252> | You already voted to skip this song.")
        }
        
        if(vcvote === 2) {
@@ -51,19 +55,23 @@ module.exports = {
     //serverQueue.songs.shift()
     serverQueue.skip = !serverQueue.skip
     serverQueue.connection.dispatcher.end("Skiped the music");
-    message.react("766664525356204092")
+    return sendSuccess(`<a:Checkmark:858154320117235742> | The current song has been skipped!`)
        }
        
        
        
 vote.vote++
        vote.voters.push(message.author.id)
-       return message.noMentionReply(`Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} votes more to skip`)
+       return sendSuccess(`<a:Checkmark:858154320117235742> | Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} more votes to skip.`, message, client)
     
      
      
      
-     }else{*/
+     }else{
+    
+    
+    
+    
     
      const shiffed = serverQueue.songs.shift();
             if (serverQueue.loop === true) {
@@ -102,11 +110,11 @@ vote.vote++
     serverQueue.skip = !serverQueue.skip
     serverQueue.connection.dispatcher.end("Skiped the music");
     
-    return sendSuccess(`<:hikariok:801419553841741904> | Skipped the song!`)
+    return sendSuccess(`<a:Checkmark:858154320117235742> | The current song has been skipped!`)
        }
        
        if(vote.voters.includes(message.member.user.id)) {
-         return message.mentionReply("<a:checkmark:854477462829006858> | You already voted for this song")
+         return message.mentionReply("<:Oops:858157163876319252> | You already voted to skip this song.")
        }
        
        if(vcvote === 2) {
@@ -117,14 +125,14 @@ vote.vote++
     //serverQueue.songs.shift()
     serverQueue.skip = !serverQueue.skip
     serverQueue.connection.dispatcher.end("Skiped the music");
-    return sendSuccess(`<:hikariok:801419553841741904> | The current song has been skipped!`)
+    return sendSuccess(`<a:Checkmark:858154320117235742> | The current song has been skipped!`)
        }
        
        
        
 vote.vote++
        vote.voters.push(message.author.id)
-       return sendSuccess(`<:hikariok:801419553841741904> | Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} votes more to skip`, message, client)
+       return sendSuccess(`<a:Checkmark:858154320117235742> | Thanks for vote, we currently need ${Math.floor(vcvote - vote.vote)} more votes to skip.`, message, client)
     
      
      
@@ -143,8 +151,8 @@ vote.vote++
 
     serverQueue.skip = true
     serverQueue.connection.dispatcher.end("Skiped the music");
-    sendSuccess('<a:Checkmark:858154320117235742> | The current song has been skipped!', message, client)
+
+     sendSuccess('<a:Checkmark:858154320117235742> | The current song has been skipped!', message, client)
 }
- // } 
-      
+  }
 };

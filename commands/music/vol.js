@@ -23,10 +23,10 @@ module.exports = {
     if (!args[0])return message.noMentionReply(`The current volume is: **${serverQueue.volume}**`);
     serverQueue.volume = args[0]; 
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);;
-    if(isNaN(args[0]))return sendError("Please use Numerical Values only", message)
+    if(isNaN(args[0]))return sendError("Please use numerical values only.", message)
     let xd = new MessageEmbed()
-    .setDescription(`<a:checkmark:854477462829006858> | I set the volume to: **${args[0]}/100**`)
-    .setTitle("Server Volume Manager")
+    .setDescription(`<a:Checkmark:858154320117235742> | The volume is now set to: **${args[0]}/100**`)
+    .setTitle("UwU Bot Volume Manager")
     .setColor("BLUE")
     return message.noMentionReply(xd);
   },
@@ -57,10 +57,10 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "volume").value]
             });
     serverQueue.volume = args[0]; 
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);;
-    if(isNaN(args[0]))return sendError("Please use Numerical Values only", message, bot)
+    if(isNaN(args[0]))return sendError("Please use numerical values only.", message, bot)
     let xd = new MessageEmbed()
-    .setDescription(`<<a:checkmark:854477462829006858> | I set the volume to: **${args[0]}/100**`)
-    .setTitle("Server Volume Manager")
+    .setDescription(`<a:Checkmark:858154320117235742> | The volume is now set to: **${args[0]}/100**`)
+    .setTitle("UwU Bot Volume Manager")
     .setColor("BLUE")
     return bot.api.interactions(message.id, message.token).callback.post({
                 data: {

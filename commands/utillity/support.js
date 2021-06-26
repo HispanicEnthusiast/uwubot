@@ -3,11 +3,11 @@ exports.run = (bot, message, args) => {
          let link =
              `https://discord.gg/${process.env.DISCORD_BOT_INVITE}`
          let msgembed = new Discord.MessageEmbed()
-      .setColor('#0affaf')
+      .setColor('#ffe082')
          .setTitle("Support Server")
       .setDescription('My Main Support Server: https://discord.gg/RpyKuDNghR')
       .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
-       message.noMentionReply("Generating support servers invites...")
+       message.noMentionReply("Generating my support server invite link...")
         .then(msg => {
           msg.edit("", msgembed)
        });
@@ -17,7 +17,7 @@ exports.interaction = async(bot, interaction, args) => {
          let link =
              `https://discord.gg/${process.env.DISCORD_BOT_INVITE}`
          let embed = new Discord.MessageEmbed()
-      .setColor('#0affaf')
+      .setColor('#ffe082')
       .setTitle("Support Server")
       .setDescription('My Main Support Server: https://discord.gg/RpyKuDNghR')
       .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))

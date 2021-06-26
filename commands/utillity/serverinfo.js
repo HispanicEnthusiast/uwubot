@@ -45,13 +45,13 @@ exports.run = async (bot, message, args) => {
 			.setThumbnail(message.guild.iconURL({ dynamic: true }))
 			.setDescription([
 				`**Server Name**\n${message.guild.name}`,
-				`**ID**\n${message.guild.id}`,
+				`**Server ID**\n${message.guild.id}`,
 				`**Server Owner**\n${message.guild.owner.user.tag} (${message.guild.ownerID})`,
 				`**Region**\n${regions[message.guild.region]}`,
 				`**Boost Level**\n${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
         `**Server Boosts**\n${message.guild.premiumSubscriptionCount || '0'}`,
 				//`**Explicit Filter**\n${filterLevels[message.guild.explicitContentFilter]}`,
-        `**Members**\n${message.guild.memberCount}`,
+        `**Member Count**\n${message.guild.memberCount}`,
         `**Server Roles**\n${roles.length}`,
 				`**Verification Level**\n${verificationLevels[message.guild.verificationLevel]}`,
 				`**Server Created on**\n${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} (${moment(message.guild.createdTimestamp).fromNow()})`,
@@ -87,13 +87,13 @@ exports.interaction = async (bot, message, args) => {
 			.setThumbnail(message.guild.iconURL({ dynamic: true }))
 			.setDescription([
 				`**Server Name**\n${message.guild.name}`,
-				`**ID**\n${message.guild.id}`,
+				`**Server ID**\n${message.guild.id}`,
 				`**Server Owner**\n${message.guild.owner.user.tag} (${message.guild.ownerID})`,
 				`**Region**\n${regions[message.guild.region]}`,
 				`**Boost Level**\n${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
         `**Server Boosts**\n${message.guild.premiumSubscriptionCount || '0'}`,
 				//`**Explicit Filter**\n${filterLevels[message.guild.explicitContentFilter]}`,
-        `**Members**\n${message.guild.memberCount}`,
+        `**Member Count**\n${message.guild.memberCount}`,
         `**Server Roles**\n${roles.length}`,
 				`**Verification Level**\n${verificationLevels[message.guild.verificationLevel]}`,
 				`**Server Created on**\n${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} (${moment(message.guild.createdTimestamp).fromNow()})`,
