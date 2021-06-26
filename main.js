@@ -533,7 +533,7 @@ const promises = [
 ];
 
 bot.on('ready', () => {
-    console.log(`${bot.user.tag}'s status is online!`)
+    console.log(`${bot.user.tag} is now watching online!`)
     bot.user.setActivity("Hell | uwu help", ({type: "WATCHING"}))
 })
 
