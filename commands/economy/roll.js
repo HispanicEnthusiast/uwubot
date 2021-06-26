@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
   if (lucky === "-") {
     result
     .setColor("#f54c76") 
-    .setTitle("Dice | ")
+    .setTitle("Dice | Bad Luck")
     .setDescription( "🎲 | You rolled a "+diceresult)//má sao lại edit tui đang test?
     .setThumbnail(message.author.displayAvatarURL({size: 4096, dynamic: true}))
     .setFooter(`You lost ${money} cookies, sadly.`)//thôi đc r
@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
   } else {
     result
     .setColor("#0affaf")//xanh là thắng lol 0affaf cx là xanh lá thôi
-    .setTitle("Dice | Lucky!")//Ok đỏ r
+    .setTitle("Dice | Good Job")//Ok đỏ r
     .setDescription("``🎲`` | You rolled a "+roll)
     .setThumbnail(message.author.displayAvatarURL({size: 4096, dynamic: true}))
     .setFooter(`You win ${money} cookies, congrats!`)// có $ r ko cần coins

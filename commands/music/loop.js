@@ -20,18 +20,18 @@ module.exports = {
 const sendError =require("../../util/error")
 const client = bot;
     const channel = message.member.voice.channel
-    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message);
-    if (message.guild.me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);
+    if (!channel)return sendError('<:Oops:858157163876319252> | You need to join a voice channel to use this command!', message);
+    if (message.guild.me.voice.channel !== channel)return sendError('<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!', message);
     var serverQueue = message.client.queue.get(message.guild.id);
 if (!serverQueue) {
-      return sendError('<a:checkmark:854477462829006858> | There are no songs on playing right now, pls add a song to play!!!', message);
+      return sendError('<:Oops:858157163876319252> | There are no songs on playing right now.', message);
     }
   if (!serverQueue.songs[0]) {
-      return sendError('<a:checkmark:854477462829006858> | There are no songs on playing right now, pls add a song to play!!!', message);
+      return sendError('<:Oops:858157163876319252>| There are no songs on playing right now.', message);
     }
     serverQueue.loop = !serverQueue.loop;
     
-            return sendSuccess(`🔁  **|**  Loop is **${serverQueue.loop === true ? "enabled" : "disabled"}**`, message)
+            return sendSuccess(`<a:Checkmark:858154320117235742> | Loop is now **${serverQueue.loop === true ? "enabled" : "disabled"}**`, message)
     return;
   },
   options:[],
@@ -41,18 +41,18 @@ if (!serverQueue) {
 const client = bot;
     
     let channel = await client.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel;
-    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message, bot);
-    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message, bot);
+    if (!channel)return sendError('<:Oops:858157163876319252> | You need to join a voice channel to use this command!', message, bot);
+    if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!', message, bot);
     var serverQueue = client.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 if (!serverQueue) {
-      return sendError('<a:checkmark:854477462829006858> | There are no songs on playing right now, pls add a song to play!!!', message, bot);
+      return sendError('<:Oops:858157163876319252> | There are no songs on playing right now.', message, bot);
     }
   if (!serverQueue.songs[0]) {
-      return sendError('<a:checkmark:854477462829006858> | There are no songs on playing right now, pls add a song to play!!!', message, bot);
+      return sendError('<:Oops:858157163876319252> | There are no songs on playing right now.', message, bot);
     }
     serverQueue.loop = !serverQueue.loop;
     
-            return sendSuccess(`🔁  **|**  Loop is **${serverQueue.loop === true ? "enabled" : "disabled"}**`, message, bot)
+            return sendSuccess(`<a:Checkmark:858154320117235742> | Loop is now **${serverQueue.loop === true ? "enabled" : "disabled"}**`, message, bot)
     return;
   }
 };

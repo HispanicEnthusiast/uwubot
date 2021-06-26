@@ -18,12 +18,12 @@ module.exports = {
     const channel = message.member.voice.channel;
     if (!channel)
       return sendError(
-        "<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!",
+        "<:Oops:858157163876319252> | You need to join a voice channel to use this command!",
         message
       );
     if (message.guild.me.voice.channel !== channel)
       return sendError(
-        "<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!",
+        "<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!",
         message
       );
     //await channel.leave();
@@ -32,7 +32,7 @@ module.exports = {
 
     if (!serverQueue) {
       return sendError(
-        "<a:checkmark:854477462829006858> | You need to play at least a song to use this command!",
+        "<:Oops:858157163876319252> | You need to play at least a song to use this command!",
         message
       );
     } else {
@@ -40,7 +40,7 @@ module.exports = {
       message.client.queue.delete(message.guild.id);
       console.log("disconnected");
       sendSuccess(
-      "<a:checkmark:854477462829006858> | Ended successfully!",
+      "<a:Checkmark:858154320117235742> | Ended successfully!",
       message
     );
     }
@@ -55,13 +55,13 @@ module.exports = {
       .members.cache.get(message.member.user.id).voice.channel;
     if (!channel)
       return sendError(
-        "<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!",
+        "<:Oops:858157163876319252> | You need to join a voice channel to use this command!",
         message,
         client
       );
     if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)
       return sendError(
-        "<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!",
+        "<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!",
         message,
         client
       );
@@ -74,7 +74,7 @@ module.exports = {
 
     if (!serverQueue) {
       return sendError(
-        "<a:checkmark:854477462829006858> | You need to play at least a song to use this command!",
+        "<:Oops:858157163876319252> | You need to play at least a song to use this command!",
         message,
         client
       );
@@ -84,7 +84,7 @@ module.exports = {
         .get(message.guild_id)
         .client.queue.delete(message.guild_id);
       console.log("disconnected");sendSuccess(
-      "<a:checkmark:854477462829006858> | Ended successfully!",
+      "<a:Checkmark:858154320117235742> | Ended successfully!",
       message,
       client
     );

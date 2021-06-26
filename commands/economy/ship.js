@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
     await db.add(`account.${user.id}.balance`, amount);
     await db.subtract(`account.${message.author.id}.balance`, amount);
 
-    return message.noMentionReply(`You have given (${user.tag}) ${amount} cookies, aww you're so nice! UwU <3`);
+    return message.noMentionReply(`<a:Checkmark:858154320117235742> | You have given (${user.tag}) ${amount} cookies, aww you're so nice! UwU <3`);
 }
 
 exports.info = {

@@ -5,11 +5,11 @@ const client = require('nekos.life');
 const neko = new client();
 module.exports.run = async (bot, message, args, tools) => {
   
-  if(message.channel.nsfw=== false) return message.mentionReply("This is not a NSFW channel!")
+  if(message.channel.nsfw=== false) return message.mentionReply("This is not a NSFW channel, silly!")
   const mat =await neko.sfw.neko();
   const embed = new Discord.MessageEmbed()
     .setColor("#ff9900")
-    .setTitle("This is your neko. OwO")
+    .setTitle("Here's a neko, horny-dog. OwO")
     .setImage(mat.url);
  return message.noMentionReply({ embed });
 };

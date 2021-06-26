@@ -9,11 +9,11 @@ module.exports.run = async (bot, message, args, tools) => {
   
   
 
-  if(message.channel.nsfw!== true) return message.mentionReply("This is not a NSFW channel!")
+  if(message.channel.nsfw!== true) return message.mentionReply("This is not a NSFW channel, silly!")
   const mat = await neko.sfw.foxGirl();
   const embed = new Discord.MessageEmbed()
     .setColor("#ff9900")
-    .setTitle("This is your fox girl. OwO")
+    .setTitle("Here's a fox girl, horny-dog. OwO")
     .setImage(mat.url);
   
   message.noMentionReply(embed)

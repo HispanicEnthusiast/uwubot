@@ -18,7 +18,7 @@ if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
       message.mention= message.author
       message.xpadd= args[0];
         
-        message.noMentionReply("XP has been added successfully!")
+        message.noMentionReply("<a:Checkmark:858154320117235742> | XP has been added successfully!")
         let a = message.guild.id;
   let xp = bot.db.add(`${a}xp_${message.mention.id}`, message.xpadd);
   let level = Math.floor(0.3 * Math.sqrt(xp));
@@ -30,7 +30,7 @@ if (args[0]=== "me"||args[0]=== `<@!${message.author.id}>`) {
     if (bot.db.get(`${message.mention.id}_lvlupmsg`)=== "no") return;
     message.channel
       .send(
-        `<@!${message.mention.id}> is now on level ${newLevel} in this server!`
+        `Woohoo, <@!${message.mention.id}> is now on level ${newLevel} in this server!`
       )
       .then(ms => {
         ms.delete({ timeout: "5000" });
@@ -59,7 +59,7 @@ let a = message.guild.id;
     if (bot.db.get(`${message.mention.id}_lvlupmsg`)=== "no") return;
     message.channel
       .send(
-        `<@!${message.mention.id}> is now on level ${newLevel} in this server!`
+        `Woohoo, <@!${message.mention.id}> is now on level ${newLevel} in this server!`
       )
       .then(ms => {
         ms.delete({ timeout: "5000" });

@@ -9,7 +9,7 @@ exports.run = (bot, message, args) => {
     let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds.toFixed(2)} seconds`;
     let a = new MessageEmbed()
     .setColor('#0affaf')
-    .setDescription("<a:Checkmark:858154320117235742> UwU Bot has been online for " + uptime)
+    .setDescription("<a:Checkmark:858154320117235742> | UwU Bot has been online for " + uptime)
     message.noMentionReply(a)
   };
   exports.interaction= async(bot, interaction, args) =>{
@@ -23,7 +23,7 @@ exports.run = (bot, message, args) => {
     let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds.toFixed(2)} seconds`;
     let a = new MessageEmbed()
     .setColor('#0affaf')
-    .setDescription("<a:Checkmark:858154320117235742> UwU Bot has been online for " + uptime)
+    .setDescription("<a:Checkmark:858154320117235742> | UwU Bot has been online for " + uptime)
   bot.api.interactions(interaction.id, interaction.token).callback.post({
                 data: {
                     type: 4,
