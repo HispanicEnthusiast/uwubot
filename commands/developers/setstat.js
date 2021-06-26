@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
           0
         );
         console.log(
-          `Server count: ${totalGuilds}\nMember count: ${totalMembers}`
+          `Server Count: ${totalGuilds}\nMember Count: ${totalMembers}`
         );
 
         if (
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
           );
 
           message.noMentionReply(
-            `<a:checkmark:854477462829006858> | I set my stream Status to :\n\`\`\`${args
+            `<a:Checkmark:858154320117235742> | My status is now set to :\n\`\`\`${args
               .slice(2)
               .join(" ")
               .replace("$MEMBER$", totalMembers)
@@ -83,7 +83,7 @@ exports.run = async (client, message, args) => {
             }
           );
           message.noMentionReply(
-            `<a:checkmark:854477462829006858> | My status is now set to:\n\`\`\`${args
+            `<a:Checkmark:858154320117235742> | My status is now set to:\n\`\`\`${args
               .slice(1)
               .join(" ")
               .replace("$MEMBER$", totalMembers)

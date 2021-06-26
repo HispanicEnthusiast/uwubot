@@ -12,8 +12,8 @@ exports.run = async (client, message, args) => {
   if (lucky === "-") {
     result
     .setColor("#f54c76") 
-    .setTitle("Dice | Bad luck, man...")
-    .setDescription( "🎲 | You got rolled a "+diceresult)//má sao lại edit tui đang test?
+    .setTitle("Dice | ")
+    .setDescription( "🎲 | You rolled a "+diceresult)//má sao lại edit tui đang test?
     .setThumbnail(message.author.displayAvatarURL({size: 4096, dynamic: true}))
     .setFooter(`You lost ${money} cookies, sadly.`)//thôi đc r
     client.db.add(`account.${message.author.id}.balance`, moneyadd)
@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
     result
     .setColor("#0affaf")//xanh là thắng lol 0affaf cx là xanh lá thôi
     .setTitle("Dice | Lucky!")//Ok đỏ r
-    .setDescription("``🎲`` | You got rolled a "+roll)
+    .setDescription("``🎲`` | You rolled a "+roll)
     .setThumbnail(message.author.displayAvatarURL({size: 4096, dynamic: true}))
     .setFooter(`You win ${money} cookies, congrats!`)// có $ r ko cần coins
     client.db.add(`account.${message.author.id}.balance`, money)

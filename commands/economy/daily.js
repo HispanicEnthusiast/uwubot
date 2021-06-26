@@ -31,7 +31,7 @@ let totalSeconds = (timeObj / 1000);
         } else {
            client.db.set(`lastDaily.${message.author.id}`, Date.now());
             client.db.add(`account.${message.author.id}.balance`, amount);
-            return message.noMentionReply(`Great **${message.author.tag}**, you've been given 1,115 cookies today!`);
+            return message.noMentionReply(`<a:Checkmark:858154320117235742> | Great **${message.author.tag}**, you've been given 1,115 cookies today!`);
         }
 
     } catch (error) {

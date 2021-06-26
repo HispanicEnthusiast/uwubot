@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     }
 
     if (user.bot || user === client.user) {
-        return message.noMentionReply("This user is a bot.");
+        return message.noMentionReply("This user is a bot, sily.");
         // If the user was a bot, ignore it.
     }
 
