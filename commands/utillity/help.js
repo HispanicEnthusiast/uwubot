@@ -6,9 +6,8 @@ const newEmbed = new Discord.MessageEmbed()
 .setColor('#FFE082')
 .setThumbnail(bot.user.avatarURL({dynamic:true, size: 1024}))
 .setTitle('UwU Bot Commands List')
-.setDescription('The best damn UwU robot across Discord with all the features you need in one bot!')
+.setDescription('The best damn UwU robot across Discord with all the features you need in one bot!', '\u200B')
 .addFields(
-    {name: '\u100B', value: '\u100B'},
     {name: 'Utility/Misc', value: 'uwu invite | uwu support | uwu prefix | uwu avatar | uwu info | uwu whois'},
     {name: 'Query/Search', value: 'uwu calculate | uwu anime'},
     {name: 'Moderation/Main', value: 'uwu kick | uwu ban | uwu mute | uwu warn | uwu purge | uwu warnings'},
