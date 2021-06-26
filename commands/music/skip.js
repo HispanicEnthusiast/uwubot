@@ -84,7 +84,11 @@ vote.vote++
     if (client.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);
     const serverQueue = client.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
     if (!serverQueue)return sendError("There is nothing playing that I could skip for you.", message);
-    /*let{vote}=client
+    
+    
+    
+    
+    let{vote}=client
     const vcvote = Math.floor(client.guilds.cache.get(message.guild_id).me.voice.channel.members.size / 2)
     const okie = Math.floor(client.guilds.cache.get(message.guild_id).me.voice.channel.members.size / 2 - 1)
     console.log(client.guilds.cache.get(message.guild_id).me.voice.channel.members.size)
@@ -113,7 +117,7 @@ vote.vote++
     //serverQueue.songs.shift()
     serverQueue.skip = !serverQueue.skip
     serverQueue.connection.dispatcher.end("Skiped the music");
-    return sendSuccess(`<:hikariok:801419553841741904> | Skipped the song!`)
+    return sendSuccess(`<:hikariok:801419553841741904> | The current song has been skipped!`)
        }
        
        
@@ -125,7 +129,10 @@ vote.vote++
      
      
      
-     }else{*/
+     }else{
+    
+    
+    
     
      const shiffed = serverQueue.songs.shift();
             if (serverQueue.loop === true) {
@@ -136,7 +143,7 @@ vote.vote++
 
     serverQueue.skip = true
     serverQueue.connection.dispatcher.end("Skiped the music");
-    sendSuccess('<a:checkmark:854477462829006858> | Skipped the song!', message, client)
+    sendSuccess('<a:Checkmark:858154320117235742> | The current song has been skipped!', message, client)
 }
  // } 
       

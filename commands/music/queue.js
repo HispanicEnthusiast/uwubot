@@ -16,7 +16,7 @@ module.exports = {
   run: async function (client, message, args) {
     const sendError = require("../../util/error");
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!serverQueue) return sendError("<a:checkmark:854477462829006858> | There is nothing playing in this server.", message);
+    if (!serverQueue) return sendError("<:Oops:858157163876319252> | There is nothing playing in this server.", message);
 let song=[]
     let queue = new MessageEmbed()
     .setTitle("Server Songs Queue")
@@ -37,7 +37,7 @@ let song=[]
   interaction: async function (client, message, args) {
     const sendError = require("../../util/slash/error");
     const serverQueue = client.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
-    if (!serverQueue) return sendError("<a:checkmark:854477462829006858> | There is nothing playing in this server.", message);
+    if (!serverQueue) return sendError("<:Oops:858157163876319252> | There is nothing playing in this server.", message);
 let song=[];
     
     let embed = new MessageEmbed()

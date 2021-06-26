@@ -57,7 +57,7 @@ const sendEror = require("../../util/eror");
       .members.cache.get(interaction.member.user.id).voice.channel;;
     if (!channel)
       return sendError(
-        '<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!',
+        '<:Oops:858157163876319252> | You need to join a voice channel to use this command!',
         interaction, client
       );
 
@@ -65,12 +65,12 @@ const sendEror = require("../../util/eror");
       .get(interaction.guild_id).client.user);
     if (!permissions.has("CONNECT")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
-        "<a:checkmark:854477462829006858> | I cannot connect to your voice channel, make sure I have the proper permissions!",
+        "<:Oops:858157163876319252> | I cannot connect to your voice channel, make sure I have the proper permissions!",
         interaction, client
       );
     if (!permissions.has("SPEAK")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
-        "<a:checkmark:854477462829006858> | I cannot speak in this voice channel, make sure I have the proper permissions!",
+        "<:Oops:858157163876319252> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         interaction, client
       );
 
@@ -78,7 +78,7 @@ const sendEror = require("../../util/eror");
     
     if (!searchString)
       return sendError(
-        "<a:checkmark:854477462829006858> | You didn't provide what you want to play",
+        "<:Oops:858157163876319252> | You didn't provide what you want to play",
         interaction, client
       );
     client.guilds.cache
@@ -102,7 +102,7 @@ const sendEror = require("../../util/eror");
 client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).channel.stopTyping()
       return sendError(
-        "<a:checkmark:854477462829006858> | Looks like I was unable to find the song, make sure your request is on YouTube.",
+        "<:Oops:858157163876319252> | Looks like I was unable to find the song, make sure your request is on YouTube.",
         interaction, client
       );
     }
@@ -148,7 +148,7 @@ client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
         
         return sendEror(
-          "<a:checkmark:854477462829006858> | Please try again and enter a number between 1 and 10 or exit",
+          "<:Oops:858157163876319252> | Please try again and enter a number between 1 and 10 or exit",
           client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
         );
@@ -160,7 +160,7 @@ client.guilds.cache
       console.error(err);
       
       return sendEror(
-        "<a:checkmark:854477462829006858> | Please try again and enter a number between 1 and 10 or exit",
+        "<:Oops:858157163876319252> | Please try again and enter a number between 1 and 10 or exit",
         client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
       );
@@ -198,7 +198,7 @@ client.guilds.cache
       client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id).stopTyping();
       if (client.guilds.cache
-      .get(interaction.guild_id).me.voice.channel !== channel)return sendEror('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', client.guilds.cache
+      .get(interaction.guild_id).me.voice.channel !== channel)return sendEror('<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!', client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id));
       serverQueue.songs.push(song);
       let thing = new MessageEmbed()
@@ -296,7 +296,7 @@ console.log(song.url)
       .get(interaction.guild_id).client.queue.delete(interaction.guild_id);
       await channel.leave();
       return sendEror(
-        `<a:checkmark:854477462829006858> | I could not join the voice channel: ${error}`,
+        `<:Oops:858157163876319252> | I could not join the voice channel: ${error}`,
         client.guilds.cache
       .get(interaction.guild_id).channels.cache.get(interaction.channel_id)
       );
@@ -308,23 +308,23 @@ console.log(song.url)
 const sendSucces = require("../../util/succes");
 const sendEror = require("../../util/eror");
     const channel = message.member.voice.channel;
-    if (!channel)return sendError('<<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message);
+    if (!channel)return sendError('<<:Oops:858157163876319252> | You need to join a voice channel to use this command!', message);
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
-        "<a:checkmark:854477462829006858> | I cannot connect to your voice channel, make sure I have the proper permissions!",
+        "<:Oops:858157163876319252> | I cannot connect to your voice channel, make sure I have the proper permissions!",
         message
       );
     if (!permissions.has("SPEAK")&&!permissions.has("ADMINISTRATOR"))
       return sendError(
-        "<a:checkmark:854477462829006858> | I cannot speak in this voice channel, make sure I have the proper permissions!",
+        "<:Oops:858157163876319252> | I cannot speak in this voice channel, make sure I have the proper permissions!",
         message
       );
 
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
-        "<a:checkmark:854477462829006858> | You didn't provide what you want to play",
+        "<:Oops:858157163876319252> | You didn't provide what you want to play",
         message
       );
     var songEmbed = await message.noMentionReply(
@@ -337,7 +337,7 @@ const sendEror = require("../../util/eror");
     if (searched.videos.length === 0){
 message.channel.stopTyping()
       return sendError(
-        "<a:checkmark:854477462829006858> | Looks like i was unable to find the song on YouTube",
+        "<:Oops:858157163876319252> | Oh noes, I was unable to find the song on YouTube/SoundCloud.",
         message
       );}
     const vidNameArr = [];
@@ -400,7 +400,7 @@ message.channel.stopTyping()
           songEmbed.delete();
         }
         return sendError(
-          "<a:checkmark:854477462829006858> | Please try again and enter a number between 1 and 10 or exit",
+          "<:Oops:858157163876319252> | Please try again and enter a number between 1 and 10 or exit",
           message
         );
       }
@@ -412,7 +412,7 @@ message.channel.stopTyping()
         songEmbed.delete();
       }
       return sendError(
-        "<a:checkmark:854477462829006858> | Please try again and enter a number between 1 and 10 or exit",
+        "<:Oops:858157163876319252> | Please try again and enter a number between 1 and 10 or exit",
         message
       );
     }
@@ -448,7 +448,7 @@ message.channel.stopTyping()
     if (serverQueue&&serverQueue.songs!==null) {
       message.channel.stopTyping();
       serverQueue.songs.push(song);
-      if (message.guild.me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);
+      if (message.guild.me.voice.channel !== channel)return sendError('<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!', message);
       let thing = new MessageEmbed()
         .setAuthor(
           "Song has been added to queue",
@@ -480,7 +480,7 @@ message.channel.stopTyping()
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id);
       if (!song) {
-        sendSucces("<a:checkmark:854477462829006858> | Disconnected sucessfully!", message.channel);
+        sendSucces("<a:Checkmark:858154320117235742> | Disconnected sucessfully!", message.channel);
         queue.voiceChannel.leave(); //If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
         return;
@@ -538,7 +538,7 @@ message.channel.stopTyping()
       message.client.queue.delete(message.guild.id);
       await channel.leave();
       return sendEror(
-        `<a:checkmark:854477462829006858> | I could not join the voice channel: ${error}`,
+        `<:Oops:858157163876319252> | I could not join the voice channel: ${error}`,
         message.channel
       );
     }

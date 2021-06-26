@@ -29,22 +29,22 @@ const sendError =require("../../util/slash/error")
     let args=[]
 if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]  
     const channel = await bot.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
-    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message, bot);
-    if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message, bot);
+    if (!channel)return sendError('<:Oops:858157163876319252> | You need to join a voice channel to use this command!', message, bot);
+    if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!', message, bot);
 
     const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 
-    if (!serverQueue)return sendError("<a:checkmark:854477462829006858> | There is nothing playing in this server.", message, bot);
-     if(isNaN(args[0]))return sendError("<a:checkmark:854477462829006858> | Please use Numerical Values only", message, bot)
-    if(args[0]<1)return sendError("<a:checkmark:854477462829006858> | Please give a number that is higher than 0", message, bot)
+    if (!serverQueue)return sendError("<:Oops:858157163876319252> | There is nothing playing in this server.", message, bot);
+     if(isNaN(args[0]))return sendError("<:Oops:858157163876319252> | Please use numerical Values only.", message, bot)
+    if(args[0]<1)return sendError("<:Oops:858157163876319252> | Please give a number that is higher than 0.", message, bot)
    
     if(args[0] > serverQueue.songs.length) {
-      return sendError("<a:checkmark:854477462829006858> | Unable to find this song", message, bot)
+      return sendError("<:Oops:858157163876319252> | Unable to find that song in the queue.", message, bot)
     }
     
     
     serverQueue.songs.splice(args[0], 1)
-    sendSuccess("<a:checkmark:854477462829006858> | Song has been removed sucessfully!", message, bot)
+    sendSuccess("<a:Checkmark:858154320117235742> | Song has been removed sucessfully!", message, bot)
   },
   options: [
   {
@@ -55,25 +55,27 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
   }
 ],
   run: (bot, message, args) => {
-    const sendSuccess = require("../../util/success")
-const sendError =require("../../util/error")
-    const channel = message.member.voice.channel
-    if (!channel)return sendError('<a:checkmark:854477462829006858> | You need to join a voice channel to use this command!', message);
-    if (message.guild.me.voice.channel !== channel)return sendError('<a:checkmark:854477462829006858> | You need to join voice channel where the bot is to use this command!', message);
+    const sendSuccess = require("../../util/slash/success")
+const sendError =require("../../util/slash/error")
+    let args=[]
+if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]  
+    const channel = await bot.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
+    if (!channel)return sendError('<:Oops:858157163876319252> | You need to join a voice channel to use this command!', message, bot);
+    if (bot.guilds.cache.get(message.guild_id).me.voice.channel !== channel)return sendError('<:Oops:858157163876319252> | You need to join voice channel where the bot is to use this command!', message, bot);
 
-    const serverQueue = message.client.queue.get(message.guild.id);
+    const serverQueue = bot.guilds.cache.get(message.guild_id).client.queue.get(message.guild_id);
 
-    if (!serverQueue)return sendError("<a:checkmark:854477462829006858> | There is nothing playing in this server.", message);
-     if(isNaN(args[0]))return sendError("<a:checkmark:854477462829006858> | Please use Numerical Values only", message)
-    if(args[0]<1)return sendError("<a:checkmark:854477462829006858> | Please give a number that is higher than 0", message)
+    if (!serverQueue)return sendError("<:Oops:858157163876319252> | There is nothing playing in this server.", message, bot);
+     if(isNaN(args[0]))return sendError("<:Oops:858157163876319252> | Please use numerical Values only.", message, bot)
+    if(args[0]<1)return sendError("<:Oops:858157163876319252> | Please give a number that is higher than 0.", message, bot)
    
     if(args[0] > serverQueue.songs.length) {
-      return sendError("<a:checkmark:854477462829006858> | Unable to find this song", message)
+      return sendError("<:Oops:858157163876319252> | Unable to find that song in the queue.", message, bot)
     }
     
     
     serverQueue.songs.splice(args[0], 1)
-    sendSuccess("<a:checkmark:854477462829006858> | Song has been removed sucessfully!", message)
+    sendSuccess("<a:Checkmark:858154320117235742> | Song has been removed sucessfully!", message)
   },
   
 };
