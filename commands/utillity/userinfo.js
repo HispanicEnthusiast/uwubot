@@ -34,10 +34,10 @@ const flags = {
 };
     
     let stat = {
-      online: "https://emoji.gg/assets/emoji/9166_online.png",
-      idle: "https://emoji.gg/assets/emoji/3929_idle.png",
-      dnd: "https://emoji.gg/assets/emoji/2531_dnd.png",
-      offline: "https://emoji.gg/assets/emoji/7445_status_offline.png"
+      Online: "https://emoji.gg/assets/emoji/9166_online.png",
+      Idle: "https://emoji.gg/assets/emoji/3929_idle.png",
+      DND: "https://emoji.gg/assets/emoji/2531_dnd.png",
+      Offline: "https://emoji.gg/assets/emoji/7445_status_offline.png"
     }
 
 
@@ -72,7 +72,7 @@ let data;
       //OTHER STUFF 
              if(userm.user.displayAvatarURL()!==undefined) embed.setAuthor(userm.user.tag, userm.user.displayAvatarURL({ dynamic: true })||"https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
 else embed.setAuthor(userm.user.tag, "https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
-       embed.addField("Server Nickname", userm.nickname||"no nickname("+userm.user.username+")")
+       embed.addField("Server Nickname", userm.nickname||"No Nickname ("+userm.user.username+")")
       embed.addField("Joined Server on", moment(userm.joinedAt).format("LLLL"))
         embed.addField("Account Created on", moment(userm.user.createdAt).format("LLLL"))
         
@@ -143,10 +143,10 @@ const flags = {
 };
     
     let stat = {
-      online: "https://emoji.gg/assets/emoji/9166_online.png",
-      idle: "https://emoji.gg/assets/emoji/3929_idle.png",
-      dnd: "https://emoji.gg/assets/emoji/2531_dnd.png",
-      offline: "https://emoji.gg/assets/emoji/7445_status_offline.png"
+      Online: "https://emoji.gg/assets/emoji/9166_online.png",
+      Idle: "https://emoji.gg/assets/emoji/3929_idle.png",
+      DND: "https://emoji.gg/assets/emoji/2531_dnd.png",
+      Offline: "https://emoji.gg/assets/emoji/7445_status_offline.png"
     }
 
 
@@ -181,7 +181,7 @@ let data;
       //OTHER STUFF 
              if(userm.user.displayAvatarURL()!==undefined) embed.setAuthor(userm.user.tag, userm.user.displayAvatarURL({ dynamic: true })||"https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
 else embed.setAuthor(userm.user.tag, "https://cdn.glitch.com/0e253384-8c9d-4a84-9d39-604eb20e01c4%2F4669af3c-fd30-4b37-a89a-1a18f4f5e66e.image.png?v=1609118781652")
-       embed.addField("Server Nickname", userm.nickname||"no nickname("+userm.user.username+")")
+       embed.addField("Server Nickname", userm.nickname||"No Nickname ("+userm.user.username+")")
       embed.addField("Joined Server on", moment(userm.joinedAt).format("LLLL"))
         embed.addField("Account Created on", moment(userm.user.createdAt).format("LLLL"))
         
