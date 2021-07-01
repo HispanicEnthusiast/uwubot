@@ -17,7 +17,7 @@ const newEmbed = new Discord.MessageEmbed()
     {name: 'NSFW/Adult', value: 'uwu neko | uwu foxgirl'})
 .addField('\u200B', '[Website](https://uwuthebot.glitch.me) | [Support Server](https://discord.gg/RpyKuDNghR)')
 .setTimestamp()
-.setFooter('♡ Made by R. Romero#0001 - Thank You ♡')
+.setFooter('Made with <3 by ROBBY#0001 - Have an amazing day!')
 
 message.channel.send(newEmbed);
 
