@@ -32,7 +32,7 @@ let muterole= bot.db.get(`${message.guild.id}_muterole`)
 
   if(!bot.db.get(`${message.guild.id}_muterole`)){
    let muterale = message.guild.roles.cache.find(r => r.name === 'Muted');
-      //bot.db.set(`${message.guild.id}_muterole`,message.guild.roles.cache.find(r => r.name === 'Muted').id);
+  //bot.db.set(`${message.guild.id}_muterole`,message.guild.roles.cache.find(r => r.name === 'Muted').id);
   if(!muterale) {
               try{
                 let muterele = await message.guild.roles.create({
@@ -70,7 +70,7 @@ let muterole= bot.db.get(`${message.guild.id}_muterole`)
     const time = args[1]
    
     if(!time||ms(time)===undefined){
-      return message.mentionReply("🔨 | Please add a correct time to mute this member. (m = Minutes | d = Days)")
+      return message.mentionReply("🔨 | Please add a correct time to mute this member. (M = Minutes | H = Hours | D = Days)")
     }
    
   let muteroles=bot.db.set(`${message.guild.id}_${userm.user.id}muteroles`, userm._roles)
