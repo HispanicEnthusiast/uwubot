@@ -17,17 +17,17 @@ exports.run = (bot, message, args) => {
       let welcomemessagesend = `<#`+bot.db.get(`${message.guild.id}_welcomechannel`)+`>`;
       let leave = `<#`+bot.db.get(`${message.guild.id}_leavechannel`)+`>`;
       let mute =`<@&`+bot.db.get(`${message.guild.id}_muterole`)+`>`;
-      let mutetime =`<@&`+bot.db.get(`${message.guild.id}_mutetime`)+`>`;
+      let mutetime = `In Development - Mute Time is Enabled.))`;
       let verifychannel = `<#`+bot.db.get(`${message.guild.id}_verifychannel`)+`>`;
       let verifyrole = `<@&`+bot.db.get(`${message.guild.id}_verifyrole`)+`>`;
       if (!bot.db.get(`${message.guild.id}_autorole`)) autorole = "<:Oops:858157163876319252>";
       if (!bot.db.get(`${message.guild.id}_botlog`)) log = "<:Oops:858157163876319252>";
       if (!bot.db.get(`${message.guild.id}_welcomemessage`)) welcomemessage = "<:Oops:858157163876319252>";
       if (!bot.db.get(`${message.guild.id}_leavemessage`)) leavemessage = "<:Oops:858157163876319252>";
-      if (!bot.db.get(`${message.guild.id}_welcomechannel`))welcomemessagesend = "<:Oops:858157163876319252>";
+      if (!bot.db.get(`${message.guild.id}_welcomechannel`)) welcomemessagesend = "<:Oops:858157163876319252>";
       if (!bot.db.get(`${message.guild.id}_leavechannel`)) leave = "<:Oops:858157163876319252>";
       if (!bot.db.get(`${message.guild.id}_muterole`)) mute = "<:Oops:858157163876319252>";
-      if (!bot.db.get(`${message.guild.id}_mutetime`)) mute = "<:Oops:858157163876319252>";
+      if (!bot.db.get(`${message.guild.id}_mutetime`)) mutetime = "<:Oops:858157163876319252>";
       if (!bot.db.get(`${message.guild.id}_verifychannel`)) verifychannel = "<:Oops:858157163876319252>";
       if (!bot.db.get(`${message.guild.id}_verifyrole`)) verifyrole = "<:Oops:858157163876319252>";
       
@@ -35,16 +35,16 @@ exports.run = (bot, message, args) => {
         .setTitle(
           `Settings for ${message.guild.name} | <:Oops:858157163876319252> = Not Setup`
         )
-        .setDescription(`${autorole} : welcome auto role
-${log} : bot log
-${welcomemessage} : welcome message
-${leavemessage} : leave message
-${welcomemessagesend} : Welcome Channel
+        .setDescription(`${autorole} : Welcome Auto-Role (uwu setautorole)
+${log} : Bot Log (uwu setbotlog)
+${welcomemessage} : Welcome Message (uwu setwelcomemessage)
+${leavemessage} : Leave Message (uwu setleavechannel)
+${welcomemessagesend} : Welcome Channel (uwu setwelcomechannel)
 ${leave} : Leave Channel (uwu setleavechannel)
 ${mute} : Mute Role (uwu setmuterole)
-${mutetime} : Mute Time
-${verifychannel} : verify channel
-${verifyrole} :verified role`)
+${mutetime} : Mute Time (uwu setmutetime)
+${verifychannel} : Verification Channel (uwu setverifychannel)
+${verifyrole} : Verified Role (uwu setverifyrole)`)
         .setTimestamp();
       message.noMentionReply(embed);
       return;
