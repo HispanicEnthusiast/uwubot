@@ -18,7 +18,7 @@ exports.run = (bot, message, args) => {
       bot.db.set(`${message.guild.id}_warnmute`, setup)
       
       message.noMentionReply(//noMentionReply
-        `<:hikariok:801419553841741904> | Successfully setup warn, the member will be **muted** if he/she gets **${args[1]}** warns`
+        `<a:Checkmark:858154320117235742> | Successfully setup warn, the member will be **muted** if he/she/they/other gets **${args[1]}** warns`
       );
       return;
       }
@@ -29,7 +29,7 @@ exports.run = (bot, message, args) => {
       bot.db.set(`${message.guild.id}_warnkick`, setup)
       
       message.noMentionReply(
-        `<:hikariok:801419553841741904> | Successfully setup warn, the member will be **kicked** if he/she gets **${args[1]}** warns`
+        `<a:Checkmark:858154320117235742> | Successfully setup warn, the member will be **kicked** if he/she/they/other gets **${args[1]}** warns`
       );
       return;
       }
@@ -40,7 +40,7 @@ exports.run = (bot, message, args) => {
       bot.db.set(`${message.guild.id}_warnban`, setup)
       
       message.noMentionReply(
-        `<:hikariok:801419553841741904> | Successfully setup warn, the member will be **banned** if he/she gets **${args[1]}** warns`
+        `<a:Checkmark:858154320117235742> | Successfully setup warn, the member will be **banned** if he/she/they/other gets **${args[1]}** warns`
       );
       return;
       } else return
@@ -54,7 +54,7 @@ exports.run = (bot, message, args) => {
       bot.db.set(`${message.guild.id}_warnmute`, setup)
       
       message.noMentionReply(
-        `<:hikariok:801419553841741904> | Successfully setup warn, the member will be **muted** if he/she gets **${args[0]}** warns`
+        `<a:Checkmark:858154320117235742> | Successfully setup warn, the member will be **muted** if he/she/they/other gets **${args[0]}** warns`
       );
       return;
       }
@@ -65,7 +65,7 @@ exports.run = (bot, message, args) => {
       bot.db.set(`${message.guild.id}_warnkick`, setup)
       
       message.noMentionReply(
-        `<:hikariok:801419553841741904> | Successfully setup warn, the member will be **kicked** if he/she gets **${args[0]}** warns`
+        `<a:Checkmark:858154320117235742> | Successfully setup warn, the member will be **kicked** if he/she/they/other gets **${args[0]}** warns`
       );
       return;
       }
@@ -76,7 +76,7 @@ exports.run = (bot, message, args) => {
       bot.db.set(`${message.guild.id}_warnban`, setup)
       
       message.noMentionReply(
-        `<:hikariok:801419553841741904> | Successfully setup warn, the member will be **banned** if he/she gets **${args[0]}** warns`
+        `<a:Checkmark:858154320117235742> | Successfully setup warn, the member will be **banned** if he/she/they/other gets **${args[0]}** warns`
       );
       return;
       } else return
@@ -87,6 +87,6 @@ exports.run = (bot, message, args) => {
 exports.info = {
 name: 'setwarn',
   aliases:["setwarns", "setwarning", "setwarnings"],
-  description: "sets the auto role(the user is for example muted if he/she gets 2 warns)",
+  description: "sets the auto role(the user is for example muted if he/she/they/other gets 2 warns)",
   usage: "<\"mute\"/\"kick\"/\"ban\"> <number>"
 }
