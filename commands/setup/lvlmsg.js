@@ -12,14 +12,14 @@ exports.run = (bot, message, args) => {
     if (type === "on" || type === "enable") {
       bot.db.set(`${message.guild.id}_lvlupmsg`, "yes")
       message.noMentionReply(
-        `<:hikariok:849822180246421504> | Level up message is successfully enabled!`
+        `<a:Checkmark:858154320117235742> | Level up message is successfully enabled!`
       );
       return;
     }
     if (type === "off" || type === "disable") {
       bot.db.set(`${message.guild.id}_lvlupmsg`, "no")
       message.noMentionReply(
-        `<:hikariok:849822180246421504> | Level up message successfully disabled!`
+        `<a:Checkmark:858154320117235742> | Level up message successfully disabled!`
       );
       return;
     }

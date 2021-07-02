@@ -18,13 +18,13 @@ exports.run = (bot, message, args) => {
    }
      else
    {
-return sendError("please give enable, on, disable or off as command's argument",message)
+return sendError("Please give a toggle - Enable = On | Disable = Off - as command's argument",message)
 }
       
       let a=bot.db.set(`${message.guild.id}_autorolesys`, setup)
       
       message.nomentionReply(
-        `<:hikariok:849822180246421504> | Auto role system is ${a}`
+        `<a:Checkmark:858154320117235742> | Auto-Role system is ${a}!`
       );
       return;
 }

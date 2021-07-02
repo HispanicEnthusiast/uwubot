@@ -14,12 +14,12 @@ exports.run = (bot, message, args) => {
     
       if (!setup||isNaN(setup.replace("<@&", "").replace("<@", "").replace(">", "")))
         return message.mentionReply(
-          `Please send a auto-role ID with this format ${bot.config.prefix}setautorole [auto role id]`
+          `Please send a auto-role ID with this format ${bot.config.prefix}setautorole [Auto-Role ID]`
         );
       bot.db.set(`${message.guild.id}_autorole`, setup.replace("<@&", "").replace("<@", "").replace(">", ""))
       
       message.noMentionReply(
-        `<:hikariok:849822180246421504> | Successfully setup verified role`
+        `<a:Checkmark:858154320117235742> | Successfully setup auto-role!`
       );
       return;
 }

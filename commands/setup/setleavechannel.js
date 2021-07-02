@@ -10,7 +10,7 @@ let perm=message.channel.permissionsFor(message.member)//perm.has()
   let setup= args[0]
       if (!args[0]||isNaN(args[0].replace("<#", "").replace(">", "")))setup = message.channel.id
       bot.db.set(`${message.guild.id}_leavechannel`, setup.replace("<#", "").replace(">", ""))
-      message.noMentionReply(`<:hikariok:849822180246421504> | Successfully setup welcome message send place`);
+      message.noMentionReply(`<a:Checkmark:858154320117235742> | Successfully setup leave message send place!`);
       return;
 }
 

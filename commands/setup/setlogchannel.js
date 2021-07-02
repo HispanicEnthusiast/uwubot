@@ -14,7 +14,7 @@ exports.run = (bot, message, args) => {
       if (!args[0]||isNaN(args[0].replace("<#", "").replace(">", "")))setup = message.channel.id
       bot.db.set(`${message.guild.id}_botlog`, setup.replace("<#", "").replace(">", ""))
       message.noMentionReply(
-        `<:hikariok:801419553841741904> | Successfully setup bot log`
+        `<:hikariok:801419553841741904> | Successfully setup bot log chan`
       );
       return;
 }
