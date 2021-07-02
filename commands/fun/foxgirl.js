@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args, tools) => {
   const mat = await neko.sfw.foxGirl();
   const embed = new Discord.MessageEmbed()
     .setColor("#ff9900")
-    .setTitle("Here's a fox girl, horny-dog. OwO")
+    .setTitle("Here's a Fox Girl, so beautiful! UwU")
     .setImage(mat.url);
   
   message.noMentionReply(embed)
