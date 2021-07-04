@@ -55,9 +55,10 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
   }
 ],
   run: (bot, message, args) => {
+    
     const sendSuccess = require("../../util/slash/success")
 const sendError =require("../../util/slash/error")
-    let args=[]
+    args=[]
 if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]  
     const channel = await bot.guilds.cache.get(message.guild_id).members.cache.get(message.member.user.id).voice.channel
     if (!channel)return sendError('<:Oops:858157163876319252> | You need to join a voice channel to use this command!', message, bot);
