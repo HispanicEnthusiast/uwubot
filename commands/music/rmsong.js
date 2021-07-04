@@ -54,8 +54,8 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
     required: true
   }
 ],
-  run: (bot, message, args) => {
-    
+  run: (bot, message, arg, args) => {
+    async()=> {
     const sendSuccess = require("../../util/slash/success")
 const sendError =require("../../util/slash/error")
     args=[]
@@ -72,6 +72,7 @@ if(arg)args=[arg.find(arg => arg.name.toLowerCase() == "song").value]
    
     if(args[0] > serverQueue.songs.length) {
       return sendError("<:Oops:858157163876319252> | Unable to find that song in the queue.", message, bot)
+     }
     }
     
     
